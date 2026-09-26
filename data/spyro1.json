@@ -1,0 +1,880 @@
+{
+  "baseId": 100000,
+  "gemThresholds": [
+    [
+      25,
+      "25% Gems"
+    ],
+    [
+      50,
+      "50% Gems"
+    ],
+    [
+      75,
+      "75% Gems"
+    ],
+    [
+      100,
+      "All Gems"
+    ]
+  ],
+  "gemThresholdIdBase": 102000,
+  "gemThresholdIdsPerLevel": 10,
+  "eventIdBase": 103000,
+  "balloonistGates": {
+    "Peace Keepers": {
+      "type": "dragons",
+      "needed": 10
+    },
+    "Magic Crafters": {
+      "type": "gems",
+      "needed": 1200
+    },
+    "Beast Makers": {
+      "type": "eggs",
+      "needed": 5
+    },
+    "Dream Weavers": {
+      "type": "dragons",
+      "needed": 50
+    },
+    "Gnorc Gnexus": {
+      "type": "gems",
+      "needed": 6000
+    }
+  },
+  "levels": [
+    {
+      "name": "Artisans",
+      "type": "HUB",
+      "id": 1,
+      "gemTotal": 100,
+      "checks": [
+        {
+          "id": 100000,
+          "name": "Artisans: Free Nestor",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100001,
+          "name": "Artisans: Free Delbin",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100002,
+          "name": "Artisans: Free Tomas",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100003,
+          "name": "Artisans: Free Argus",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100004,
+          "name": "Artisans: Reach tricky platform (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ]
+    },
+    {
+      "name": "Town Square",
+      "type": "NORMAL",
+      "id": 2,
+      "gemTotal": 200,
+      "checks": [
+        {
+          "id": 100005,
+          "name": "Town Square: Free Nils",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100006,
+          "name": "Town Square: Free Devlin",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100007,
+          "name": "Town Square: Free Alvar",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100008,
+          "name": "Town Square: Free Thor",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100009,
+          "name": "Town Square: Catch the egg thief",
+          "type": "EGG"
+        },
+        {
+          "id": 100010,
+          "name": "Town Square: All bulls stuck (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Artisans"
+    },
+    {
+      "name": "Stone Hill",
+      "type": "NORMAL",
+      "id": 3,
+      "gemTotal": 200,
+      "checks": [
+        {
+          "id": 100011,
+          "name": "Stone Hill: Free Lindar",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100012,
+          "name": "Stone Hill: Free Astor",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100013,
+          "name": "Stone Hill: Free Gavin",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100014,
+          "name": "Stone Hill: Free Gildas",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100015,
+          "name": "Stone Hill: Catch the egg thief",
+          "type": "EGG"
+        },
+        {
+          "id": 100016,
+          "name": "Stone Hill: Burn the hidden pink tulip (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Artisans"
+    },
+    {
+      "name": "Dark Hollow",
+      "type": "NORMAL",
+      "id": 4,
+      "gemTotal": 100,
+      "checks": [
+        {
+          "id": 100017,
+          "name": "Dark Hollow: Free Alban",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100018,
+          "name": "Dark Hollow: Free Oswin",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100019,
+          "name": "Dark Hollow: Free Darius",
+          "type": "DRAGON"
+        }
+      ],
+      "hub": "Artisans"
+    },
+    {
+      "name": "Toasty",
+      "type": "BOSS",
+      "id": 5,
+      "gemTotal": 100,
+      "checks": [
+        {
+          "id": 100020,
+          "name": "Toasty: Free Nevin",
+          "type": "DRAGON"
+        }
+      ],
+      "hub": "Artisans"
+    },
+    {
+      "name": "Sunny Flight",
+      "type": "FLIGHT",
+      "id": 6,
+      "gemTotal": 300,
+      "checks": [],
+      "hub": "Artisans"
+    },
+    {
+      "name": "Peace Keepers",
+      "type": "HUB",
+      "id": 7,
+      "gemTotal": 200,
+      "checks": [
+        {
+          "id": 100021,
+          "name": "Peace Keepers: Free Titan",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100022,
+          "name": "Peace Keepers: Free Magnus",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100023,
+          "name": "Peace Keepers: Free Gunnar",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100024,
+          "name": "Peace Keepers: Catch the egg thief",
+          "type": "EGG"
+        },
+        {
+          "id": 100025,
+          "name": "Peace Keepers: Scare 6 Gnorcs into tents (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ]
+    },
+    {
+      "name": "Dry Canyon",
+      "type": "NORMAL",
+      "id": 8,
+      "gemTotal": 400,
+      "checks": [
+        {
+          "id": 100026,
+          "name": "Dry Canyon: Free Conan",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100027,
+          "name": "Dry Canyon: Free Boris",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100028,
+          "name": "Dry Canyon: Free Ivor",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100029,
+          "name": "Dry Canyon: Free Maximos",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100030,
+          "name": "Dry Canyon: Catch the egg thief",
+          "type": "EGG"
+        }
+      ],
+      "hub": "Peace Keepers"
+    },
+    {
+      "name": "Cliff Town",
+      "type": "NORMAL",
+      "id": 9,
+      "gemTotal": 400,
+      "checks": [
+        {
+          "id": 100031,
+          "name": "Cliff Town: Free Halvor",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100032,
+          "name": "Cliff Town: Free Enzo",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100033,
+          "name": "Cliff Town: Free Marco",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100034,
+          "name": "Cliff Town: Catch the egg thief",
+          "type": "EGG"
+        }
+      ],
+      "hub": "Peace Keepers"
+    },
+    {
+      "name": "Ice Cavern",
+      "type": "NORMAL",
+      "id": 10,
+      "gemTotal": 400,
+      "checks": [
+        {
+          "id": 100035,
+          "name": "Ice Cavern: Free Ulric",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100036,
+          "name": "Ice Cavern: Free Todor",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100037,
+          "name": "Ice Cavern: Free Andor",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100038,
+          "name": "Ice Cavern: Free Asher",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100039,
+          "name": "Ice Cavern: Free Ragnar",
+          "type": "DRAGON"
+        }
+      ],
+      "hub": "Peace Keepers"
+    },
+    {
+      "name": "Doctor Shemp",
+      "type": "BOSS",
+      "id": 11,
+      "gemTotal": 300,
+      "checks": [
+        {
+          "id": 100040,
+          "name": "Doctor Shemp: Free Trondo",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100041,
+          "name": "Doctor Shemp: Perfect (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Peace Keepers"
+    },
+    {
+      "name": "Night Flight",
+      "type": "FLIGHT",
+      "id": 12,
+      "gemTotal": 300,
+      "checks": [],
+      "hub": "Peace Keepers"
+    },
+    {
+      "name": "Magic Crafters",
+      "type": "HUB",
+      "id": 13,
+      "gemTotal": 300,
+      "checks": [
+        {
+          "id": 100042,
+          "name": "Magic Crafters: Free Cosmos",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100043,
+          "name": "Magic Crafters: Free Zantor",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100044,
+          "name": "Magic Crafters: Free Boldar",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100045,
+          "name": "Magic Crafters: Catch the egg thief (start area)",
+          "type": "EGG"
+        },
+        {
+          "id": 100046,
+          "name": "Magic Crafters: Catch the egg thief (supercharge ramp)",
+          "type": "EGG"
+        }
+      ]
+    },
+    {
+      "name": "Alpine Ridge",
+      "type": "NORMAL",
+      "id": 14,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100047,
+          "name": "Alpine Ridge: Free Zane",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100048,
+          "name": "Alpine Ridge: Free Eldrid",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100049,
+          "name": "Alpine Ridge: Free Zander",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100050,
+          "name": "Alpine Ridge: Free Kelvin",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100051,
+          "name": "Alpine Ridge: Catch the egg thief",
+          "type": "EGG"
+        }
+      ],
+      "hub": "Magic Crafters"
+    },
+    {
+      "name": "High Caves",
+      "type": "NORMAL",
+      "id": 15,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100052,
+          "name": "High Caves: Free Ajax",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100053,
+          "name": "High Caves: Free Cyrus",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100054,
+          "name": "High Caves: Free Cedric",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100055,
+          "name": "High Caves: Catch the egg thief (supercharge pool)",
+          "type": "EGG"
+        },
+        {
+          "id": 100056,
+          "name": "High Caves: Catch the egg thief (archway ledge)",
+          "type": "EGG"
+        },
+        {
+          "id": 100057,
+          "name": "High Caves: Burn hidden painting (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Magic Crafters"
+    },
+    {
+      "name": "Wizard Peak",
+      "type": "NORMAL",
+      "id": 16,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100058,
+          "name": "Wizard Peak: Free Jarvis",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100059,
+          "name": "Wizard Peak: Free Hexus",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100060,
+          "name": "Wizard Peak: Free Lucas",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100061,
+          "name": "Wizard Peak: Catch the egg thief (hidden platform)",
+          "type": "EGG"
+        },
+        {
+          "id": 100062,
+          "name": "Wizard Peak: Catch the egg thief (pool by steps)",
+          "type": "EGG"
+        }
+      ],
+      "hub": "Magic Crafters"
+    },
+    {
+      "name": "Blowhard",
+      "type": "BOSS",
+      "id": 17,
+      "gemTotal": 400,
+      "checks": [
+        {
+          "id": 100063,
+          "name": "Blowhard: Free Altair",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100064,
+          "name": "Blowhard: Ride a Druid platform for 10 seconds (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Magic Crafters"
+    },
+    {
+      "name": "Crystal Flight",
+      "type": "FLIGHT",
+      "id": 18,
+      "gemTotal": 300,
+      "checks": [],
+      "hub": "Magic Crafters"
+    },
+    {
+      "name": "Beast Makers",
+      "type": "HUB",
+      "id": 19,
+      "gemTotal": 300,
+      "checks": [
+        {
+          "id": 100065,
+          "name": "Beast Makers: Free Bruno",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100066,
+          "name": "Beast Makers: Free Cleetus",
+          "type": "DRAGON"
+        }
+      ]
+    },
+    {
+      "name": "Terrace Village",
+      "type": "NORMAL",
+      "id": 20,
+      "gemTotal": 400,
+      "checks": [
+        {
+          "id": 100067,
+          "name": "Terrace Village: Free Claude",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100068,
+          "name": "Terrace Village: Free Cyprin",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100069,
+          "name": "Terrace Village: No electric floor damage (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Beast Makers"
+    },
+    {
+      "name": "Misty Bog",
+      "type": "NORMAL",
+      "id": 21,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100070,
+          "name": "Misty Bog: Free Rosco",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100071,
+          "name": "Misty Bog: Free Damon",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100072,
+          "name": "Misty Bog: Free Bubba",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100073,
+          "name": "Misty Bog: Free Zeke",
+          "type": "DRAGON"
+        }
+      ],
+      "hub": "Beast Makers"
+    },
+    {
+      "name": "Tree Tops",
+      "type": "NORMAL",
+      "id": 22,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100074,
+          "name": "Tree Tops: Free Isaak",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100075,
+          "name": "Tree Tops: Free Lyle",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100076,
+          "name": "Tree Tops: Free Jed",
+          "type": "DRAGON"
+        }
+      ],
+      "hub": "Beast Makers"
+    },
+    {
+      "name": "Metalhead",
+      "type": "BOSS",
+      "id": 23,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100077,
+          "name": "Metalhead: Free Sadiki",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100078,
+          "name": "Metalhead: Perfect (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Beast Makers"
+    },
+    {
+      "name": "Wild Flight",
+      "type": "FLIGHT",
+      "id": 24,
+      "gemTotal": 300,
+      "checks": [],
+      "hub": "Beast Makers"
+    },
+    {
+      "name": "Dream Weavers",
+      "type": "HUB",
+      "id": 25,
+      "gemTotal": 300,
+      "checks": [
+        {
+          "id": 100079,
+          "name": "Dream Weavers: Free Lateef",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100080,
+          "name": "Dream Weavers: Free Zikomo",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100081,
+          "name": "Dream Weavers: Free Mazi",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100082,
+          "name": "Dream Weavers: Secret room (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ]
+    },
+    {
+      "name": "Dark Passage",
+      "type": "NORMAL",
+      "id": 26,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100083,
+          "name": "Dark Passage: Free Kasiya",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100084,
+          "name": "Dark Passage: Free Azizi",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100085,
+          "name": "Dark Passage: Free Bakari",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100086,
+          "name": "Dark Passage: Free Apara",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100087,
+          "name": "Dark Passage: Free Obasi",
+          "type": "DRAGON"
+        }
+      ],
+      "hub": "Dream Weavers"
+    },
+    {
+      "name": "Lofty Castle",
+      "type": "NORMAL",
+      "id": 27,
+      "gemTotal": 400,
+      "checks": [
+        {
+          "id": 100088,
+          "name": "Lofty Castle: Free Mudada",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100089,
+          "name": "Lofty Castle: Free Useni",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100090,
+          "name": "Lofty Castle: Free Baruti",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100091,
+          "name": "Lofty Castle: Destroy hidden stump (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Dream Weavers"
+    },
+    {
+      "name": "Haunted Towers",
+      "type": "NORMAL",
+      "id": 28,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100092,
+          "name": "Haunted Towers: Free Kosoko",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100093,
+          "name": "Haunted Towers: Free Lutalo",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100094,
+          "name": "Haunted Towers: Free Copano",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100095,
+          "name": "Haunted Towers: Burn blue wizard hat (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Dream Weavers"
+    },
+    {
+      "name": "Jacques",
+      "type": "BOSS",
+      "id": 29,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100096,
+          "name": "Jacques: Free Unika",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100097,
+          "name": "Jacques: Free Revilo",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100098,
+          "name": "Jacques: Perfect (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Dream Weavers"
+    },
+    {
+      "name": "Icy Flight",
+      "type": "FLIGHT",
+      "id": 30,
+      "gemTotal": 300,
+      "checks": [],
+      "hub": "Dream Weavers"
+    },
+    {
+      "name": "Gnorc Gnexus",
+      "type": "HUB",
+      "id": 31,
+      "gemTotal": 200,
+      "checks": [
+        {
+          "id": 100099,
+          "name": "Gnorc Gnexus: Free Delbin",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100100,
+          "name": "Gnorc Gnexus: Free Magnus",
+          "type": "DRAGON"
+        }
+      ]
+    },
+    {
+      "name": "Gnorc Cove",
+      "type": "NORMAL",
+      "id": 32,
+      "gemTotal": 400,
+      "checks": [
+        {
+          "id": 100101,
+          "name": "Gnorc Cove: Free Lateef",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100102,
+          "name": "Gnorc Cove: Free Tomas",
+          "type": "DRAGON"
+        }
+      ],
+      "hub": "Gnorc Gnexus"
+    },
+    {
+      "name": "Twilight Harbor",
+      "type": "NORMAL",
+      "id": 33,
+      "gemTotal": 400,
+      "checks": [
+        {
+          "id": 100103,
+          "name": "Twilight Harbor: Free Cosmos",
+          "type": "DRAGON"
+        },
+        {
+          "id": 100104,
+          "name": "Twilight Harbor: Free Cleetus",
+          "type": "DRAGON"
+        }
+      ],
+      "hub": "Gnorc Gnexus"
+    },
+    {
+      "name": "Gnasty Gnorc",
+      "type": "BOSS",
+      "id": 34,
+      "gemTotal": 500,
+      "checks": [
+        {
+          "id": 100105,
+          "name": "Gnasty Gnorc: Perfect (Skill Point)",
+          "type": "SKILL_POINT"
+        }
+      ],
+      "hub": "Gnorc Gnexus"
+    },
+    {
+      "name": "Gnasty's Loot",
+      "type": "BONUS",
+      "id": 35,
+      "gemTotal": 2000,
+      "checks": []
+    }
+  ]
+}

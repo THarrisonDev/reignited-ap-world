@@ -1,0 +1,58 @@
+name: world
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    name: compile & lint & consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install ruff
+        run: pipx install ruff
+      - name: Lint (ruff, config in ruff.toml)
+        run: ~/.local/bin/ruff check .
+      - name: Byte-compile all Python sources
+        run: python -m compileall -q .
+      - name: Version lockstep (archipelago.json <-> __init__.py)
+        run: make check-version
+      - name: Validate archipelago.json
+        run: python -c "import json; json.load(open('archipelago.json')); print('archipelago.json OK')"
+
+  options-doc:
+    name: options docs up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: ArchipelagoMW/Archipelago
+          path: ap-source
+          depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install AP requirements needed by the options layer
+        run: pip install schema pathspec bsdiff4
+      - name: docs/options.md matches Options.py
+        run: ARCHIPELAGO_ROOT=$GITHUB_WORKSPACE/ap-source python3 scripts/gen_options_doc.py docs/options.md
+
+  apworld:
+    name: apworld packaging smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      # make package = compileall + ruff lint + zip via scripts/package_apworld.py
+      # (respects .apignore, hard-excludes dev-only files) + self-verification
+      # (integrity, no .pyc, sources present).
+      - name: Package .apworld
+        run: make package

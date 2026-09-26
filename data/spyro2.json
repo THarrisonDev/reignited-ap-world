@@ -1,0 +1,1447 @@
+{
+  "baseId": 200000,
+  "tableOffset": 1000,
+  "regions": {
+    "Summer Forest": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Summer Forest: Hunter's challenge",
+          "kind": "orb",
+          "saveKey": "Hunter's challenge"
+        },
+        {
+          "name": "Spyro 2: Summer Forest: On a secret ledge",
+          "kind": "orb",
+          "saveKey": "On a secret ledge"
+        },
+        {
+          "name": "Spyro 2: Summer Forest: Atop a ladder",
+          "kind": "orb",
+          "saveKey": "Atop a ladder"
+        },
+        {
+          "name": "Spyro 2: Summer Forest: Behind the door",
+          "kind": "orb",
+          "saveKey": "Behind the door"
+        },
+        {
+          "name": "Spyro 2: Summer Forest: Swim Ability",
+          "kind": "ability",
+          "price": 500
+        },
+        {
+          "name": "Spyro 2: Summer Forest: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Summer Forest: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Summer Forest: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Summer Forest: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Glimmer": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Glimmer: Lizard hunt",
+          "kind": "orb",
+          "saveKey": "Lizard hunt"
+        },
+        {
+          "name": "Spyro 2: Glimmer: Gem lamp flight outdoors",
+          "kind": "orb",
+          "saveKey": "Gem Lamp Flight outdoors"
+        },
+        {
+          "name": "Spyro 2: Glimmer: Gem lamp flight in cave",
+          "kind": "orb",
+          "saveKey": "Gem Lamp Flight in cave"
+        },
+        {
+          "name": "Spyro 2: Glimmer: Magic Pick",
+          "kind": "talisman",
+          "saveKey": "Magic Pick"
+        },
+        {
+          "name": "Spyro 2: Glimmer: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Glimmer: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Glimmer: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Glimmer: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Idol Springs": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Idol Springs: Foreman Bud's puzzles",
+          "kind": "orb",
+          "saveKey": "Foreman Bud's puzzles"
+        },
+        {
+          "name": "Spyro 2: Idol Springs: Hula Girl rescue",
+          "kind": "orb",
+          "saveKey": "Hula Girl rescue"
+        },
+        {
+          "name": "Spyro 2: Idol Springs: Jade Idol",
+          "kind": "talisman",
+          "saveKey": "Jade Idol"
+        },
+        {
+          "name": "Spyro 2: Idol Springs: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Idol Springs: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Idol Springs: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Idol Springs: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 2: Idol Springs: Land on Idol (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Colossus": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Colossus: Hockey vs. Goalie",
+          "kind": "orb",
+          "saveKey": "Hockey vs. Goalie"
+        },
+        {
+          "name": "Spyro 2: Colossus: Hockey one on one",
+          "kind": "orb",
+          "saveKey": "Hockey one on one"
+        },
+        {
+          "name": "Spyro 2: Colossus: Evil spirit search",
+          "kind": "orb",
+          "saveKey": "Evil spirit search"
+        },
+        {
+          "name": "Spyro 2: Colossus: Gold Statue",
+          "kind": "talisman",
+          "saveKey": "Gold Statue"
+        },
+        {
+          "name": "Spyro 2: Colossus: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Colossus: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Colossus: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Colossus: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 2: Colossus: Perfect in Hockey (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Hurricos": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Hurricos: Stone thief chase",
+          "kind": "orb",
+          "saveKey": "Stone thief chase"
+        },
+        {
+          "name": "Spyro 2: Hurricos: Factory Glide 1",
+          "kind": "orb",
+          "saveKey": "Factory Glide 1"
+        },
+        {
+          "name": "Spyro 2: Hurricos: Factory Glide 2",
+          "kind": "orb",
+          "saveKey": "Factory Glide 2"
+        },
+        {
+          "name": "Spyro 2: Hurricos: Gear of Power",
+          "kind": "talisman",
+          "saveKey": "Gear of Power"
+        },
+        {
+          "name": "Spyro 2: Hurricos: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Hurricos: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Hurricos: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Hurricos: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 2: Hurricos: All Windmills (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Sunny Beach": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Sunny Beach: Blasting boxes",
+          "kind": "orb",
+          "saveKey": "Blasting boxes"
+        },
+        {
+          "name": "Spyro 2: Sunny Beach: Turtle soup I",
+          "kind": "orb",
+          "saveKey": "Turtle soup I"
+        },
+        {
+          "name": "Spyro 2: Sunny Beach: Turtle soup II",
+          "kind": "orb",
+          "saveKey": "Turtle soup II"
+        },
+        {
+          "name": "Spyro 2: Sunny Beach: Turtle Medallion",
+          "kind": "talisman",
+          "saveKey": "Turtle Medallion"
+        },
+        {
+          "name": "Spyro 2: Sunny Beach: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Sunny Beach: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Sunny Beach: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Sunny Beach: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Aquaria Towers": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Aquaria Towers: Seahorse rescue",
+          "kind": "orb",
+          "saveKey": "Seahorse rescue"
+        },
+        {
+          "name": "Spyro 2: Aquaria Towers: Manta ride I",
+          "kind": "orb",
+          "saveKey": "Manta ride I"
+        },
+        {
+          "name": "Spyro 2: Aquaria Towers: Manta ride II",
+          "kind": "orb",
+          "saveKey": "Manta ride II"
+        },
+        {
+          "name": "Spyro 2: Aquaria Towers: Enchanted Shell",
+          "kind": "talisman",
+          "saveKey": "Enchanted Shell"
+        },
+        {
+          "name": "Spyro 2: Aquaria Towers: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Aquaria Towers: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Aquaria Towers: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Aquaria Towers: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 2: Aquaria Towers: All Seaweed (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Crush's Dungeon": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 2: Crush's Dungeon: Crush Defeated",
+          "kind": "boss"
+        },
+        {
+          "name": "Spyro 2: Crush's Dungeon: Perfect (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Ocean Speedway": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 2: Ocean Speedway: Follow Hunter",
+          "kind": "orb",
+          "saveKey": "Follow Hunter"
+        },
+        {
+          "name": "Spyro 2: Ocean Speedway: Under 1:10 (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Autumn Plains": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Autumn Plains: The end of the wall",
+          "kind": "orb",
+          "saveKey": "The end of the wall"
+        },
+        {
+          "name": "Spyro 2: Autumn Plains: Long glide!",
+          "kind": "orb",
+          "saveKey": "Long glide!"
+        },
+        {
+          "name": "Spyro 2: Autumn Plains: Climb Ability",
+          "kind": "ability",
+          "price": 500
+        },
+        {
+          "name": "Spyro 2: Autumn Plains: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Autumn Plains: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Autumn Plains: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Autumn Plains: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Crystal Glacier": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Crystal Glacier: Draclet cave",
+          "kind": "orb",
+          "saveKey": "Draclet cave"
+        },
+        {
+          "name": "Spyro 2: Crystal Glacier: George the snow leopard",
+          "kind": "orb",
+          "saveKey": "George the snow leopard"
+        },
+        {
+          "name": "Spyro 2: Crystal Glacier: Ice Crystal",
+          "kind": "talisman",
+          "saveKey": "Ice Crystal"
+        },
+        {
+          "name": "Spyro 2: Crystal Glacier: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Crystal Glacier: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Crystal Glacier: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Crystal Glacier: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Skelos Badlands": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Skelos Badlands: Lava lizards I",
+          "kind": "orb",
+          "saveKey": "Lava lizards I"
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: Lava lizards II",
+          "kind": "orb",
+          "saveKey": "Lava lizards II"
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: Dem bones",
+          "kind": "orb",
+          "saveKey": "Dem bones"
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: Ancient Bone",
+          "kind": "talisman",
+          "saveKey": "Ancient Bone"
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: Catbat Quartet (Skill Point)",
+          "kind": "skillpoint"
+        },
+        {
+          "name": "Spyro 2: Skelos Badlands: All Cacti (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Zephyr": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Zephyr: Cowlek corral I",
+          "kind": "orb",
+          "saveKey": "Cowlek corral I"
+        },
+        {
+          "name": "Spyro 2: Zephyr: Cowlek corral II",
+          "kind": "orb",
+          "saveKey": "Cowlek corral II"
+        },
+        {
+          "name": "Spyro 2: Zephyr: Sowing seeds I",
+          "kind": "orb",
+          "saveKey": "Sowing seeds I"
+        },
+        {
+          "name": "Spyro 2: Zephyr: Sowing seeds II",
+          "kind": "orb",
+          "saveKey": "Sowing seeds II"
+        },
+        {
+          "name": "Spyro 2: Zephyr: Ruby Bomb",
+          "kind": "talisman",
+          "saveKey": "Ruby Bomb"
+        },
+        {
+          "name": "Spyro 2: Zephyr: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Zephyr: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Zephyr: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Zephyr: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Breeze Harbor": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Breeze Harbor: Mine blast",
+          "kind": "orb",
+          "saveKey": "Mine blast"
+        },
+        {
+          "name": "Spyro 2: Breeze Harbor: Gear grab",
+          "kind": "orb",
+          "saveKey": "Gear grab"
+        },
+        {
+          "name": "Spyro 2: Breeze Harbor: Glass Anchor",
+          "kind": "talisman",
+          "saveKey": "Glass Anchor"
+        },
+        {
+          "name": "Spyro 2: Breeze Harbor: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Breeze Harbor: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Breeze Harbor: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Breeze Harbor: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Scorch": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Scorch: Barrel of Monkeys",
+          "kind": "orb",
+          "saveKey": "Barrel of Monkeys"
+        },
+        {
+          "name": "Spyro 2: Scorch: Capture the flags",
+          "kind": "orb",
+          "saveKey": "Capture the flags"
+        },
+        {
+          "name": "Spyro 2: Scorch: Emerald Scarab",
+          "kind": "talisman",
+          "saveKey": "Emerald Scarab"
+        },
+        {
+          "name": "Spyro 2: Scorch: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Scorch: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Scorch: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Scorch: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 2: Scorch: All Trees (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Fracture Hills": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Fracture Hills: Free the faun",
+          "kind": "orb",
+          "saveKey": "Free the faun"
+        },
+        {
+          "name": "Spyro 2: Fracture Hills: Alchemist escort",
+          "kind": "orb",
+          "saveKey": "Alchemist escort"
+        },
+        {
+          "name": "Spyro 2: Fracture Hills: Earthshaper bash",
+          "kind": "orb",
+          "saveKey": "Earthshaper bash"
+        },
+        {
+          "name": "Spyro 2: Fracture Hills: Bronze Flute",
+          "kind": "talisman",
+          "saveKey": "Bronze Flute"
+        },
+        {
+          "name": "Spyro 2: Fracture Hills: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Fracture Hills: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Fracture Hills: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Fracture Hills: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 2: Fracture Hills: 3 Laps of Supercharge (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Magma Cone": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Magma Cone: Party crashers",
+          "kind": "orb",
+          "saveKey": "Party crashers"
+        },
+        {
+          "name": "Spyro 2: Magma Cone: Crystal geysers I",
+          "kind": "orb",
+          "saveKey": "Crystal geysers I"
+        },
+        {
+          "name": "Spyro 2: Magma Cone: Crystal geysers II",
+          "kind": "orb",
+          "saveKey": "Crystal geysers II"
+        },
+        {
+          "name": "Spyro 2: Magma Cone: Volcano Idol",
+          "kind": "talisman",
+          "saveKey": "Volcano Idol"
+        },
+        {
+          "name": "Spyro 2: Magma Cone: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Magma Cone: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Magma Cone: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Magma Cone: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Shady Oasis": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Shady Oasis: Catch 3 thieves",
+          "kind": "orb",
+          "saveKey": "Catch 3 thieves"
+        },
+        {
+          "name": "Spyro 2: Shady Oasis: Free Hippos",
+          "kind": "orb",
+          "saveKey": "Free Hippos"
+        },
+        {
+          "name": "Spyro 2: Shady Oasis: Mystic Lamp",
+          "kind": "talisman",
+          "saveKey": "Mystic Lamp"
+        },
+        {
+          "name": "Spyro 2: Shady Oasis: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Shady Oasis: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Shady Oasis: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Shady Oasis: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Gulp's Overlook": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 2: Gulp's Overlook: Gulp Defeated",
+          "kind": "boss"
+        },
+        {
+          "name": "Spyro 2: Gulp's Overlook: Perfect (Skill Point)",
+          "kind": "skillpoint"
+        },
+        {
+          "name": "Spyro 2: Gulp's Overlook: Hit Ripto (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Icy Speedway": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 2: Icy Speedway: Parasail through Rings",
+          "kind": "orb",
+          "saveKey": "Parasail through Rings"
+        },
+        {
+          "name": "Spyro 2: Icy Speedway: Under 1:15 (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Metro Speedway": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 2: Metro Speedway: Grab the Loot",
+          "kind": "orb",
+          "saveKey": "Grab the Loot"
+        },
+        {
+          "name": "Spyro 2: Metro Speedway: Under 1:15 (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Winter Tundra": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Winter Tundra: Top of the waterfall",
+          "kind": "orb",
+          "saveKey": "Top of the waterfall"
+        },
+        {
+          "name": "Spyro 2: Winter Tundra: On the tall wall",
+          "kind": "orb",
+          "saveKey": "On the tall wall"
+        },
+        {
+          "name": "Spyro 2: Winter Tundra: Smash the rock",
+          "kind": "orb",
+          "saveKey": "Smash the rock"
+        },
+        {
+          "name": "Spyro 2: Winter Tundra: Headbash Ability",
+          "kind": "ability",
+          "price": 1000
+        },
+        {
+          "name": "Spyro 2: Winter Tundra: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Winter Tundra: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Winter Tundra: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Winter Tundra: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Mystic Marsh": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Mystic Marsh: Fix the fountain",
+          "kind": "orb",
+          "saveKey": "Fix the fountain"
+        },
+        {
+          "name": "Spyro 2: Mystic Marsh: Very versatile thieves!",
+          "kind": "orb",
+          "saveKey": "Very versatile thieves!"
+        },
+        {
+          "name": "Spyro 2: Mystic Marsh: Retrieve professor's pencil",
+          "kind": "orb",
+          "saveKey": "Retrive professor's pencil"
+        },
+        {
+          "name": "Spyro 2: Mystic Marsh: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Mystic Marsh: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Mystic Marsh: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Mystic Marsh: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Cloud Temples": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Cloud Temples: Break down doors",
+          "kind": "orb",
+          "saveKey": "Break down doors"
+        },
+        {
+          "name": "Spyro 2: Cloud Temples: Ring tower bells",
+          "kind": "orb",
+          "saveKey": "Ring tower bells"
+        },
+        {
+          "name": "Spyro 2: Cloud Temples: Agent Zero's hideout",
+          "kind": "orb",
+          "saveKey": "Agent Zero's hideout"
+        },
+        {
+          "name": "Spyro 2: Cloud Temples: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Cloud Temples: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Cloud Temples: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Cloud Temples: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Metropolis": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Metropolis: Conquer invading cows",
+          "kind": "orb",
+          "saveKey": "Conquer invading cows"
+        },
+        {
+          "name": "Spyro 2: Metropolis: Shoot down sheep saucers I",
+          "kind": "orb",
+          "saveKey": "Shoot down sheep saucers I"
+        },
+        {
+          "name": "Spyro 2: Metropolis: Shoot down sheep saucers II",
+          "kind": "orb",
+          "saveKey": "Shoot down sheep saucers II"
+        },
+        {
+          "name": "Spyro 2: Metropolis: Ox bombing",
+          "kind": "orb",
+          "saveKey": "Ox bombing"
+        },
+        {
+          "name": "Spyro 2: Metropolis: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Metropolis: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Metropolis: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Metropolis: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Robotica Farms": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 2: Robotica Farms: Switch on bug light",
+          "kind": "orb",
+          "saveKey": "Switch on bug light"
+        },
+        {
+          "name": "Spyro 2: Robotica Farms: Clear tractor path",
+          "kind": "orb",
+          "saveKey": "Clear tractor path"
+        },
+        {
+          "name": "Spyro 2: Robotica Farms: Exterminate crow bugs",
+          "kind": "orb",
+          "saveKey": "Exterminate crow bugs"
+        },
+        {
+          "name": "Spyro 2: Robotica Farms: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 2: Robotica Farms: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 2: Robotica Farms: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 2: Robotica Farms: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        }
+      ]
+    },
+    "Ripto's Arena": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 2: Ripto's Arena: Ripto Defeated",
+          "kind": "boss"
+        },
+        {
+          "name": "Spyro 2: Ripto's Arena: Perfect (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Canyon Speedway": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 2: Canyon Speedway: Shoot down balloons",
+          "kind": "orb",
+          "saveKey": "Shoot down balloons"
+        },
+        {
+          "name": "Spyro 2: Canyon Speedway: Under 1:10 (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Dragon Shores": {
+      "gemTotal": 0,
+      "locations": []
+    }
+  },
+  "homeworlds": [
+    "Summer Forest",
+    "Autumn Plains",
+    "Winter Tundra"
+  ],
+  "payments": [
+    {
+      "name": "Glimmer bridge",
+      "price": 100,
+      "region": "Glimmer",
+      "note": "gates no check (S2AP); counted so later running totals stay safe"
+    },
+    {
+      "name": "Swim",
+      "price": 500,
+      "region": "Summer Forest",
+      "location": "Summer Forest: Swim Ability"
+    },
+    {
+      "name": "Aquaria Towers wall",
+      "price": 400,
+      "region": "Summer Forest"
+    },
+    {
+      "name": "Aquaria Towers submarine",
+      "price": 100,
+      "region": "Aquaria Towers"
+    },
+    {
+      "name": "Crystal Glacier bridge",
+      "price": 200,
+      "region": "Crystal Glacier"
+    },
+    {
+      "name": "Zephyr portal",
+      "price": 400,
+      "region": "Autumn Plains"
+    },
+    {
+      "name": "Climb",
+      "price": 500,
+      "region": "Autumn Plains",
+      "location": "Autumn Plains: Climb Ability"
+    },
+    {
+      "name": "Shady Oasis portal",
+      "price": 400,
+      "region": "Autumn Plains"
+    },
+    {
+      "name": "Icy Speedway portal",
+      "price": 100,
+      "region": "Autumn Plains"
+    },
+    {
+      "name": "Magma Cone elevator",
+      "price": 200,
+      "region": "Magma Cone"
+    },
+    {
+      "name": "Headbash",
+      "price": 1000,
+      "region": "Winter Tundra",
+      "location": "Winter Tundra: Headbash Ability"
+    },
+    {
+      "name": "Canyon Speedway portal",
+      "price": 200,
+      "region": "Winter Tundra"
+    }
+  ],
+  "gates": {
+    "Hurricos": {
+      "abilities": [
+        "Swim"
+      ]
+    },
+    "Sunny Beach": {
+      "abilities": [
+        "Swim"
+      ]
+    },
+    "Aquaria Towers": {
+      "abilities": [
+        "Swim"
+      ],
+      "payments": [
+        "Aquaria Towers wall"
+      ]
+    },
+    "Crush's Dungeon": {
+      "talismans": 6
+    },
+    "Ocean Speedway": {
+      "abilities": [
+        "Swim"
+      ],
+      "orbs": 3
+    },
+    "Autumn Plains": {
+      "bosses": [
+        "Crush Defeated"
+      ]
+    },
+    "Zephyr": {
+      "payments": [
+        "Zephyr portal"
+      ]
+    },
+    "Scorch": {
+      "abilities": [
+        "Climb"
+      ]
+    },
+    "Fracture Hills": {
+      "abilities": [
+        "Climb"
+      ]
+    },
+    "Magma Cone": {
+      "abilities": [
+        "Climb"
+      ],
+      "orbs": 8,
+      "note": "behind the Autumn Plains professor door (8 orbs)"
+    },
+    "Shady Oasis": {
+      "abilities": [
+        "Climb"
+      ],
+      "payments": [
+        "Shady Oasis portal"
+      ],
+      "orbs": 8,
+      "note": "behind the Autumn Plains professor door (8 orbs)"
+    },
+    "Gulp's Overlook": {
+      "talismans": 14,
+      "orbs": 8,
+      "note": "behind the Autumn Plains professor door (8 orbs)"
+    },
+    "Icy Speedway": {
+      "abilities": [
+        "Climb"
+      ],
+      "payments": [
+        "Icy Speedway portal"
+      ],
+      "orbs": 8,
+      "note": "behind the Autumn Plains professor door (8 orbs)"
+    },
+    "Metro Speedway": {
+      "orbs": 6
+    },
+    "Winter Tundra": {
+      "bosses": [
+        "Gulp Defeated"
+      ]
+    },
+    "Cloud Temples": {
+      "orbs": 15
+    },
+    "Metropolis": {
+      "abilities": [
+        "Headbash"
+      ],
+      "orbs": 25
+    },
+    "Robotica Farms": {
+      "abilities": [
+        "Headbash"
+      ]
+    },
+    "Ripto's Arena": {
+      "abilities": [
+        "Headbash"
+      ],
+      "orbs": 40
+    },
+    "Canyon Speedway": {
+      "payments": [
+        "Canyon Speedway portal"
+      ]
+    }
+  },
+  "checkGates": {
+    "Summer Forest: On a secret ledge": {
+      "abilities": [
+        "Swim"
+      ]
+    },
+    "Summer Forest: Behind the door": {
+      "abilities": [
+        "Swim"
+      ]
+    },
+    "Summer Forest: Atop a ladder": {
+      "abilities": [
+        "Climb"
+      ]
+    },
+    "Glimmer: Gem lamp flight in cave": {
+      "abilities": [
+        "Climb"
+      ]
+    },
+    "Idol Springs: Foreman Bud's puzzles": {
+      "abilities": [
+        "Swim"
+      ]
+    },
+    "Aquaria Towers: Seahorse rescue": {
+      "payments": [
+        "Aquaria Towers submarine"
+      ]
+    },
+    "Aquaria Towers: Manta ride I": {
+      "payments": [
+        "Aquaria Towers submarine"
+      ]
+    },
+    "Aquaria Towers: Manta ride II": {
+      "payments": [
+        "Aquaria Towers submarine"
+      ]
+    },
+    "Aquaria Towers: Enchanted Shell": {
+      "payments": [
+        "Aquaria Towers submarine"
+      ]
+    },
+    "Aquaria Towers: All Seaweed (Skill Point)": {
+      "payments": [
+        "Aquaria Towers submarine"
+      ]
+    },
+    "Autumn Plains: The end of the wall": {
+      "abilities": [
+        "Climb"
+      ]
+    },
+    "Autumn Plains: Long glide!": {
+      "abilities": [
+        "Climb"
+      ],
+      "orbs": 8,
+      "note": "behind the Autumn Plains professor door (8 orbs)"
+    },
+    "Crystal Glacier: Draclet cave": {
+      "payments": [
+        "Crystal Glacier bridge"
+      ]
+    },
+    "Crystal Glacier: George the snow leopard": {
+      "payments": [
+        "Crystal Glacier bridge"
+      ]
+    },
+    "Crystal Glacier: Ice Crystal": {
+      "payments": [
+        "Crystal Glacier bridge"
+      ]
+    },
+    "Zephyr: Cowlek corral II": {
+      "abilities": [
+        "Climb"
+      ]
+    },
+    "Fracture Hills: Earthshaper bash": {
+      "abilities": [
+        "Headbash"
+      ]
+    },
+    "Magma Cone: Party crashers": {
+      "payments": [
+        "Magma Cone elevator"
+      ]
+    },
+    "Magma Cone: Volcano Idol": {
+      "payments": [
+        "Magma Cone elevator"
+      ]
+    },
+    "Winter Tundra: Smash the rock": {
+      "abilities": [
+        "Headbash"
+      ]
+    },
+    "Winter Tundra: On the tall wall": {
+      "abilities": [
+        "Headbash"
+      ]
+    },
+    "Mystic Marsh: Fix the fountain": {
+      "abilities": [
+        "Swim"
+      ]
+    }
+  },
+  "gemGates": {
+    "Summer Forest": {
+      "25": {
+        "abilities": [
+          "Swim"
+        ]
+      },
+      "100": {
+        "abilities": [
+          "Climb"
+        ]
+      }
+    },
+    "Glimmer": {
+      "100": {
+        "abilities": [
+          "Climb"
+        ],
+        "note": "Reignited live-verified; PS1 guides say no ability"
+      }
+    },
+    "Idol Springs": {
+      "25": {
+        "abilities": [
+          "Swim"
+        ]
+      }
+    },
+    "Aquaria Towers": {
+      "25": {
+        "payments": [
+          "Aquaria Towers submarine"
+        ],
+        "note": "the submarine opens nearly the whole level"
+      }
+    },
+    "Autumn Plains": {
+      "25": {
+        "abilities": [
+          "Climb"
+        ]
+      },
+      "75": {
+        "orbs": 8,
+        "note": "202 of 400 gems are behind the professor door (S2AP)"
+      }
+    },
+    "Crystal Glacier": {
+      "75": {
+        "payments": [
+          "Crystal Glacier bridge"
+        ],
+        "note": "155 of 400 gems are past the bridge (S2AP)"
+      }
+    },
+    "Magma Cone": {
+      "100": {
+        "payments": [
+          "Magma Cone elevator"
+        ],
+        "note": "S2AP holds back part of the gems for the elevator; the share is unclear"
+      }
+    },
+    "Shady Oasis": {
+      "100": {
+        "abilities": [
+          "Headbash"
+        ]
+      }
+    },
+    "Winter Tundra": {
+      "25": {
+        "abilities": [
+          "Swim"
+        ]
+      },
+      "100": {
+        "abilities": [
+          "Headbash"
+        ]
+      }
+    },
+    "Mystic Marsh": {
+      "25": {
+        "abilities": [
+          "Swim"
+        ]
+      }
+    },
+    "Cloud Temples": {
+      "100": {
+        "abilities": [
+          "Headbash"
+        ]
+      }
+    }
+  }
+}

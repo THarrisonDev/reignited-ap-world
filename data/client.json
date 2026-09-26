@@ -1,0 +1,371 @@
+{
+  "levelPaths": {
+    "spyro1": {
+      "/LS101_ArtisansHome/Maps/": "Artisans",
+      "/LS102_StoneHill/Maps/": "Stone Hill",
+      "/LS103_DarkHollow/Maps/": "Dark Hollow",
+      "/LS104_Townsquare/Maps/": "Town Square",
+      "/LS105_Sunnyflight/Maps/": "Sunny Flight",
+      "/LS106_Toasty/Maps/": "Toasty",
+      "/LS107_PeacekeeperHome/Maps/": "Peace Keepers",
+      "/LS108_DryCanyon/Maps/": "Dry Canyon",
+      "/LS109_CliffTown/Maps/": "Cliff Town",
+      "/LS110_IceCavern/Maps/": "Ice Cavern",
+      "/LS111_NightFlight/Maps/": "Night Flight",
+      "/LS112_DrShemp/Maps/": "Doctor Shemp",
+      "/LS113_MagicHome/Maps/": "Magic Crafters",
+      "/LS114_AlpineRidge/Maps/": "Alpine Ridge",
+      "/LS115_HighCaves/Maps/": "High Caves",
+      "/LS116_WizardPeak/Maps/": "Wizard Peak",
+      "/LS117_CrystalFlight/Maps/": "Crystal Flight",
+      "/LS118_Blowhard/Maps/": "Blowhard",
+      "/LS119_BeastHome/Maps/": "Beast Makers",
+      "/LS120_TerraceVillage/Maps/": "Terrace Village",
+      "/LS121_MistyBog/Maps/": "Misty Bog",
+      "/LS122_TreeTops/Maps/": "Tree Tops",
+      "/LS123_WildFlight/Maps/": "Wild Flight",
+      "/LS124_MetalHead/Maps/": "Metalhead",
+      "/LS125_DreamWeaverHome/Maps/": "Dream Weavers",
+      "/LS126_DarkPassage/Maps/": "Dark Passage",
+      "/LS127_LoftyCastle/Maps/": "Lofty Castle",
+      "/LS128_HauntedTowers/Maps/": "Haunted Towers",
+      "/LS129_IcyFlight/Maps/": "Icy Flight",
+      "/LS130_Jacques/Maps/": "Jacques",
+      "/LS131_GnastyHome/Maps/": "Gnorc Gnexus",
+      "/LS132_GnorcCove/Maps/": "Gnorc Cove",
+      "/LS133_TwlightHarbour/Maps/": "Twilight Harbor",
+      "/LS134_GnastyGnorc/Maps/": "Gnasty Gnorc",
+      "/LS135_GnastyLoot/Maps/": "Gnasty's Loot"
+    },
+    "spyro2": {
+      "/LS201_SummerForest_Home/Maps/": "Summer Forest",
+      "/LS202_Glimmer/Maps/": "Glimmer",
+      "/LS203_IdolSprings/Maps/": "Idol Springs",
+      "/LS204_Colossus/Maps/": "Colossus",
+      "/LS205_Hurricos/Maps/": "Hurricos",
+      "/LS206_SunnyBeach/Maps/": "Sunny Beach",
+      "/LS207_AquariaTowers/Maps/": "Aquaria Towers",
+      "/LS208_CrushsDungeon/Maps/": "Crush's Dungeon",
+      "/LS209_OceanSpeedway/Maps/": "Ocean Speedway",
+      "/LS210_AutumnPlains_Home/Maps/": "Autumn Plains",
+      "/LS211_CrystalGlacier/Maps/": "Crystal Glacier",
+      "/LS212_SkelosBadlands/Maps/": "Skelos Badlands",
+      "/LS213_Zephyr/Maps/": "Zephyr",
+      "/LS214_BreezeHarbor/Maps/": "Breeze Harbor",
+      "/LS215_Scorch/Maps/": "Scorch",
+      "/LS216_FractureHills/Maps/": "Fracture Hills",
+      "/LS217_MagmaCone/Maps/": "Magma Cone",
+      "/LS218_ShadyOasis/Maps/": "Shady Oasis",
+      "/LS219_GulpsOverlook/Maps/": "Gulp's Overlook",
+      "/LS220_IcySpeedway/Maps/": "Icy Speedway",
+      "/LS221_MetroSpeedway/Maps/": "Metro Speedway",
+      "/LS222_WinterTundra_Home/Maps/": "Winter Tundra",
+      "/LS223_MysticMarsh/Maps/": "Mystic Marsh",
+      "/LS224_CloudTemples/Maps/": "Cloud Temples",
+      "/LS225_Metropolis/Maps/": "Metropolis",
+      "/LS226_RoboticaFarms/Maps/": "Robotica Farms",
+      "/LS227_RiptosArena/Maps/": "Ripto's Arena",
+      "/LS228_CanyonSpeedway/Maps/": "Canyon Speedway",
+      "/LS229_DragonShores/Maps/": "Dragon Shores"
+    },
+    "spyro3": {
+      "/LS301_SunriseSpring_Home/Maps/": "Sunrise Spring",
+      "/LS302_SunnyVilla/Maps/": "Sunny Villa",
+      "/LS303_CloudSpires/Maps/": "Cloud Spires",
+      "/LS304_MoltenCrater/Maps/": "Molten Crater",
+      "/LS305_SeashellShore/Maps/": "Seashell Shore",
+      "/LS306_SheilasAlp/Maps/": "Sheila's Alp",
+      "/LS307_MushroomSpeedway/Maps/": "Mushroom Speedway",
+      "/LS308_BuzzsDungeon/Maps/": "Buzz's Dungeon",
+      "/LS309_CrawdadFarm/Maps/": "Crawdad Farm",
+      "/LS310_MiddayGardens_Home/Maps/": "Midday Gardens",
+      "/LS311_IcyPeak/Maps/": "Icy Peak",
+      "/LS312_EnchantedTowers/Maps/": "Enchanted Towers",
+      "/LS313_SpookySwamp/Maps/": "Spooky Swamp",
+      "/LS314_BambooTerrace/Maps/": "Bamboo Terrace",
+      "/LS315_SgtByrdBase/Maps/": "Sgt. Byrd Base",
+      "/LS316_CountrySpeedway/Maps/": "Country Speedway",
+      "/LS317_SpikesArena/Maps/": "Spike's Arena",
+      "/LS318_SpiderTown/Maps/": "Spider Town",
+      "/LS319_EveningLake_Home/Maps/": "Evening Lake",
+      "/LS320_LostFleet/Maps/": "Lost Fleet",
+      "/LS321_FrozenAltars/Maps/": "Frozen Altars",
+      "/LS322_FireworksFactory/Maps/": "Fireworks Factory",
+      "/LS323_CharmedRidge/Maps/": "Charmed Ridge",
+      "/LS324_BentleysOutpost/Maps/": "Bentley's Outpost",
+      "/LS325_HoneySpeedway/Maps/": "Honey Speedway",
+      "/LS326_ScorchsPit/Maps/": "Scorch's Pit",
+      "/LS327_StarfishReef/Maps/": "Starfish Reef",
+      "/LS328_MidnightMountain_Home/Maps/": "Midnight Mountain",
+      "/LS329_CrystalIslands/Maps/": "Crystal Islands",
+      "/LS330_DesertRuins/Maps/": "Desert Ruins",
+      "/LS331_HauntedTomb/Maps/": "Haunted Tomb",
+      "/LS332_DinoMines/Maps/": "Dino Mines",
+      "/LS333_Agent9sLab/Maps/": "Agent 9's Lab",
+      "/LS334_HarborSpeedway/Maps/": "Harbor Speedway",
+      "/LS335_SorceressLair/Maps/": "Sorceress Lair",
+      "/LS336_BugbotFactory/Maps/": "Bugbot Factory",
+      "/LS337_SuperBonusRound/Maps/": "Super Bonus Round"
+    }
+  },
+  "skillPoints": {
+    "spyro1": {
+      "1": {
+        "level": "Artisans",
+        "task": "Reach tricky platform"
+      },
+      "2": {
+        "level": "Stone Hill",
+        "task": "Burn the hidden pink tulip"
+      },
+      "3": {
+        "level": "Town Square",
+        "task": "All bulls stuck"
+      },
+      "4": {
+        "level": "Peacekeepers",
+        "task": "Scare 6 Gnorcs into tents"
+      },
+      "5": {
+        "level": "Dr. Shemp",
+        "task": "Perfect"
+      },
+      "6": {
+        "level": "High Caves",
+        "task": "Burn hidden painting"
+      },
+      "7": {
+        "level": "Blowhard",
+        "task": "Ride a Druid platform for 10 seconds"
+      },
+      "8": {
+        "level": "Terrace Village",
+        "task": "No electric floor damage"
+      },
+      "9": {
+        "level": "Metalhead",
+        "task": "Perfect"
+      },
+      "10": {
+        "level": "Dream Weavers",
+        "task": "Secret room"
+      },
+      "11": {
+        "level": "Haunted Towers",
+        "task": "Burn blue wizard hat"
+      },
+      "12": {
+        "level": "Lofty Castle",
+        "task": "Destroy hidden stump"
+      },
+      "13": {
+        "level": "Jacques",
+        "task": "Perfect"
+      },
+      "14": {
+        "level": "Gnasty Gnorc",
+        "task": "Perfect"
+      }
+    },
+    "spyro2": {
+      "15": {
+        "level": "Idol Springs",
+        "task": "Land on Idol"
+      },
+      "16": {
+        "level": "Colossus",
+        "task": "Perfect in Hockey"
+      },
+      "17": {
+        "level": "Hurricos",
+        "task": "All Windmills"
+      },
+      "18": {
+        "level": "Aquaria Towers",
+        "task": "All Seaweed"
+      },
+      "19": {
+        "level": "Ocean Speedway",
+        "task": "Under 1:10"
+      },
+      "20": {
+        "level": "Crush's Dungeon",
+        "task": "Perfect"
+      },
+      "21": {
+        "level": "Skelos Badlands",
+        "task": "Catbat Quartet"
+      },
+      "22": {
+        "level": "Skelos Badlands",
+        "task": "All Cacti"
+      },
+      "23": {
+        "level": "Scorch",
+        "task": "All Trees"
+      },
+      "24": {
+        "level": "Fracture Hills",
+        "task": "3 Laps of Supercharge"
+      },
+      "25": {
+        "level": "Icy Speedway",
+        "task": "Under 1:15"
+      },
+      "26": {
+        "level": "Metro Speedway",
+        "task": "Under 1:15"
+      },
+      "27": {
+        "level": "Gulp's Overlook",
+        "task": "Perfect"
+      },
+      "28": {
+        "level": "Gulp's Overlook",
+        "task": "Hit Ripto"
+      },
+      "29": {
+        "level": "Canyon Speedway",
+        "task": "Under 1:10"
+      },
+      "30": {
+        "level": "Ripto's Arena",
+        "task": "Perfect"
+      }
+    },
+    "spyro3": {
+      "31": {
+        "level": "Sunny Villa",
+        "task": "Flame all trees"
+      },
+      "32": {
+        "level": "Sunny Villa",
+        "task": "Skateboard course record I"
+      },
+      "33": {
+        "level": "Molten Crater",
+        "task": "Assemble tiki heads"
+      },
+      "34": {
+        "level": "Molten Crater",
+        "task": "Supercharge the wall"
+      },
+      "35": {
+        "level": "Seashell Shore",
+        "task": "Catch the funky chicken"
+      },
+      "36": {
+        "level": "Icy Peak",
+        "task": "Glide to pedestal"
+      },
+      "37": {
+        "level": "Enchanted Towers",
+        "task": "Skateboard course record II"
+      },
+      "38": {
+        "level": "Spooky Swamp",
+        "task": "Destroy all piranha signs"
+      },
+      "39": {
+        "level": "Sgt. Byrd's Base",
+        "task": "Bomb the gophers"
+      },
+      "40": {
+        "level": "Frozen Altars",
+        "task": "Beat yeti in two rounds"
+      },
+      "41": {
+        "level": "Lost Fleet",
+        "task": "Skateboard record time"
+      },
+      "42": {
+        "level": "Fireworks Factory",
+        "task": "Find Agent 9's powerup"
+      },
+      "43": {
+        "level": "Charmed Ridge",
+        "task": "The Impossible Tower"
+      },
+      "44": {
+        "level": "Charmed Ridge",
+        "task": "Shoot the temple windows"
+      },
+      "45": {
+        "level": "Bentley's Outpost",
+        "task": "Push box off the cliff"
+      },
+      "46": {
+        "level": "Desert Ruins",
+        "task": "Destroy all seaweed"
+      },
+      "47": {
+        "level": "Haunted Tomb",
+        "task": "Swim into the dark hole"
+      },
+      "48": {
+        "level": "Dino Mines",
+        "task": "Hit all the seahorses"
+      },
+      "49": {
+        "level": "Dino Mines",
+        "task": "Hit the secret dino"
+      },
+      "50": {
+        "level": "Agent 9's Lab",
+        "task": "Blow up all palm trees"
+      }
+    }
+  },
+  "skillPointLevelToRegion": {
+    "spyro1": {
+      "Artisans": "Artisans",
+      "Stone Hill": "Stone Hill",
+      "Town Square": "Town Square",
+      "Peacekeepers": "Peace Keepers",
+      "Dr. Shemp": "Doctor Shemp",
+      "High Caves": "High Caves",
+      "Blowhard": "Blowhard",
+      "Terrace Village": "Terrace Village",
+      "Metalhead": "Metalhead",
+      "Dream Weavers": "Dream Weavers",
+      "Haunted Towers": "Haunted Towers",
+      "Lofty Castle": "Lofty Castle",
+      "Jacques": "Jacques",
+      "Gnasty Gnorc": "Gnasty Gnorc"
+    },
+    "spyro2": {
+      "Idol Springs": "Idol Springs",
+      "Colossus": "Colossus",
+      "Hurricos": "Hurricos",
+      "Aquaria Towers": "Aquaria Towers",
+      "Ocean Speedway": "Ocean Speedway",
+      "Crush's Dungeon": "Crush's Dungeon",
+      "Skelos Badlands": "Skelos Badlands",
+      "Scorch": "Scorch",
+      "Fracture Hills": "Fracture Hills",
+      "Icy Speedway": "Icy Speedway",
+      "Metro Speedway": "Metro Speedway",
+      "Gulp's Overlook": "Gulp's Overlook",
+      "Canyon Speedway": "Canyon Speedway",
+      "Ripto's Arena": "Ripto's Arena"
+    },
+    "spyro3": {
+      "Sunny Villa": "Sunny Villa",
+      "Molten Crater": "Molten Crater",
+      "Seashell Shore": "Seashell Shore",
+      "Icy Peak": "Icy Peak",
+      "Enchanted Towers": "Enchanted Towers",
+      "Spooky Swamp": "Spooky Swamp",
+      "Sgt. Byrd's Base": "Sgt. Byrd Base",
+      "Frozen Altars": "Frozen Altars",
+      "Lost Fleet": "Lost Fleet",
+      "Fireworks Factory": "Fireworks Factory",
+      "Charmed Ridge": "Charmed Ridge",
+      "Bentley's Outpost": "Bentley's Outpost",
+      "Desert Ruins": "Desert Ruins",
+      "Haunted Tomb": "Haunted Tomb",
+      "Dino Mines": "Dino Mines",
+      "Agent 9's Lab": "Agent 9's Lab"
+    }
+  }
+}

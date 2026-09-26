@@ -1,0 +1,2211 @@
+{
+  "baseId": 300000,
+  "tableOffset": 1000,
+  "regions": {
+    "Sunrise Spring": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Sunrise Spring: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Sunrise Spring: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Sunrise Spring: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Sunrise Spring: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Sunrise Spring: Isabelle",
+          "kind": "egg",
+          "saveKey": "Isabelle"
+        },
+        {
+          "name": "Spyro 3: Sunrise Spring: Coltrane",
+          "kind": "egg",
+          "saveKey": "Coltrane"
+        },
+        {
+          "name": "Spyro 3: Sunrise Spring: Ami",
+          "kind": "egg",
+          "saveKey": "Ami"
+        },
+        {
+          "name": "Spyro 3: Sunrise Spring: Bruce",
+          "kind": "egg",
+          "saveKey": "Bruce"
+        },
+        {
+          "name": "Spyro 3: Sunrise Spring: Liam",
+          "kind": "egg",
+          "saveKey": "Liam"
+        }
+      ]
+    },
+    "Sunny Villa": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Sunny Villa: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: Sanders",
+          "kind": "egg",
+          "saveKey": "Sanders"
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: Vanessa",
+          "kind": "egg",
+          "saveKey": "Vanessa"
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: Miles",
+          "kind": "egg",
+          "saveKey": "Miles"
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: Emily",
+          "kind": "egg",
+          "saveKey": "Emily"
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: Daisy",
+          "kind": "egg",
+          "saveKey": "Daisy"
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: Lucy",
+          "kind": "egg",
+          "saveKey": "Lucy"
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: Flame all trees (Skill Point)",
+          "kind": "skillpoint"
+        },
+        {
+          "name": "Spyro 3: Sunny Villa: Skateboard course record I (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Cloud Spires": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Cloud Spires: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: Clare",
+          "kind": "egg",
+          "saveKey": "Clare"
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: Stephanie",
+          "kind": "egg",
+          "saveKey": "Stephanie"
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: Henry",
+          "kind": "egg",
+          "saveKey": "Henry"
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: LuLu",
+          "kind": "egg",
+          "saveKey": "LuLu"
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: Jake",
+          "kind": "egg",
+          "saveKey": "Jake"
+        },
+        {
+          "name": "Spyro 3: Cloud Spires: Bryan",
+          "kind": "egg",
+          "saveKey": "Bryan"
+        }
+      ]
+    },
+    "Molten Crater": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Molten Crater: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Molten Crater: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Molten Crater: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Molten Crater: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Molten Crater: Curlie",
+          "kind": "egg",
+          "saveKey": "Curlie"
+        },
+        {
+          "name": "Spyro 3: Molten Crater: Rikki",
+          "kind": "egg",
+          "saveKey": "Rikki"
+        },
+        {
+          "name": "Spyro 3: Molten Crater: Moira",
+          "kind": "egg",
+          "saveKey": "Moira"
+        },
+        {
+          "name": "Spyro 3: Molten Crater: Kermitt",
+          "kind": "egg",
+          "saveKey": "Kermitt"
+        },
+        {
+          "name": "Spyro 3: Molten Crater: Luna",
+          "kind": "egg",
+          "saveKey": "Luna"
+        },
+        {
+          "name": "Spyro 3: Molten Crater: Ryan",
+          "kind": "egg",
+          "saveKey": "Ryan"
+        },
+        {
+          "name": "Spyro 3: Molten Crater: Assemble tiki heads (Skill Point)",
+          "kind": "skillpoint"
+        },
+        {
+          "name": "Spyro 3: Molten Crater: Supercharge the wall (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Seashell Shore": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Seashell Shore: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: Dizzy",
+          "kind": "egg",
+          "saveKey": "Dizzy"
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: Jason",
+          "kind": "egg",
+          "saveKey": "Jason"
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: Mollie",
+          "kind": "egg",
+          "saveKey": "Mollie"
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: Jared",
+          "kind": "egg",
+          "saveKey": "Jared"
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: Jackie",
+          "kind": "egg",
+          "saveKey": "Jackie"
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: Duke",
+          "kind": "egg",
+          "saveKey": "Duke"
+        },
+        {
+          "name": "Spyro 3: Seashell Shore: Catch the funky chicken (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Sheila's Alp": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Sheila's Alp: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Sheila's Alp: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Sheila's Alp: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Sheila's Alp: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Sheila's Alp: Nan",
+          "kind": "egg",
+          "saveKey": "Nan"
+        },
+        {
+          "name": "Spyro 3: Sheila's Alp: Jenny",
+          "kind": "egg",
+          "saveKey": "Jenny"
+        },
+        {
+          "name": "Spyro 3: Sheila's Alp: Ruby",
+          "kind": "egg",
+          "saveKey": "Ruby"
+        }
+      ]
+    },
+    "Mushroom Speedway": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 3: Mushroom Speedway: Sabina",
+          "kind": "egg",
+          "saveKey": "Sabina"
+        },
+        {
+          "name": "Spyro 3: Mushroom Speedway: John",
+          "kind": "egg",
+          "saveKey": "John"
+        },
+        {
+          "name": "Spyro 3: Mushroom Speedway: Tater",
+          "kind": "egg",
+          "saveKey": "Tater"
+        }
+      ]
+    },
+    "Buzz's Dungeon": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 3: Buzz's Dungeon: Buzz Defeated",
+          "kind": "boss",
+          "saveKey": "Grayson"
+        }
+      ]
+    },
+    "Crawdad Farm": {
+      "gemTotal": 200,
+      "locations": [
+        {
+          "name": "Spyro 3: Crawdad Farm: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Crawdad Farm: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Crawdad Farm: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Crawdad Farm: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Crawdad Farm: Nora",
+          "kind": "egg",
+          "saveKey": "Nora"
+        },
+        {
+          "name": "Spyro 3: Crawdad Farm: Sparx Gem Collect Range (Power)",
+          "kind": "sparxpower",
+          "saveKey": "GemCollectRange"
+        }
+      ]
+    },
+    "Midday Gardens": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Midday Gardens: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Midday Gardens: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Midday Gardens: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Midday Gardens: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Midday Gardens: Trixie",
+          "kind": "egg",
+          "saveKey": "Trixie"
+        },
+        {
+          "name": "Spyro 3: Midday Gardens: Dave",
+          "kind": "egg",
+          "saveKey": "Dave"
+        },
+        {
+          "name": "Spyro 3: Midday Gardens: Mingus",
+          "kind": "egg",
+          "saveKey": "Mingus"
+        },
+        {
+          "name": "Spyro 3: Midday Gardens: Modesty",
+          "kind": "egg",
+          "saveKey": "Modesty"
+        },
+        {
+          "name": "Spyro 3: Midday Gardens: Matt",
+          "kind": "egg",
+          "saveKey": "Matt"
+        }
+      ]
+    },
+    "Icy Peak": {
+      "gemTotal": 500,
+      "locations": [
+        {
+          "name": "Spyro 3: Icy Peak: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Icy Peak: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Icy Peak: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Icy Peak: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Icy Peak: Chet",
+          "kind": "egg",
+          "saveKey": "Chet"
+        },
+        {
+          "name": "Spyro 3: Icy Peak: Maynard",
+          "kind": "egg",
+          "saveKey": "Maynard"
+        },
+        {
+          "name": "Spyro 3: Icy Peak: Reez",
+          "kind": "egg",
+          "saveKey": "Reez"
+        },
+        {
+          "name": "Spyro 3: Icy Peak: Cerny",
+          "kind": "egg",
+          "saveKey": "Cerny"
+        },
+        {
+          "name": "Spyro 3: Icy Peak: Betty",
+          "kind": "egg",
+          "saveKey": "Betty"
+        },
+        {
+          "name": "Spyro 3: Icy Peak: Scout",
+          "kind": "egg",
+          "saveKey": "Scout"
+        },
+        {
+          "name": "Spyro 3: Icy Peak: Glide to pedestal (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Enchanted Towers": {
+      "gemTotal": 500,
+      "locations": [
+        {
+          "name": "Spyro 3: Enchanted Towers: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: Gladys",
+          "kind": "egg",
+          "saveKey": "Gladys"
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: Ralph",
+          "kind": "egg",
+          "saveKey": "Ralph"
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: Peanut",
+          "kind": "egg",
+          "saveKey": "Peanut"
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: Caroline",
+          "kind": "egg",
+          "saveKey": "Caroline"
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: Alex",
+          "kind": "egg",
+          "saveKey": "Alex"
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: Lys",
+          "kind": "egg",
+          "saveKey": "Lys"
+        },
+        {
+          "name": "Spyro 3: Enchanted Towers: Skateboard course record II (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Spooky Swamp": {
+      "gemTotal": 500,
+      "locations": [
+        {
+          "name": "Spyro 3: Spooky Swamp: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: Michael",
+          "kind": "egg",
+          "saveKey": "Michael"
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: Thelonios",
+          "kind": "egg",
+          "saveKey": "Thelonios"
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: Frank",
+          "kind": "egg",
+          "saveKey": "Frank"
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: Peggy",
+          "kind": "egg",
+          "saveKey": "Peggy"
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: Michele",
+          "kind": "egg",
+          "saveKey": "Michele"
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: Herbi",
+          "kind": "egg",
+          "saveKey": "Herbi"
+        },
+        {
+          "name": "Spyro 3: Spooky Swamp: Destroy all piranha signs (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Bamboo Terrace": {
+      "gemTotal": 500,
+      "locations": [
+        {
+          "name": "Spyro 3: Bamboo Terrace: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: Dwight",
+          "kind": "egg",
+          "saveKey": "Dwight"
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: Madison",
+          "kind": "egg",
+          "saveKey": "Madison"
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: Tom",
+          "kind": "egg",
+          "saveKey": "Tom"
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: Pee-wee",
+          "kind": "egg",
+          "saveKey": "Pee-wee"
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: Rusty",
+          "kind": "egg",
+          "saveKey": "Rusty"
+        },
+        {
+          "name": "Spyro 3: Bamboo Terrace: Brubeck",
+          "kind": "egg",
+          "saveKey": "Brubeck"
+        }
+      ]
+    },
+    "Sgt. Byrd Base": {
+      "gemTotal": 500,
+      "locations": [
+        {
+          "name": "Spyro 3: Sgt. Byrd Base: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Sgt. Byrd Base: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Sgt. Byrd Base: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Sgt. Byrd Base: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Sgt. Byrd Base: Sigfried",
+          "kind": "egg",
+          "saveKey": "Sigfried"
+        },
+        {
+          "name": "Spyro 3: Sgt. Byrd Base: RyanLee",
+          "kind": "egg",
+          "saveKey": "RyanLee"
+        },
+        {
+          "name": "Spyro 3: Sgt. Byrd Base: Roy",
+          "kind": "egg",
+          "saveKey": "Roy"
+        },
+        {
+          "name": "Spyro 3: Sgt. Byrd Base: Bomb the gophers (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Country Speedway": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 3: Country Speedway: Gavin",
+          "kind": "egg",
+          "saveKey": "Gavin"
+        },
+        {
+          "name": "Spyro 3: Country Speedway: Shemp",
+          "kind": "egg",
+          "saveKey": "Shemp"
+        },
+        {
+          "name": "Spyro 3: Country Speedway: Roberto",
+          "kind": "egg",
+          "saveKey": "Roberto"
+        }
+      ]
+    },
+    "Spike's Arena": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 3: Spike's Arena: Spike Defeated",
+          "kind": "boss",
+          "saveKey": "Monique"
+        }
+      ]
+    },
+    "Spider Town": {
+      "gemTotal": 200,
+      "locations": [
+        {
+          "name": "Spyro 3: Spider Town: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Spider Town: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Spider Town: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Spider Town: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Spider Town: Tootie",
+          "kind": "egg",
+          "saveKey": "Tootie"
+        }
+      ]
+    },
+    "Evening Lake": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Evening Lake: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Evening Lake: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Evening Lake: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Evening Lake: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Evening Lake: Hannah",
+          "kind": "egg",
+          "saveKey": "Hannah"
+        },
+        {
+          "name": "Spyro 3: Evening Lake: Stuart",
+          "kind": "egg",
+          "saveKey": "Stuart"
+        },
+        {
+          "name": "Spyro 3: Evening Lake: Ted",
+          "kind": "egg",
+          "saveKey": "Ted"
+        },
+        {
+          "name": "Spyro 3: Evening Lake: Stooby",
+          "kind": "egg",
+          "saveKey": "Stooby"
+        },
+        {
+          "name": "Spyro 3: Evening Lake: Jonah",
+          "kind": "egg",
+          "saveKey": "Jonah"
+        }
+      ]
+    },
+    "Lost Fleet": {
+      "gemTotal": 600,
+      "locations": [
+        {
+          "name": "Spyro 3: Lost Fleet: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: Craig",
+          "kind": "egg",
+          "saveKey": "Craig"
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: Chad",
+          "kind": "egg",
+          "saveKey": "Chad"
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: Ethel",
+          "kind": "egg",
+          "saveKey": "Ethel"
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: Dolores",
+          "kind": "egg",
+          "saveKey": "Dolores"
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: Oliver",
+          "kind": "egg",
+          "saveKey": "Oliver"
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: Aiden",
+          "kind": "egg",
+          "saveKey": "Aiden"
+        },
+        {
+          "name": "Spyro 3: Lost Fleet: Skateboard record time (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Frozen Altars": {
+      "gemTotal": 600,
+      "locations": [
+        {
+          "name": "Spyro 3: Frozen Altars: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: Cecil",
+          "kind": "egg",
+          "saveKey": "Cecil"
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: Jasper",
+          "kind": "egg",
+          "saveKey": "Jasper"
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: Jana",
+          "kind": "egg",
+          "saveKey": "Jana"
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: Aly",
+          "kind": "egg",
+          "saveKey": "Aly"
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: Ricco",
+          "kind": "egg",
+          "saveKey": "Ricco"
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: Baah",
+          "kind": "egg",
+          "saveKey": "Baah"
+        },
+        {
+          "name": "Spyro 3: Frozen Altars: Beat yeti in two rounds (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Fireworks Factory": {
+      "gemTotal": 600,
+      "locations": [
+        {
+          "name": "Spyro 3: Fireworks Factory: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: Grady",
+          "kind": "egg",
+          "saveKey": "Grady"
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: Noodles",
+          "kind": "egg",
+          "saveKey": "Noodles"
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: Sam",
+          "kind": "egg",
+          "saveKey": "Sam"
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: Evan",
+          "kind": "egg",
+          "saveKey": "Evan"
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: Patty",
+          "kind": "egg",
+          "saveKey": "Patty"
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: Donovan",
+          "kind": "egg",
+          "saveKey": "Donovan"
+        },
+        {
+          "name": "Spyro 3: Fireworks Factory: Find Agent 9's powerup (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Charmed Ridge": {
+      "gemTotal": 600,
+      "locations": [
+        {
+          "name": "Spyro 3: Charmed Ridge: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: Benjamin",
+          "kind": "egg",
+          "saveKey": "Benjamin"
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: Moe",
+          "kind": "egg",
+          "saveKey": "Moe"
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: Sakura",
+          "kind": "egg",
+          "saveKey": "Sakura"
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: Abby",
+          "kind": "egg",
+          "saveKey": "Abby"
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: Shelley",
+          "kind": "egg",
+          "saveKey": "Shelley"
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: Chuck",
+          "kind": "egg",
+          "saveKey": "Chuck"
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: The Impossible Tower (Skill Point)",
+          "kind": "skillpoint"
+        },
+        {
+          "name": "Spyro 3: Charmed Ridge: Shoot the temple windows (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Bentley's Outpost": {
+      "gemTotal": 600,
+      "locations": [
+        {
+          "name": "Spyro 3: Bentley's Outpost: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Bentley's Outpost: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Bentley's Outpost: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Bentley's Outpost: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Bentley's Outpost: Brian",
+          "kind": "egg",
+          "saveKey": "Brian"
+        },
+        {
+          "name": "Spyro 3: Bentley's Outpost: Charlie",
+          "kind": "egg",
+          "saveKey": "Charlie"
+        },
+        {
+          "name": "Spyro 3: Bentley's Outpost: Eric",
+          "kind": "egg",
+          "saveKey": "Eric"
+        },
+        {
+          "name": "Spyro 3: Bentley's Outpost: Push box off the cliff (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Honey Speedway": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 3: Honey Speedway: Chris",
+          "kind": "egg",
+          "saveKey": "Chris"
+        },
+        {
+          "name": "Spyro 3: Honey Speedway: Henri",
+          "kind": "egg",
+          "saveKey": "Henri"
+        },
+        {
+          "name": "Spyro 3: Honey Speedway: Nori",
+          "kind": "egg",
+          "saveKey": "Nori"
+        }
+      ]
+    },
+    "Scorch's Pit": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 3: Scorch's Pit: Scorch Defeated",
+          "kind": "boss",
+          "saveKey": "James"
+        }
+      ]
+    },
+    "Starfish Reef": {
+      "gemTotal": 200,
+      "locations": [
+        {
+          "name": "Spyro 3: Starfish Reef: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Starfish Reef: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Starfish Reef: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Starfish Reef: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Starfish Reef: Ahnashawn",
+          "kind": "egg",
+          "saveKey": "Ahnashawn"
+        },
+        {
+          "name": "Spyro 3: Starfish Reef: Sparx Extra Hit Point (Power)",
+          "kind": "sparxpower",
+          "saveKey": "ExtraHP"
+        }
+      ]
+    },
+    "Midnight Mountain": {
+      "gemTotal": 400,
+      "locations": [
+        {
+          "name": "Spyro 3: Midnight Mountain: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: Billy",
+          "kind": "egg",
+          "saveKey": "Billy"
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: Saki",
+          "kind": "egg",
+          "saveKey": "Saki"
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: Maiken",
+          "kind": "egg",
+          "saveKey": "Maiken"
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: Buddy",
+          "kind": "egg",
+          "saveKey": "Buddy"
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: Evie",
+          "kind": "egg",
+          "saveKey": "Evie"
+        },
+        {
+          "name": "Spyro 3: Midnight Mountain: Al",
+          "kind": "egg",
+          "saveKey": "Al"
+        }
+      ]
+    },
+    "Crystal Islands": {
+      "gemTotal": 700,
+      "locations": [
+        {
+          "name": "Spyro 3: Crystal Islands: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: Manie",
+          "kind": "egg",
+          "saveKey": "Manie"
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: Lloyd",
+          "kind": "egg",
+          "saveKey": "Lloyd"
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: Max",
+          "kind": "egg",
+          "saveKey": "Max"
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: Grace",
+          "kind": "egg",
+          "saveKey": "Grace"
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: Elloise",
+          "kind": "egg",
+          "saveKey": "Elloise"
+        },
+        {
+          "name": "Spyro 3: Crystal Islands: Hank",
+          "kind": "egg",
+          "saveKey": "Hank"
+        }
+      ]
+    },
+    "Desert Ruins": {
+      "gemTotal": 700,
+      "locations": [
+        {
+          "name": "Spyro 3: Desert Ruins: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: Andy",
+          "kind": "egg",
+          "saveKey": "Andy"
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: Marty",
+          "kind": "egg",
+          "saveKey": "Marty"
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: Nelly",
+          "kind": "egg",
+          "saveKey": "Nelly"
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: Lester",
+          "kind": "egg",
+          "saveKey": "Lester"
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: Pete",
+          "kind": "egg",
+          "saveKey": "Pete"
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: Sadie",
+          "kind": "egg",
+          "saveKey": "Sadie"
+        },
+        {
+          "name": "Spyro 3: Desert Ruins: Destroy all seaweed (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Haunted Tomb": {
+      "gemTotal": 700,
+      "locations": [
+        {
+          "name": "Spyro 3: Haunted Tomb: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: Christine",
+          "kind": "egg",
+          "saveKey": "Christine"
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: Will",
+          "kind": "egg",
+          "saveKey": "Will"
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: Malcolm",
+          "kind": "egg",
+          "saveKey": "Malcolm"
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: Roxy",
+          "kind": "egg",
+          "saveKey": "Roxy"
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: MJ",
+          "kind": "egg",
+          "saveKey": "MJ"
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: TJ",
+          "kind": "egg",
+          "saveKey": "TJ"
+        },
+        {
+          "name": "Spyro 3: Haunted Tomb: Swim into the dark hole (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Dino Mines": {
+      "gemTotal": 702,
+      "locations": [
+        {
+          "name": "Spyro 3: Dino Mines: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Dino Mines: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Dino Mines: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Dino Mines: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Dino Mines: Dan",
+          "kind": "egg",
+          "saveKey": "Dan"
+        },
+        {
+          "name": "Spyro 3: Dino Mines: Romey",
+          "kind": "egg",
+          "saveKey": "Romey"
+        },
+        {
+          "name": "Spyro 3: Dino Mines: Kiki",
+          "kind": "egg",
+          "saveKey": "Kiki"
+        },
+        {
+          "name": "Spyro 3: Dino Mines: Elliot",
+          "kind": "egg",
+          "saveKey": "Elliot"
+        },
+        {
+          "name": "Spyro 3: Dino Mines: Sharon",
+          "kind": "egg",
+          "saveKey": "Sharon"
+        },
+        {
+          "name": "Spyro 3: Dino Mines: Sergio",
+          "kind": "egg",
+          "saveKey": "Sergio"
+        },
+        {
+          "name": "Spyro 3: Dino Mines: Hit all the seahorses (Skill Point)",
+          "kind": "skillpoint"
+        },
+        {
+          "name": "Spyro 3: Dino Mines: Hit the secret dino (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Agent 9's Lab": {
+      "gemTotal": 700,
+      "locations": [
+        {
+          "name": "Spyro 3: Agent 9's Lab: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Agent 9's Lab: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Agent 9's Lab: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Agent 9's Lab: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Agent 9's Lab: Beulah",
+          "kind": "egg",
+          "saveKey": "Beulah"
+        },
+        {
+          "name": "Spyro 3: Agent 9's Lab: Tony",
+          "kind": "egg",
+          "saveKey": "Tony"
+        },
+        {
+          "name": "Spyro 3: Agent 9's Lab: Rowan",
+          "kind": "egg",
+          "saveKey": "Rowan"
+        },
+        {
+          "name": "Spyro 3: Agent 9's Lab: Blow up all palm trees (Skill Point)",
+          "kind": "skillpoint"
+        }
+      ]
+    },
+    "Harbor Speedway": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 3: Harbor Speedway: Kobe",
+          "kind": "egg",
+          "saveKey": "Kobe"
+        },
+        {
+          "name": "Spyro 3: Harbor Speedway: Sara",
+          "kind": "egg",
+          "saveKey": "Sara"
+        },
+        {
+          "name": "Spyro 3: Harbor Speedway: Jessie",
+          "kind": "egg",
+          "saveKey": "Jessie"
+        }
+      ]
+    },
+    "Sorceress Lair": {
+      "gemTotal": 0,
+      "locations": [
+        {
+          "name": "Spyro 3: Sorceress Lair: Sorceress Defeated",
+          "kind": "boss",
+          "saveKey": "George"
+        }
+      ]
+    },
+    "Bugbot Factory": {
+      "gemTotal": 200,
+      "locations": [
+        {
+          "name": "Spyro 3: Bugbot Factory: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Bugbot Factory: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Bugbot Factory: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Bugbot Factory: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Bugbot Factory: Anabelle",
+          "kind": "egg",
+          "saveKey": "Anabelle"
+        },
+        {
+          "name": "Spyro 3: Bugbot Factory: Sparx Chest Breaking (Power)",
+          "kind": "sparxpower",
+          "saveKey": "ChestBreaking"
+        }
+      ]
+    },
+    "Super Bonus Round": {
+      "gemTotal": 5000,
+      "locations": [
+        {
+          "name": "Spyro 3: Super Bonus Round: 25% Gems",
+          "kind": "gem",
+          "threshold": 25
+        },
+        {
+          "name": "Spyro 3: Super Bonus Round: 50% Gems",
+          "kind": "gem",
+          "threshold": 50
+        },
+        {
+          "name": "Spyro 3: Super Bonus Round: 75% Gems",
+          "kind": "gem",
+          "threshold": 75
+        },
+        {
+          "name": "Spyro 3: Super Bonus Round: All Gems",
+          "kind": "gem",
+          "threshold": 100
+        },
+        {
+          "name": "Spyro 3: Super Bonus Round: YinYang",
+          "kind": "egg",
+          "saveKey": "YinYang"
+        }
+      ]
+    }
+  },
+  "homeworlds": [
+    "Sunrise Spring",
+    "Midday Gardens",
+    "Evening Lake",
+    "Midnight Mountain"
+  ],
+  "payments": [
+    {
+      "name": "Sheila",
+      "price": 300,
+      "region": "Sunrise Spring"
+    },
+    {
+      "name": "Cloud Spires bellows",
+      "price": 200,
+      "region": "Cloud Spires"
+    },
+    {
+      "name": "Molten Crater thieves door",
+      "price": 300,
+      "region": "Molten Crater"
+    },
+    {
+      "name": "Sgt. Byrd",
+      "price": 700,
+      "region": "Midday Gardens"
+    },
+    {
+      "name": "Icy Peak door",
+      "price": 500,
+      "region": "Icy Peak"
+    },
+    {
+      "name": "Spooky Swamp door",
+      "price": 500,
+      "region": "Spooky Swamp"
+    },
+    {
+      "name": "Bentley",
+      "price": 1000,
+      "region": "Evening Lake"
+    },
+    {
+      "name": "Frozen Altars cat hockey door",
+      "price": 800,
+      "region": "Frozen Altars"
+    },
+    {
+      "name": "Charmed Ridge stairs",
+      "price": 600,
+      "region": "Charmed Ridge"
+    },
+    {
+      "name": "Agent 9",
+      "price": 1300,
+      "region": "Midnight Mountain"
+    },
+    {
+      "name": "Crystal Islands bridge",
+      "price": 1000,
+      "region": "Crystal Islands"
+    },
+    {
+      "name": "Desert Ruins door",
+      "price": 800,
+      "region": "Desert Ruins",
+      "note": "the 100% save's MoneybagGems record holds 8,000 paid gems: every price here sums to that only at 800"
+    }
+  ],
+  "gates": {
+    "Molten Crater": {
+      "eggs": 10
+    },
+    "Seashell Shore": {
+      "eggs": 14
+    },
+    "Sheila's Alp": {
+      "payments": [
+        "Sheila"
+      ]
+    },
+    "Mushroom Speedway": {
+      "eggs": 20
+    },
+    "Crawdad Farm": {
+      "bosses": [
+        "Buzz Defeated"
+      ]
+    },
+    "Midday Gardens": {
+      "bosses": [
+        "Buzz Defeated"
+      ]
+    },
+    "Spooky Swamp": {
+      "eggs": 25
+    },
+    "Bamboo Terrace": {
+      "eggs": 30
+    },
+    "Sgt. Byrd Base": {
+      "payments": [
+        "Sgt. Byrd"
+      ]
+    },
+    "Country Speedway": {
+      "eggs": 36
+    },
+    "Spider Town": {
+      "bosses": [
+        "Spike Defeated"
+      ],
+      "levels": [
+        "Crawdad Farm"
+      ]
+    },
+    "Evening Lake": {
+      "bosses": [
+        "Spike Defeated"
+      ]
+    },
+    "Fireworks Factory": {
+      "eggs": 50
+    },
+    "Charmed Ridge": {
+      "eggs": 58
+    },
+    "Bentley's Outpost": {
+      "payments": [
+        "Bentley"
+      ]
+    },
+    "Honey Speedway": {
+      "eggs": 65
+    },
+    "Starfish Reef": {
+      "bosses": [
+        "Scorch Defeated"
+      ],
+      "levels": [
+        "Spider Town"
+      ]
+    },
+    "Midnight Mountain": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Haunted Tomb": {
+      "eggs": 70
+    },
+    "Dino Mines": {
+      "eggs": 80
+    },
+    "Agent 9's Lab": {
+      "payments": [
+        "Agent 9"
+      ]
+    },
+    "Harbor Speedway": {
+      "eggs": 90
+    },
+    "Sorceress Lair": {
+      "eggs": 100
+    },
+    "Bugbot Factory": {
+      "bosses": [
+        "Sorceress Defeated"
+      ],
+      "levels": [
+        "Starfish Reef"
+      ]
+    },
+    "Super Bonus Round": {
+      "eggs": 149,
+      "gems": 13402,
+      "levels": [
+        "Mushroom Speedway",
+        "Country Speedway",
+        "Honey Speedway",
+        "Harbor Speedway"
+      ],
+      "note": "the game's all-15,000-gems door: every save-recorded gem outside the Super Bonus Round, plus the speedways, whose gems are post-run rewards the save does not record per level"
+    }
+  },
+  "checkGates": {
+    "Sunny Villa: Skateboard course record I (Skill Point)": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Cloud Spires: Clare": {
+      "payments": [
+        "Cloud Spires bellows"
+      ]
+    },
+    "Cloud Spires: Henry": {
+      "payments": [
+        "Cloud Spires bellows"
+      ]
+    },
+    "Cloud Spires: LuLu": {
+      "payments": [
+        "Cloud Spires bellows"
+      ]
+    },
+    "Cloud Spires: Jake": {
+      "payments": [
+        "Cloud Spires bellows"
+      ]
+    },
+    "Cloud Spires: Bryan": {
+      "payments": [
+        "Cloud Spires bellows"
+      ]
+    },
+    "Molten Crater: Moira": {
+      "payments": [
+        "Molten Crater thieves door"
+      ]
+    },
+    "Molten Crater: Kermitt": {
+      "payments": [
+        "Molten Crater thieves door"
+      ]
+    },
+    "Molten Crater: Luna": {
+      "levels": [
+        "Sgt. Byrd Base"
+      ]
+    },
+    "Molten Crater: Ryan": {
+      "levels": [
+        "Sgt. Byrd Base"
+      ]
+    },
+    "Molten Crater: Assemble tiki heads (Skill Point)": {
+      "levels": [
+        "Sgt. Byrd Base"
+      ]
+    },
+    "Molten Crater: Supercharge the wall (Skill Point)": {
+      "payments": [
+        "Molten Crater thieves door"
+      ]
+    },
+    "Seashell Shore: Mollie": {
+      "levels": [
+        "Sheila's Alp"
+      ]
+    },
+    "Seashell Shore: Jared": {
+      "levels": [
+        "Sheila's Alp"
+      ]
+    },
+    "Icy Peak: Cerny": {
+      "payments": [
+        "Icy Peak door"
+      ]
+    },
+    "Enchanted Towers: Skateboard course record II (Skill Point)": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Spooky Swamp: Frank": {
+      "payments": [
+        "Spooky Swamp door"
+      ]
+    },
+    "Spooky Swamp: Thelonios": {
+      "payments": [
+        "Spooky Swamp door"
+      ]
+    },
+    "Spooky Swamp: Peggy": {
+      "payments": [
+        "Spooky Swamp door"
+      ],
+      "levels": [
+        "Sheila's Alp"
+      ]
+    },
+    "Spooky Swamp: Michele": {
+      "payments": [
+        "Spooky Swamp door"
+      ],
+      "levels": [
+        "Sheila's Alp"
+      ]
+    },
+    "Spooky Swamp: Herbi": {
+      "payments": [
+        "Spooky Swamp door"
+      ]
+    },
+    "Spooky Swamp: Destroy all piranha signs (Skill Point)": {
+      "payments": [
+        "Spooky Swamp door"
+      ]
+    },
+    "Lost Fleet: Skateboard record time (Skill Point)": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Frozen Altars: Baah": {
+      "payments": [
+        "Frozen Altars cat hockey door"
+      ]
+    },
+    "Frozen Altars: Aly": {
+      "levels": [
+        "Bentley's Outpost"
+      ]
+    },
+    "Frozen Altars: Ricco": {
+      "levels": [
+        "Bentley's Outpost"
+      ]
+    },
+    "Frozen Altars: Beat yeti in two rounds (Skill Point)": {
+      "levels": [
+        "Bentley's Outpost"
+      ]
+    },
+    "Fireworks Factory: Patty": {
+      "levels": [
+        "Agent 9's Lab"
+      ]
+    },
+    "Fireworks Factory: Donovan": {
+      "levels": [
+        "Agent 9's Lab"
+      ]
+    },
+    "Fireworks Factory: Find Agent 9's powerup (Skill Point)": {
+      "levels": [
+        "Agent 9's Lab"
+      ]
+    },
+    "Charmed Ridge: Benjamin": {
+      "payments": [
+        "Charmed Ridge stairs"
+      ]
+    },
+    "Charmed Ridge: Moe": {
+      "payments": [
+        "Charmed Ridge stairs"
+      ]
+    },
+    "Charmed Ridge: Sakura": {
+      "payments": [
+        "Charmed Ridge stairs"
+      ]
+    },
+    "Charmed Ridge: Abby": {
+      "payments": [
+        "Charmed Ridge stairs"
+      ],
+      "levels": [
+        "Sgt. Byrd Base"
+      ]
+    },
+    "Charmed Ridge: Shelley": {
+      "payments": [
+        "Charmed Ridge stairs"
+      ]
+    },
+    "Charmed Ridge: Chuck": {
+      "payments": [
+        "Charmed Ridge stairs"
+      ]
+    },
+    "Charmed Ridge: The Impossible Tower (Skill Point)": {
+      "payments": [
+        "Charmed Ridge stairs"
+      ]
+    },
+    "Charmed Ridge: Shoot the temple windows (Skill Point)": {
+      "levels": [
+        "Sgt. Byrd Base"
+      ],
+      "payments": [
+        "Charmed Ridge stairs"
+      ]
+    },
+    "Crystal Islands: Manie": {
+      "payments": [
+        "Crystal Islands bridge"
+      ]
+    },
+    "Crystal Islands: Lloyd": {
+      "payments": [
+        "Crystal Islands bridge"
+      ]
+    },
+    "Crystal Islands: Max": {
+      "payments": [
+        "Crystal Islands bridge"
+      ]
+    },
+    "Crystal Islands: Grace": {
+      "payments": [
+        "Crystal Islands bridge"
+      ]
+    },
+    "Crystal Islands: Elloise": {
+      "payments": [
+        "Crystal Islands bridge"
+      ]
+    },
+    "Crystal Islands: Hank": {
+      "payments": [
+        "Crystal Islands bridge"
+      ],
+      "levels": [
+        "Bentley's Outpost"
+      ]
+    },
+    "Desert Ruins: Marty": {
+      "payments": [
+        "Desert Ruins door"
+      ]
+    },
+    "Desert Ruins: Sadie": {
+      "payments": [
+        "Desert Ruins door"
+      ]
+    },
+    "Desert Ruins: Lester": {
+      "levels": [
+        "Sheila's Alp"
+      ]
+    },
+    "Desert Ruins: Pete": {
+      "levels": [
+        "Sheila's Alp"
+      ]
+    },
+    "Desert Ruins: Destroy all seaweed (Skill Point)": {
+      "payments": [
+        "Desert Ruins door"
+      ]
+    },
+    "Haunted Tomb: Roxy": {
+      "levels": [
+        "Agent 9's Lab"
+      ]
+    },
+    "Dino Mines: Sharon": {
+      "levels": [
+        "Agent 9's Lab"
+      ]
+    },
+    "Dino Mines: Sergio": {
+      "levels": [
+        "Agent 9's Lab"
+      ]
+    },
+    "Dino Mines: Hit the secret dino (Skill Point)": {
+      "levels": [
+        "Agent 9's Lab"
+      ]
+    }
+  },
+  "gemGates": {
+    "Cloud Spires": {
+      "75": {
+        "payments": [
+          "Cloud Spires bellows"
+        ],
+        "note": "the share of gems behind it is unknown: 75% and up need it"
+      }
+    },
+    "Molten Crater": {
+      "75": {
+        "payments": [
+          "Molten Crater thieves door"
+        ],
+        "note": "the share of gems behind it is unknown: 75% and up need it"
+      },
+      "100": {
+        "levels": [
+          "Sgt. Byrd Base"
+        ],
+        "note": "Sgt. Byrd's sub-area holds an unknown share of the gems, so All Gems needs Sgt. Byrd Base"
+      }
+    },
+    "Seashell Shore": {
+      "100": {
+        "levels": [
+          "Sheila's Alp"
+        ],
+        "note": "Sheila's sub-area holds an unknown share of the gems, so All Gems needs Sheila's Alp"
+      }
+    },
+    "Icy Peak": {
+      "75": {
+        "payments": [
+          "Icy Peak door"
+        ],
+        "note": "the share of gems behind it is unknown: 75% and up need it"
+      }
+    },
+    "Spooky Swamp": {
+      "75": {
+        "payments": [
+          "Spooky Swamp door"
+        ],
+        "note": "the share of gems behind it is unknown: 75% and up need it"
+      },
+      "100": {
+        "levels": [
+          "Sheila's Alp"
+        ],
+        "note": "Sheila's sub-area holds an unknown share of the gems, so All Gems needs Sheila's Alp"
+      }
+    },
+    "Frozen Altars": {
+      "75": {
+        "payments": [
+          "Frozen Altars cat hockey door"
+        ],
+        "note": "the share of gems behind it is unknown: 75% and up need it"
+      },
+      "100": {
+        "levels": [
+          "Bentley's Outpost"
+        ],
+        "note": "Bentley's sub-area holds an unknown share of the gems, so All Gems needs Bentley's Outpost"
+      }
+    },
+    "Fireworks Factory": {
+      "100": {
+        "levels": [
+          "Agent 9's Lab"
+        ],
+        "note": "Agent 9's sub-area holds an unknown share of the gems, so All Gems needs Agent 9's Lab"
+      }
+    },
+    "Charmed Ridge": {
+      "25": {
+        "payments": [
+          "Charmed Ridge stairs"
+        ],
+        "note": "about 470 of 600 gems are up the stairs"
+      },
+      "100": {
+        "levels": [
+          "Sgt. Byrd Base"
+        ],
+        "note": "Sgt. Byrd's sub-area holds an unknown share of the gems, so All Gems needs Sgt. Byrd Base"
+      }
+    },
+    "Crystal Islands": {
+      "25": {
+        "payments": [
+          "Crystal Islands bridge"
+        ],
+        "note": "most of the level is past the bridge"
+      }
+    },
+    "Desert Ruins": {
+      "75": {
+        "payments": [
+          "Desert Ruins door"
+        ],
+        "note": "the share of gems behind it is unknown: 75% and up need it"
+      },
+      "100": {
+        "levels": [
+          "Sheila's Alp"
+        ],
+        "note": "Sheila's sub-area holds an unknown share of the gems, so All Gems needs Sheila's Alp"
+      }
+    },
+    "Haunted Tomb": {
+      "100": {
+        "levels": [
+          "Agent 9's Lab"
+        ],
+        "note": "Agent 9's sub-area holds an unknown share of the gems, so All Gems needs Agent 9's Lab"
+      }
+    },
+    "Dino Mines": {
+      "100": {
+        "levels": [
+          "Agent 9's Lab"
+        ],
+        "note": "Agent 9's sub-area holds an unknown share of the gems, so All Gems needs Agent 9's Lab"
+      }
+    }
+  }
+}
