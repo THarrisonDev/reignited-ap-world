@@ -69,6 +69,7 @@ class SRTOptions(PerGameCommonOptions):
     spyro1_enable_flight_checks: S1.FlightChecksOption
     spyro2_enable_gem_checks: S2.GemChecksOption
     spyro2_enable_skillpoint_checks: S2.SkillPointChecksOption
+    spyro2_orb_shuffle: S2.OrbShuffleOption
     spyro2_moneybags_abilities: S2.AbilitiesShuffleOption
     spyro2_goal: S2.GoalOption
     spyro2_level_locks: S2.LevelLocksOption

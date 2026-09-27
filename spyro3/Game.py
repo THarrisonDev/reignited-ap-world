@@ -48,8 +48,8 @@ from ..data import load
 from ..gates import Gates
 from . import Items as S3Items
 from .Items import DRAGON_EGG, EXTRA_HIT_POINT, CHEST_BREAKING, GEM_COLLECT_RANGE, level_key_levels, level_key_name
-from .Locations import (BOSS, BOSSES, EGG, EGG_CATALOG, GEM, SKILLPOINT, SPARX_POWER,
-                        SPARX_REALM_POWERS, TABLE_ORDER, location_tables)
+from .Locations import (Kind, BOSSES, EGG_CATALOG, SPARX_REALM_POWERS,
+                        TABLE_ORDER, location_tables)
 from .Names import s3
 from .Options import GoalOptions
 
@@ -99,22 +99,22 @@ class Spyro3Game:
                 continue
             region = Region(s3(level), self.player, self.multiworld)
             for data in location_tables[level]:
-                if data.kind == GEM and not self.enable_gem_checks:
+                if data.kind is Kind.GEM and not self.enable_gem_checks:
                     continue
-                if data.kind == SKILLPOINT and not self.enable_skillpoint_checks:
+                if data.kind is Kind.SKILLPOINT and not self.enable_skillpoint_checks:
                     continue
-                if data.kind == SPARX_POWER and not self.sparx_powers:
+                if data.kind is Kind.SPARX_POWER and not self.sparx_powers:
                     continue
                 default_item = FILLER
-                if data.kind == EGG and self.egg_shuffle:
+                if data.kind is Kind.EGG and self.egg_shuffle:
                     default_item = DRAGON_EGG
-                elif data.kind == SPARX_POWER:
+                elif data.kind is Kind.SPARX_POWER:
                     default_item = s3(SPARX_REALM_POWERS[level][0].replace(" (Power)", ""))
-                elif data.kind == BOSS:
+                elif data.kind is Kind.BOSS:
                     default_item = s3(BOSSES[level][1])
                 location = SRTLocation(self.player, data.name, self.world.location_name_to_id[data.name],
                                        region)
-                if data.kind == BOSS:
+                if data.kind is Kind.BOSS:
                     # Locked event: the boss dungeon's egg record (data.save_key)
                     # is the boss kill — the check fires when checkd scans it.
                     # Keep the event item's real code: stock AP serializes every
@@ -166,7 +166,7 @@ class Spyro3Game:
                 add_rule(multiworld.get_location(s3(name), player), gates.rule(gate))
         for level in self.region_levels:
             for data in location_tables[level]:
-                if data.kind == GEM and data.name in self.location_names:
+                if data.kind is Kind.GEM and data.name in self.location_names:
                     add_rule(multiworld.get_location(data.name, player),
                              gates.gem_rule(level, data.threshold))
         # Level Locks: every lockable level's entrance also needs its Key. No

@@ -9,30 +9,33 @@ no Archipelago install, so every location ID is derived here and only here.
 Schema, spyro1:
   baseId                   int   location ID block (100000)
   levels[]                       {name, type, id, gemTotal, checks[], hub?}
-    type                         HUB|NORMAL|FLIGHT|BOSS|BONUS
+    type                         LevelType
     checks[]                     {id, name, type}  name is PLAIN (no prefix);
-                                 type DRAGON|EGG|SKILL_POINT
+                                 type CheckType (the JSON lists only DRAGON/
+                                 EGG/SKILL_POINT; gem checks and events are
+                                 derived)
   gemThresholds            list  [[pct, label], ...] per-level gem-check template
   gemThresholdIdBase       int   derived gem-check IDs:
   gemThresholdIdsPerLevel  int     base + levelId * perLevel + tier
   eventIdBase              int   derived event IDs: base + levelId
   balloonistGates          map   homeworld -> {type, needed} (type
-                                 dragons/eggs/gems)
+                                 RequirementType)
 
 Schema, spyro2/spyro3:
   baseId, tableOffset      int   IDs: baseId + tableOffset * regionIndex + row
   regions                  map   region name -> {gemTotal, locations[]}
-    locations[]                  {name, kind, ...}  name is FULL (prefix
-                                 included); kind orb|talisman|gem|ability|boss|
-                                 skillpoint (spyro2) or gem|egg|boss|skillpoint|
-                                 sparxpower (spyro3); saveKey/threshold/price
-                                 where the kind has one
+    locations[]                  {name, plain, kind, ...}  name is FULL
+                                 (prefix included), plain is name minus the
+                                 game prefix; kind Spyro2Kind (spyro2.json) or
+                                 Spyro3Kind (spyro3.json); saveKey/threshold/
+                                 price/item/task where the kind has one
   homeworlds, payments, gates, checkGates, gemGates   gate data (../gates.py)
 
 IDs are stable: regions and rows are append-only.
 """
 import json
 import os
+from enum import Enum
 from functools import lru_cache
 from typing import Dict, List, Optional, Tuple
 
@@ -67,9 +70,53 @@ def _read_json_in_zip(rel: str) -> dict:
         return json.loads(z.read(member).decode("utf-8-sig"))
 
 
-SPYRO1_LEVEL_TYPES = ("HUB", "NORMAL", "FLIGHT", "BOSS", "BONUS")
-# Gem thresholds and events are derived per level, never listed as checks.
-SPYRO1_CHECK_TYPES = ("DRAGON", "EGG", "SKILL_POINT")
+class LevelType(Enum):
+    """Spyro 1 level types, as world/data/spyro1.json spells them."""
+    HUB = "HUB"
+    NORMAL = "NORMAL"
+    FLIGHT = "FLIGHT"
+    BOSS = "BOSS"
+    BONUS = "BONUS"
+
+
+class CheckType(Enum):
+    """Spyro 1 check types, as world/data/spyro1.json spells them; GEM_CHECK
+    and EVENT are the derived checks the data engine builds (the JSON never
+    lists them as checks)."""
+    DRAGON = "DRAGON"
+    EGG = "EGG"
+    SKILL_POINT = "SKILL_POINT"
+    GEM_CHECK = "GEM_CHECK"
+    EVENT = "EVENT"
+
+
+class RequirementType(Enum):
+    """Spyro 1 balloonist-gate requirement kinds, as the JSON spells them."""
+    DRAGONS = "dragons"
+    EGGS = "eggs"
+    GEMS = "gems"
+
+
+class Spyro2Kind(Enum):
+    """Location kinds in world/data/spyro2.json."""
+    ORB = "orb"
+    TALISMAN = "talisman"
+    GEM = "gem"
+    ABILITY = "ability"
+    BOSS = "boss"
+    SKILLPOINT = "skillpoint"
+
+
+class Spyro3Kind(Enum):
+    """Location kinds in world/data/spyro3.json. Eggs are ALWAYS checks (the
+    save names every one of them — spyro3_egg_shuffle only decides whether
+    they release items); FLIGHT locations land with their feature task."""
+    EGG = "egg"
+    BOSS = "boss"
+    FLIGHT = "flight"
+    GEM = "gem"
+    SKILLPOINT = "skillpoint"
+    SPARX_POWER = "sparxpower"
 
 
 class GameData:
@@ -85,8 +132,14 @@ class GameData:
         self.prefix: str = f"Spyro {game_key[-1]}: "
         if self.key == "spyro1":
             self._build_spyro1()
-        else:
+        elif self.key == "spyro2":
+            self.kind_type = Spyro2Kind
             self._build_tabular()
+        elif self.key == "spyro3":
+            self.kind_type = Spyro3Kind
+            self._build_tabular()
+        else:
+            raise ValueError(f"unknown game key {game_key!r}")
 
     # -- spyro1: levels carry ids; gem thresholds and events are derived ---
     def _build_spyro1(self):
@@ -96,21 +149,19 @@ class GameData:
         if len(self.gem_thresholds) > raw["gemThresholdIdsPerLevel"]:
             raise ValueError("spyro1: more gem thresholds than ids per level")
         for level in raw["levels"]:
-            if level["type"] not in SPYRO1_LEVEL_TYPES:
-                raise ValueError(f"spyro1: level {level['name']!r} has unknown "
-                                 f"type {level['type']!r}")
+            LevelType(level["type"])
             for check in level["checks"]:
-                if check["type"] not in SPYRO1_CHECK_TYPES:
-                    raise ValueError(f"spyro1: check {check['name']!r} has "
-                                     f"unknown type {check['type']!r}")
+                CheckType(check["type"])
+        for gate in self.gates.values():
+            RequirementType(gate["type"])
 
     def gem_threshold_checks(self, level: dict) -> List[Tuple[int, str, int]]:
         """A Spyro 1 level's derived gem-threshold checks as (id, plain name,
         percent). Flights carry none; bosses carry only All Gems."""
-        if level["type"] == "FLIGHT":
+        if LevelType(level["type"]) is LevelType.FLIGHT:
             return []
         raw = self.raw
-        tiers = [len(self.gem_thresholds) - 1] if level["type"] == "BOSS" \
+        tiers = [len(self.gem_thresholds) - 1] if LevelType(level["type"]) is LevelType.BOSS \
             else range(len(self.gem_thresholds))
         return [(raw["gemThresholdIdBase"]
                  + level["id"] * raw["gemThresholdIdsPerLevel"] + t,
@@ -121,9 +172,9 @@ class GameData:
     def event_check(self, level: dict) -> Optional[Tuple[int, str]]:
         """A Spyro 1 level's derived completion event as (id, plain name):
         "<Level> Complete" or "<Boss> Defeated"; hubs have none."""
-        if level["type"] == "HUB":
+        if LevelType(level["type"]) is LevelType.HUB:
             return None
-        suffix = "Defeated" if level["type"] == "BOSS" else "Complete"
+        suffix = "Defeated" if LevelType(level["type"]) is LevelType.BOSS else "Complete"
         return (self.raw["eventIdBase"] + level["id"],
                 f"{level['name']} {suffix}")
 
@@ -138,12 +189,20 @@ class GameData:
             rows = []
             for n, loc in enumerate(data["locations"]):
                 row = dict(loc)
-                # Names are FULL: the on-screen text with the game prefix.
-                # gates.py strips the prefix by length, so a bare name is a
-                # data error, not something to patch up here.
+                # Names are FULL: the on-screen text with the game prefix, and
+                # `plain` is the same name minus the prefix. gates.py and the
+                # game modules read `plain`; a bare `name` or a `plain` that
+                # doesn't match is a data error, not something to patch up.
                 if not row["name"].startswith(self.prefix):
                     raise ValueError(f"{self.key}: location {row['name']!r} "
                                      f"lacks the {self.prefix!r} prefix")
+                plain = row["name"][len(self.prefix):]
+                if row.get("plain", plain) != plain:
+                    raise ValueError(f"{self.key}: location {row['name']!r} "
+                                     f"plain {row['plain']!r} disagrees with "
+                                     f"the prefix-stripped name")
+                row["plain"] = plain
+                row["kind"] = self.kind_type(loc["kind"])
                 row["id"] = self.base_id + raw["tableOffset"] * i + n
                 rows.append(row)
             self.regions[region] = rows

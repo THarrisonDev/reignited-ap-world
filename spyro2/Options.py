@@ -8,6 +8,14 @@ class GemChecksOption(DefaultOnToggle):
     display_name = "Enable Gem Checks"
 
 
+class OrbShuffleOption(DefaultOnToggle):
+    """Each of the 64 orb checks releases a shuffled "Spyro 2: Orb" item and
+    the orb doors (Ocean 3, Metro 6, Cloud Temples 15, Metropolis 25, the
+    professor's 8, Ripto's 40) read received Orb items. Off: orbs are vanilla
+    checks that release nothing and the doors read the game's own counter."""
+    display_name = "Shuffle Orbs"
+
+
 class SkillPointChecksOption(DefaultOnToggle):
     """Adds the 16 Spyro 2 skill points as checks. They release items but gate
     nothing (skill points serve no purpose outside of being collected)."""
@@ -65,6 +73,7 @@ option_groups = [
         SkillPointChecksOption,
     ], True),
     OptionGroup("Spyro 2: Progression", [
+        OrbShuffleOption,
         AbilitiesShuffleOption,
         GoalOption,
         LevelLocksOption,

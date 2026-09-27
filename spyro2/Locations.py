@@ -21,23 +21,17 @@ ESkillPoint enum value (S2 = 15..30).
 """
 from typing import List, NamedTuple
 
-from ..data import load
+from ..data import Spyro2Kind as Kind, load
 from .Names import s2
-
-ORB = "orb"
-TALISMAN = "talisman"
-GEM = "gem"
-ABILITY = "ability"
-BOSS = "boss"
-SKILLPOINT = "skillpoint"
 
 
 class Spyro2LocationData(NamedTuple):
     name: str
-    kind: str            # ORB | TALISMAN | ABILITY | BOSS | GEM | SKILLPOINT
-    save_key: str = ""   # orbs/talismans: the key the save stores
-    threshold: int = 0   # gem checks: percent of the level's gems
-    price: int = 0       # abilities: the Money Bags price in gems
+    plain: str          # name minus the game prefix
+    kind: Kind
+    save_key: str = ""  # orbs/talismans: the key the save stores
+    threshold: int = 0  # gem checks: percent of the level's gems
+    price: int = 0      # abilities: the Money Bags price in gems
 
 
 _data = load("spyro2")
@@ -45,22 +39,18 @@ _data = load("spyro2")
 TABLE_ORDER: List[str] = list(_data.regions)
 
 location_tables = {
-    level: [Spyro2LocationData(row["name"], row["kind"], row.get("saveKey", ""),
+    level: [Spyro2LocationData(row["name"], row["plain"], row["kind"],
+                               row.get("saveKey", ""),
                                row.get("threshold", 0), row.get("price", 0))
             for row in rows]
     for level, rows in _data.regions.items()
 }
-_unknown = {d.kind for table in location_tables.values() for d in table} - {
-    ORB, TALISMAN, GEM, ABILITY, BOSS, SKILLPOINT}
-if _unknown:
-    raise ValueError(f"Spyro 2: unknown location kinds {sorted(_unknown)}")
-del _unknown
 
 
-def ability_item_name(location_name: str) -> str:
-    """The shuffled item an ability purchase holds: the last name segment
-    ("...: Swim Ability" -> "Spyro 2: Swim Ability", spyro2/Items.py)."""
-    return s2(location_name.split(": ")[-1])
+def ability_item_name(plain_name: str) -> str:
+    """The shuffled item an ability purchase holds: the bare ability name with
+    the game prefix ("Swim Ability" -> "Spyro 2: Swim Ability", Items.py)."""
+    return s2(plain_name)
 
 
 def get_name_to_id() -> dict:
@@ -70,10 +60,10 @@ def get_name_to_id() -> dict:
 check_levels: List[str] = [level for level in TABLE_ORDER if location_tables[level]]
 
 location_name_groups = {
-    s2("Orbs"): {d.name for table in location_tables.values() for d in table if d.kind == ORB},
-    s2("Talismans"): {d.name for table in location_tables.values() for d in table if d.kind == TALISMAN},
-    s2("Abilities"): {d.name for table in location_tables.values() for d in table if d.kind == ABILITY},
-    s2("Bosses"): {d.name for table in location_tables.values() for d in table if d.kind == BOSS},
-    s2("Gem Checks"): {d.name for table in location_tables.values() for d in table if d.kind == GEM},
-    s2("Skill Point Checks"): {d.name for table in location_tables.values() for d in table if d.kind == SKILLPOINT},
+    s2("Orbs"): {d.name for table in location_tables.values() for d in table if d.kind is Kind.ORB},
+    s2("Talismans"): {d.name for table in location_tables.values() for d in table if d.kind is Kind.TALISMAN},
+    s2("Abilities"): {d.name for table in location_tables.values() for d in table if d.kind is Kind.ABILITY},
+    s2("Bosses"): {d.name for table in location_tables.values() for d in table if d.kind is Kind.BOSS},
+    s2("Gem Checks"): {d.name for table in location_tables.values() for d in table if d.kind is Kind.GEM},
+    s2("Skill Point Checks"): {d.name for table in location_tables.values() for d in table if d.kind is Kind.SKILLPOINT},
 }

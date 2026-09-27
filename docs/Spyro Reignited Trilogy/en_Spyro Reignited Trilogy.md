@@ -72,7 +72,11 @@ for a level in a homeworld you can't reach yet won't open that level until you g
 ### What is randomized? (Spyro 2)
 
 - **64 orbs** — each of the game's orb challenges is a check named after its on-screen
-  text, e.g. **Spyro 2: Glimmer: Lizard hunt** or **Spyro 2: Metropolis: Ox bombing**
+  text, e.g. **Spyro 2: Glimmer: Lizard hunt** or **Spyro 2: Metropolis: Ox bombing**.
+  Shuffled by default: each releases a **Spyro 2: Orb** item into the pool, and the
+  game's orb doors (Ocean Speedway 3, Metro Speedway 6, Cloud Temples 15, Metropolis
+  25, the Autumn Plains professor door 8, Ripto's Arena 40) open on received Orb
+  items — the mod keeps the game's orb counter in sync with them
 - **14 talismans** — collectibles like the Magic Pick and the Volcano Idol are checks
 - **Gem milestones** — 25/50/75/100% of the 400 gems in each of the 21 gem-bearing
   levels (the 4 speedways, the 3 boss dungeons and Dragon Shores have no
@@ -98,10 +102,10 @@ for a level in a homeworld you can't reach yet won't open that level until you g
 - **None** — Spyro 2 cannot be a required game; its checks are optional side content.
 - **Ripto** — Spyro 2 becomes requirable: Crush, Gulp and Ripto must fall. With
   Moneybags Abilities shuffled, reaching Ripto's Arena itself needs the Headbash
-  item (the castle gate is Headbash-gated in Reignited). The boss doors' orb/talisman
+  item (the castle gate is Headbash-gated in Reignited). The boss doors' talisman
   counters (6 Summer Forest talismans for Crush's Dungeon, all 14 for Gulp's
-  Overlook, 40 orbs for Ripto's Arena) stay the game's own progression — they are not
-  shuffled.
+  Overlook) stay the game's own progression — they are not shuffled; the orb
+  doors follow Orb items (above).
 ## Spyro 3 (Year of the Dragon)
 
 ### What is randomized? (Spyro 3)

@@ -26,16 +26,28 @@ can reach. Paying in play order that way always leaves enough for the next
 payment whatever order the player really pays in, so the rule is safe without
 tracking spent gems.
 
+A game may override one kind's counting source by setting `item_counts`
+to a callable (state -> int or None): a non-None result stands in for the
+reachable-check count (Spyro 2 orbs read received Orb items under the
+default orb shuffle — the mod reconciles the game's orb counter to them).
+
 Evaluation runs in layers so no rule reads itself: the payments grow to a
 fixpoint first; counts then use those payments, and a check that is itself
 gated by a count (Autumn Plains' Long glide! needs 8 orbs) is judged against
 the count of the checks without count gates; gates read both.
 """
+from enum import Enum
 from typing import Dict, List, Set
 
 EGG_KINDS = ("egg", "boss")
 COUNT_KINDS = {"talismans": ("talisman",), "orbs": ("orb",), "eggs": EGG_KINDS}
-TIERS = (25, 50, 75, 100)
+class Tier(Enum):
+    """Gem tiers, in the order they open. The JSON's gemGates spell these as
+    percent strings ("25".."100"); Tier(t) validates them at load."""
+    T25 = 25
+    T50 = 50
+    T75 = 75
+    T100 = 100
 READS_REGIONS = ("talismans", "orbs", "eggs", "gems", "payments", "levels")
 
 
@@ -92,6 +104,11 @@ class _Eval:
 
     def _counted(self, kind: str, with_counts: bool) -> int:
         g = self.gates
+        override = getattr(g, "item_counts", None)
+        if kind == "orbs" and override is not None:
+            n = override(self.state)
+            if n is not None:
+                return n
         n = 0
         for level, ungated, gated in g.count_plan[kind]:
             if not self.reach(level):
@@ -136,15 +153,15 @@ class _Eval:
         if not tiers:
             return 100
         best = 0
-        for t in TIERS:
-            gate = tiers.get(str(t), {})
+        for t in Tier:
+            gate = tiers.get(str(t.value), {})
             if not self.simple(gate):
                 break
             if any(k in gate for k in COUNT_KINDS) and \
                     not all(self._base_count(k) >= gate[k] for k in COUNT_KINDS if k in gate):
                 break
             best = t
-        return best
+        return best.value
 
     def gems(self) -> int:
         if self._gems is None:
@@ -177,7 +194,7 @@ class Gates:
         for kind, kinds in COUNT_KINDS.items():
             plan = []
             for level, rows in data.regions.items():
-                names = [row["name"][len(self.prefix):] for row in rows if row["kind"] in kinds]
+                names = [row["plain"] for row in rows if row["kind"] in kinds]
                 gated = [name for name in names if name in self.check_gates]
                 if names:
                     plan.append((level, len(names) - len(gated), gated))
@@ -193,10 +210,11 @@ class Gates:
                   *(p["region"] for p in self.payments)]
         unknown = [level for level in levels if level not in self.order]
         unknown += [name for g in gates for name in g.get("payments", ()) if name not in payments]
-        names = {row["name"][len(self.prefix):] for rows in data.regions.values() for row in rows}
+        names = {row["plain"] for rows in data.regions.values() for row in rows}
         unknown += [name for name in self.check_gates if name not in names]
         unknown += [p["location"] for p in self.payments if "location" in p and p["location"] not in names]
-        unknown += [t for tiers in self.gem_gates.values() for t in tiers if int(t) not in TIERS]
+        unknown += [t for tiers in self.gem_gates.values() for t in tiers
+                    if t not in {str(tier.value) for tier in Tier}]
         if unknown:
             raise ValueError(f"{self.prefix}gate data names unknown levels, payments, checks or tiers: {unknown}")
 

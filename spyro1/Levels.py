@@ -8,32 +8,9 @@ JSON (hand-written, never reused); gem-threshold and event checks, and their
 IDs, are derived by the data engine (world/data), which the client generator
 shares.
 """
-from enum import Enum, auto
 from typing import List, NamedTuple
 
-from ..data import load
-
-
-class CheckType(Enum):
-    DRAGON = auto()
-    EGG = auto()
-    GEM_CHECK = auto()
-    SKILL_POINT = auto()
-    EVENT = auto()
-
-
-class LevelType(Enum):
-    HUB = auto()
-    NORMAL = auto()
-    FLIGHT = auto()
-    BOSS = auto()
-    BONUS = auto()
-
-
-class RequirementType(Enum):
-    DRAGONS = auto()
-    EGGS = auto()
-    GEMS = auto()
+from ..data import CheckType, LevelType, RequirementType, load
 
 
 class Requirement(NamedTuple):
@@ -47,17 +24,7 @@ class Check(NamedTuple):
     type: CheckType
 
 
-# The JSON lists only these; gem thresholds and events are derived.
-_CHECK_KIND = {
-    "DRAGON": CheckType.DRAGON,
-    "EGG": CheckType.EGG,
-    "SKILL_POINT": CheckType.SKILL_POINT,
-}
 _data = load("spyro1")
-_LEVEL_TYPE = {t.name: t for t in LevelType}
-_REQ_TYPE = {"dragons": RequirementType.DRAGONS,
-             "eggs": RequirementType.EGGS,
-             "gems": RequirementType.GEMS}
 
 
 class Spyro1Level:
@@ -67,7 +34,7 @@ class Spyro1Level:
     def __init__(self, raw: dict):
         self._raw = raw
         self.name = raw["name"]
-        self.type = _LEVEL_TYPE[raw["type"]]
+        self.type = LevelType(raw["type"])
         self.id = raw["id"]
         self.gem_total = raw["gemTotal"]
         self.hub = raw.get("hub")
@@ -88,7 +55,7 @@ class Spyro1Level:
 
     @property
     def unique_checks(self) -> list[Check]:
-        return [Check(c["id"], c["name"], _CHECK_KIND[c["type"]])
+        return [Check(c["id"], c["name"], CheckType(c["type"]))
                 for c in self._raw["checks"]]
 
     @property
@@ -111,11 +78,11 @@ _by_name = {lvl["name"]: lvl for lvl in _data.raw["levels"]}
 
 Spyro1Levels: List[Spyro1Level] = []
 for _raw in _data.raw["levels"]:
-    if _raw["type"] == "HUB":
+    if LevelType(_raw["type"]) is LevelType.HUB:
         hub = Spyro1Level(_raw)
         gate = _data.gates.get(hub.name)
         if gate:
-            hub.requirement = Requirement(_REQ_TYPE[gate["type"]], gate["needed"])
+            hub.requirement = Requirement(RequirementType(gate["type"]), gate["needed"])
         hub.levels = tuple(
             Spyro1Level(_by_name[lvl["name"]])
             for lvl in _data.raw["levels"] if lvl.get("hub") == hub.name
@@ -124,7 +91,7 @@ for _raw in _data.raw["levels"]:
 
 # Gnasty's Loot (the one bonus level): Menu-reachable, belongs to no hub.
 _loot = [lvl for lvl in _data.raw["levels"]
-         if lvl["type"] == "BONUS" and "hub" not in lvl]
+         if LevelType(lvl["type"]) is LevelType.BONUS and "hub" not in lvl]
 if _loot:
     _loot_raw = _loot[0]
     _previous_hub = Spyro1Levels[-1]
