@@ -1697,6 +1697,15 @@
     "Mushroom Speedway": {
       "eggs": 20
     },
+    "Buzz's Dungeon": {
+      "levels": [
+        "Sunny Villa",
+        "Cloud Spires",
+        "Molten Crater",
+        "Seashell Shore",
+        "Sheila's Alp"
+      ]
+    },
     "Crawdad Farm": {
       "bosses": [
         "Buzz Defeated"
@@ -1720,6 +1729,15 @@
     },
     "Country Speedway": {
       "eggs": 36
+    },
+    "Spike's Arena": {
+      "levels": [
+        "Icy Peak",
+        "Enchanted Towers",
+        "Spooky Swamp",
+        "Bamboo Terrace",
+        "Sgt. Byrd Base"
+      ]
     },
     "Spider Town": {
       "bosses": [
@@ -1747,6 +1765,15 @@
     },
     "Honey Speedway": {
       "eggs": 65
+    },
+    "Scorch's Pit": {
+      "levels": [
+        "Lost Fleet",
+        "Frozen Altars",
+        "Fireworks Factory",
+        "Charmed Ridge",
+        "Bentley's Outpost"
+      ]
     },
     "Starfish Reef": {
       "bosses": [

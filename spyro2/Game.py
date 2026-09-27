@@ -1,33 +1,23 @@
 """Spyro 2 (Ripto's Rage!) inside the Spyro Reignited Trilogy world.
 
-Locations: orbs, talismans, the three Money Bags ability purchases, the three
-boss-defeat events and gem checks. The region graph follows the game: Menu ->
-Summer Forest -> Autumn Plains -> Winter Tundra, each homeworld opening behind
-the previous one's boss, and every level connects from the homeworld its portal
-stands in. What the game demands on top of that — talisman and orb doors, the
-professor door, abilities, all twelve Money Bags payments, gem tiers — is data
-in data/spyro2.json, turned into rules by ../gates.py (spyrosim reads the same
-data).
+Locations: orbs, talismans, the Money Bags ability purchases, boss-defeat
+events, and gem checks. The region graph follows the game, and every gate
+(talisman and orb doors, abilities, Money Bags payments, gem tiers) is data in
+data/spyro2.json, turned into rules by ../gates.py.
 
-Under spyro2_moneybags_abilities=sanity Swim/Climb/Headbash are shuffled items
-(the mod revokes a purchase until the item arrives); under vanilla each
-purchase location holds its ability as a locked event, so the ability rules
-apply in both modes. spyro2_goal=ripto makes Spyro 2 requirable: complete
-means Ripto Defeated.
+Under spyro2_moneybags_abilities=sanity the Swim, Climb, and Headbash
+abilities are shuffled items; under vanilla each purchase location holds its
+ability as a locked event, so the ability rules apply in both modes.
+spyro2_goal=ripto makes Spyro 2 requirable, meaning Ripto Defeated.
 
-spyro2_orb_shuffle (default on) makes the 64 orb checks release shuffled
-"Spyro 2: Orb" items and the orb doors count received Orb items — the mod
-reconciles the game's orb counter to them (spyro2/orbs.lua, the Spyro 1
-dragon pattern). Off, orbs are vanilla checks and the doors read the game's
-own counter; either way the doors' rules are the same data (gates.py), only
-the counting source moves.
+Under spyro2_orb_shuffle (default on) orb doors count received Orb items and
+the mod reconciles the game's orb counter to them; off, they read the game's
+own counter. Either way the doors' rules are the same gate data, only the
+counting source moves.
 
-spyro2_level_locks gates the 25 levels whose portals the mod locks (all portals
-live in the 3 homeworlds and lead out of them) behind shuffled "Spyro 2:
-<Level> Key" items. The homeworlds themselves are never locked — their access
-is the boss chain above, the same reason Spyro 1 never locks its homeworlds —
-and Dragon Shores is a post-game bonus world with no checks. Glimmer, the spawn
-level, gets its key precollected; the other 24 are shuffled.
+Under spyro2_level_locks the mod locks 25 level portals behind shuffled level
+key items. Homeworlds are never locked (the boss chain gates them), and the
+spawn level Glimmer's key is precollected; the other 24 keys shuffle.
 """
 from typing import Dict, List, Set
 
@@ -68,7 +58,7 @@ class Spyro2Game:
         self.lockable_levels: List[str] = []
         self.level_key_pool_levels: List[str] = []
         self.gates = Gates(load("spyro2"), self.player)
-        self.gates.item_counts = self._orb_item_counts
+        self.gates.item_counts = {"orbs": self._orb_item_counts}
         self.location_names: Set[str] = set()
 
     def generate_early(self):
@@ -79,8 +69,7 @@ class Spyro2Game:
         self.s2_goal = int(self.world.options.spyro2_goal.value)
         self.level_locks = bool(self.world.options.spyro2_level_locks.value)
         self.requirable = self.s2_goal == S2GoalOptions.RIPTO
-        # No starting-unlocked option: Glimmer is the spawn level, so its key is
-        # precollected and the other 24 shuffle into the pool.
+        # Glimmer is the spawn level, so its key is precollected and the other 24 keys shuffle.
         if self.level_locks:
             self.lockable_levels = list(level_key_levels)
             self.level_key_pool_levels = [
@@ -98,11 +87,7 @@ class Spyro2Game:
                     continue
                 location = SRTLocation(self.player, data.name, self.world.location_name_to_id[data.name],
                                        region)
-                # Locked events keep the item's real code: stock AP serializes
-                # every addressed location as (code, player, flags) and a None
-                # code crashes the server's LocationStore. Boss checks fire from
-                # the save's EIT_S2Boss record; vanilla purchases from the
-                # ability's own save record.
+                # Keep the item's real code: a None code crashes the server's LocationStore.
                 if data.kind is Kind.BOSS:
                     location.place_locked_item(self.world.create_item(s2(data.plain.split(": ")[-1])))
                 elif data.kind is Kind.ABILITY and \
@@ -121,8 +106,7 @@ class Spyro2Game:
             entrance.connect(region)
 
     def create_pool(self) -> List[str]:
-        # Level Locks precollects the Glimmer key (the spawn level) like
-        # Spyro 1 precollects its starting keys inside create_pool.
+        # Precollect the Glimmer key, the spawn level, like Spyro 1 does.
         if self.level_locks:
             self.multiworld.push_precollected(
                 self.world.create_item(level_key_name("Glimmer")))
@@ -136,10 +120,8 @@ class Spyro2Game:
         return names
 
     def set_rules(self) -> None:
-        # Every rule comes from the gate data in data/spyro2.json (see
-        # gates.py): level entrances, single checks, gem tiers and the Money
-        # Bags purchases. Gates that count reachable locations or gems read
-        # every region, so those entrances get them all as indirect conditions.
+        # Every rule comes from the gate data in data/spyro2.json. Gates that
+        # read other regions get all of them as indirect conditions.
         player = self.player
         multiworld = self.multiworld
         gates = self.gates
@@ -163,17 +145,15 @@ class Spyro2Game:
                     add_rule(multiworld.get_location(data.name, player),
                              gates.gem_rule(level, data.threshold))
 
-        # Level Locks: every lockable level's entrance also needs its Key.
-        # Glimmer's key is precollected, so its rule is always satisfied.
+        # Level Locks: each lockable level's entrance also needs its key.
         if self.level_locks:
             for level in self.lockable_levels:
                 add_rule(multiworld.get_entrance(s2(level), player),
                          lambda state, key=level_key_name(level): state.has(key, player))
 
     def _orb_item_counts(self, state) -> int:
-        """Under the default orb shuffle the orb doors read received Orb
-        items (the mod reconciles the game's orb counter to them), else the
-        reachable orb checks (gates.py's own counting)."""
+        """Under orb shuffle the orb doors count received Orb items, else None
+        falls back to gates.py's reachable-check count."""
         if self.orb_shuffle:
             return state.count(ORB, self.player)
         return None
@@ -187,9 +167,9 @@ class Spyro2Game:
         goal_location = 0
         if self.s2_goal == S2GoalOptions.RIPTO:
             goal_location = self.world.location_name_to_id[s2("Ripto's Arena: Ripto Defeated")]
-        # level_keys: region -> key item name, all lockable levels including the
-        # precollected Glimmer key — the mod locks the regions whose key it has
-        # not received yet, and precollected items arrive in the backlog.
+        # level_keys maps each lockable region to its key item name; the mod
+        # locks regions whose key has not arrived yet. Precollected items
+        # arrive in the backlog, so Glimmer is included.
         return {"options": {"enable_gem_checks": int(self.enable_gem_checks),
                             "enable_skillpoint_checks": int(self.enable_skillpoint_checks),
                             "orb_shuffle": int(self.orb_shuffle),

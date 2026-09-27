@@ -1,42 +1,28 @@
 """Spyro 3 (Year of the Dragon) inside the Spyro Reignited Trilogy world.
 
-Locations: 25/50/75/100% gem checks for the 29 gem-bearing levels, the 146
-save-named dragon eggs, the 4 boss-defeat events and the 20 skill-point checks.
-The region graph follows the game: Menu -> Sunrise Spring -> Midday Gardens ->
-Evening Lake -> Midnight Mountain, and every level connects from the homeworld
-its portal stands in. What the game demands on top of that — the boss chain,
-the egg portals, the Sparx realm chain, the companion and Money Bags payments,
-the eggs behind paid doors, gem tiers — is data in data/spyro3.json, turned
-into rules by ../gates.py (spyrosim reads the same data). Egg doors count the
-eggs the player can catch, boss kills included (each boss dungeon's egg record
-is the kill): they read the save's egg records, which the Dragon Egg items
-never touch (the debug egg counter is display-only, live-proven). Eggs are
-ALWAYS checks (each one is named in the save); only the paid doors give some
-of them rules of their own. The boss events replace the boss dungeons' egg rows (there is no
-EIT_S3Boss record in saves — the boss dungeon's named egg record IS the boss
-kill, which checkd's egg scan already drops). The speedway flight checks land
-with their feature task. spyro3_goal=sorceress makes Spyro 3 requirable:
-complete means Sorceress Defeated. Abilities are granted by story in Spyro 3
-(they carry over from Spyro 2), so there are no ability items.
+Locations: gem checks, dragon eggs, boss-defeat events, and skill-point
+checks. The region graph follows the game, and every gate (the boss chain,
+egg portals, Sparx realm chain, companion and Money Bags payments, gem tiers)
+is data in data/spyro3.json, turned into rules by ../gates.py. Eggs are always
+checks; only the paid egg doors give some of them rules of their own. The boss
+events replace the boss dungeons' egg rows, which checkd's egg scan already
+drops. spyro3_goal=sorceress makes Spyro 3 requirable, meaning Sorceress
+Defeated. Abilities are granted by story in Spyro 3, so there are no ability
+items.
 
-Under spyro3_sparx_powers the 3 Sparx realm completions (Crawdad Farm, Starfish
-Reef, Bugbot Factory) become checks whose default items are the 3 useful Sparx
-power items; off, the rows disappear (they are option-gated like the skill
-points).
+Under spyro3_egg_shuffle (default on) egg portals count received Dragon Egg
+items and the mod re-tunes each portal's EggRequirement to match; off, they
+read the game's save-recorded egg count. Either way the doors' rules are the
+same gate data, only the counting source moves.
 
-spyro3_egg_shuffle only decides whether the egg checks release items: on, each
-egg location's default item is a shuffled progression "Spyro 3: Dragon Egg"
-(generic, 146 copies); off, eggs are vanilla checks whose default item is
-FILLER.
+Under spyro3_sparx_powers the three Sparx realm completions become checks
+whose default items are the three Sparx power items; off, the checks
+disappear.
 
-spyro3_level_locks gates the 33 sub-levels whose portals the mod locks (every
-sub-level's portal stands in one of the 4 homeworlds, Bugbot Factory's in
-Midnight Mountain included) behind shuffled "Spyro 3: <Level> Key" items. The
-homeworlds themselves are never locked — their access is the game's own boss
-chain (balloon to Midday Gardens after Buzz, whirligig to Evening Lake after
-Spike, rocket to Midnight Mountain after Scorch), the same reason Spyro 1
-never locks its homeworlds — and the spawn level, Sunrise Spring, is a
-homeworld, so unlike Spyro 2 there is no precollected key: all 33 shuffle.
+Under spyro3_level_locks the mod locks 33 sub-level portals behind shuffled
+level key items. Homeworlds are never locked (the game's boss chain gates
+them), and the spawn level Sunrise Spring is a homeworld, so all 33 keys
+shuffle.
 """
 from typing import Dict, List, Set
 
@@ -47,7 +33,8 @@ from ..core import FILLER, SRTLocation
 from ..data import load
 from ..gates import Gates
 from . import Items as S3Items
-from .Items import DRAGON_EGG, EXTRA_HIT_POINT, CHEST_BREAKING, GEM_COLLECT_RANGE, level_key_levels, level_key_name
+from .Items import (DRAGON_EGG, EXTRA_HIT_POINT, CHEST_BREAKING, GEM_COLLECT_RANGE,
+                    level_key_levels, level_key_name)
 from .Locations import (Kind, BOSSES, EGG_CATALOG, SPARX_REALM_POWERS,
                         TABLE_ORDER, location_tables)
 from .Names import s3
@@ -72,6 +59,7 @@ class Spyro3Game:
         self.lockable_levels: List[str] = []
         self.region_levels: List[str] = []
         self.gates = Gates(load("spyro3"), self.player)
+        self.gates.item_counts = {"eggs": self._egg_item_counts}
         self.location_names: Set[str] = set()
         self.level_key_pool_levels: List[str] = []
 
@@ -83,8 +71,7 @@ class Spyro3Game:
         self.level_locks = bool(self.world.options.spyro3_level_locks.value)
         self.s3_goal = int(self.world.options.spyro3_goal.value)
         self.requirable = self.s3_goal == GoalOptions.SORCERESS
-        # No starting-unlocked option: the spawn level, Sunrise Spring, is a
-        # homeworld and homeworlds are never locked, so all 33 keys shuffle.
+        # The spawn level is a homeworld, so no key is precollected and all 33 keys shuffle.
         if self.level_locks:
             self.lockable_levels = list(level_key_levels)
             self.level_key_pool_levels = list(level_key_levels)
@@ -94,8 +81,7 @@ class Spyro3Game:
         previous_hub = menu
         for level in TABLE_ORDER:
             if not location_tables[level] and level not in self.lockable_levels:
-                # No checks, and Level Locks never locks its portal: the region
-                # lands with its feature task (flight checks).
+                # No checks and its portal is never locked; the region lands with its feature task.
                 continue
             region = Region(s3(level), self.player, self.multiworld)
             for data in location_tables[level]:
@@ -115,11 +101,9 @@ class Spyro3Game:
                 location = SRTLocation(self.player, data.name, self.world.location_name_to_id[data.name],
                                        region)
                 if data.kind is Kind.BOSS:
-                    # Locked event: the boss dungeon's egg record (data.save_key)
-                    # is the boss kill — the check fires when checkd scans it.
-                    # Keep the event item's real code: stock AP serializes every
-                    # addressed location as (code, player, flags) and a None
-                    # code crashes the server's LocationStore.
+                    # Locked event: the boss dungeon's egg record is the boss
+                    # kill. Keep the item's real code; a None code crashes the
+                    # server's LocationStore.
                     location.place_locked_item(self.world.create_item(default_item))
                 region.locations.append(location)
                 self.location_names.add(data.name)
@@ -144,11 +128,8 @@ class Spyro3Game:
         return names
 
     def set_rules(self) -> None:
-        # Every rule comes from the gate data in data/spyro3.json (see
-        # gates.py): the boss chain between homeworlds, the egg portals, the
-        # companion and Money Bags payments, single checks and gem tiers.
-        # Gates that count reachable eggs or gems read every region, so those
-        # entrances get them all as indirect conditions.
+        # Every rule comes from the gate data in data/spyro3.json. Gates that
+        # read other regions get all of them as indirect conditions.
         player = self.player
         multiworld = self.multiworld
         gates = self.gates
@@ -169,9 +150,8 @@ class Spyro3Game:
                 if data.kind is Kind.GEM and data.name in self.location_names:
                     add_rule(multiworld.get_location(data.name, player),
                              gates.gem_rule(level, data.threshold))
-        # Level Locks: every lockable level's entrance also needs its Key. No
-        # key is precollected (the spawn is a homeworld), so every key rule
-        # binds from the start.
+        # Level Locks: each lockable level's entrance also needs its key, and
+        # no key is precollected.
         if self.level_locks:
             for level in self.lockable_levels:
                 add_rule(multiworld.get_entrance(s3(level), player),
@@ -182,13 +162,25 @@ class Spyro3Game:
             return state.has(S3Items.SORCERESS, self.player)
         return False
 
+    def _egg_item_counts(self, state) -> int:
+        """Under egg shuffle the egg portals count received Dragon Egg items
+        plus reachable boss dungeons' eggs (boss kills are never shuffled, and
+        Super Bonus Round needs 149 of 150); None falls back to gates.py's
+        reachable-check count."""
+        if self.egg_shuffle:
+            bosses = sum(1 for level in BOSSES if state.can_reach_region(s3(level), self.player))
+            return state.count(DRAGON_EGG, self.player) + bosses
+        return None
+
     def slot_data(self) -> dict:
         goal_location = 0
         if self.s3_goal == GoalOptions.SORCERESS:
             goal_location = self.world.location_name_to_id[
                 s3("Sorceress Lair: Sorceress Defeated")]
-        # level_keys: region -> key item name, all lockable levels — the mod
-        # locks the regions whose key it has not received yet.
+        # level_keys maps each lockable region to its key item name; the mod
+        # locks regions whose key has not arrived yet. egg_gates carries the
+        # vanilla egg requirements so the mod can re-tune the egg portals
+        # under egg_shuffle.
         return {"options": {"enable_gem_checks": int(self.enable_gem_checks),
                             "enable_skillpoint_checks": int(self.enable_skillpoint_checks),
                             "sparx_powers": int(self.sparx_powers),
@@ -196,4 +188,6 @@ class Spyro3Game:
                             "level_locks": int(self.level_locks),
                             "egg_shuffle": int(self.egg_shuffle)},
                 "level_keys": {level: level_key_name(level) for level in self.lockable_levels},
+                "egg_gates": {level: int(gate["eggs"]) for level, gate in self.gates.gates.items()
+                              if "eggs" in gate},
                 "goal_location": goal_location}

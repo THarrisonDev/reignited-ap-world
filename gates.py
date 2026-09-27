@@ -1,40 +1,27 @@
 """Game gates for the tabular games (Spyro 2/3), read from data/<game>.json.
 
-The JSON describes what the game itself demands; this module turns it into
-Archipelago rules. spyrosim reads the same fields, so the logic and the
-simulated player never disagree about a gate.
+The JSON describes what the game demands; this module turns it into
+Archipelago rules. Spyrosim reads the same fields, so the logic and the
+simulated player always agree on a gate.
 
-  homeworlds  [level]       play order; a level's portal stands in the last
-                            homeworld listed before it in `regions` order
-  payments    [{name, price, region, location?}]
-                            every Money Bags payment, in play order;
-                            `location` names the check it fires (abilities)
-  gates       {level: gate}         entering the level
-  checkGates  {location: gate}      one check; the name has no game prefix
-  gemGates    {level: {"25"|"50"|"75"|"100": gate}}
-                            a gem tier needs its gate and every lower tier's
+The JSON holds: `homeworlds` (play order), `payments` (Money Bags purchases in
+play order, each with a price, region, and optional check), `gates` (level
+entry), `checkGates` (single checks), and `gemGates` (per-level gem tiers,
+where each tier needs its gate and every lower tier's).
 
-A gate lists conditions that must all hold (any key may be missing):
-  bosses [item]   abilities [name]   levels [level]   payments [name]
-  talismans / orbs / eggs / gems: counts the player can reach
-Any other key (e.g. "note") is documentation.
+A gate lists conditions that must all hold: bosses, abilities, levels,
+payments, or counts of talismans, orbs, eggs, and gems. Counts come from
+reachable checks; gems come from reachable levels at their highest open tier.
+A payment needs its region and a gem total covering every price up to it in
+play order, which stays affordable whatever order the player really pays in.
 
-Counts come from reachable checks (Spyro 3 boss kills are eggs); gems from
-reachable levels at their highest open tier. A payment needs its region and
-the running total of every price up to it in play order, in gems the player
-can reach. Paying in play order that way always leaves enough for the next
-payment whatever order the player really pays in, so the rule is safe without
-tracking spent gems.
+A game can override a kind's counting source via `item_counts` (kind to
+callable returning an int or None). Spyro 2 orbs and Spyro 3 eggs use this to
+read received items when shuffled.
 
-A game may override one kind's counting source by setting `item_counts`
-to a callable (state -> int or None): a non-None result stands in for the
-reachable-check count (Spyro 2 orbs read received Orb items under the
-default orb shuffle — the mod reconciles the game's orb counter to them).
-
-Evaluation runs in layers so no rule reads itself: the payments grow to a
-fixpoint first; counts then use those payments, and a check that is itself
-gated by a count (Autumn Plains' Long glide! needs 8 orbs) is judged against
-the count of the checks without count gates; gates read both.
+Evaluation runs in layers so no rule reads itself: payments grow to a fixpoint
+first, then counts use those payments, and a count-gated check is judged
+against the count of checks without count gates. Gates read both.
 """
 from enum import Enum
 from typing import Dict, List, Set
@@ -42,8 +29,7 @@ from typing import Dict, List, Set
 EGG_KINDS = ("egg", "boss")
 COUNT_KINDS = {"talismans": ("talisman",), "orbs": ("orb",), "eggs": EGG_KINDS}
 class Tier(Enum):
-    """Gem tiers, in the order they open. The JSON's gemGates spell these as
-    percent strings ("25".."100"); Tier(t) validates them at load."""
+    """Gem tiers, in the order they open. Tier(t) validates the JSON's percent strings."""
     T25 = 25
     T50 = 50
     T75 = 75
@@ -52,7 +38,7 @@ READS_REGIONS = ("talismans", "orbs", "eggs", "gems", "payments", "levels")
 
 
 class _Eval:
-    """One rule evaluation against one state: memoized payments and counts."""
+    """One rule evaluation against one state, with memoized payments and counts."""
 
     def __init__(self, gates: "Gates", state):
         self.gates = gates
@@ -66,7 +52,7 @@ class _Eval:
 
     @property
     def paid(self) -> Set[str]:
-        """Grown on first use; while growing it is the set so far."""
+        """Grown to a fixpoint on first use; while growing, it is the set so far."""
         if self._paid is None:
             self._paid = set()
             self._grow()
@@ -105,8 +91,8 @@ class _Eval:
     def _counted(self, kind: str, with_counts: bool) -> int:
         g = self.gates
         override = getattr(g, "item_counts", None)
-        if kind == "orbs" and override is not None:
-            n = override(self.state)
+        if override is not None and kind in override:
+            n = override[kind](self.state)
             if n is not None:
                 return n
         n = 0
@@ -143,7 +129,7 @@ class _Eval:
         return all(self.count(kind) >= gate[kind] for kind in COUNT_KINDS if kind in gate)
 
     def tier(self, level: str) -> int:
-        """The highest gem tier open in the level (0 when even 25% is shut)."""
+        """The highest gem tier open in the level, or 0 if none are open."""
         if level not in self._tiers:
             self._tiers[level] = self._tier(level)
         return self._tiers[level]
@@ -160,8 +146,8 @@ class _Eval:
             if any(k in gate for k in COUNT_KINDS) and \
                     not all(self._base_count(k) >= gate[k] for k in COUNT_KINDS if k in gate):
                 break
-            best = t
-        return best.value
+            best = t.value
+        return best
 
     def gems(self) -> int:
         if self._gems is None:
@@ -194,7 +180,7 @@ class Gates:
         for kind, kinds in COUNT_KINDS.items():
             plan = []
             for level, rows in data.regions.items():
-                names = [row["plain"] for row in rows if row["kind"] in kinds]
+                names = [row["plain"] for row in rows if row["kind"].value in kinds]
                 gated = [name for name in names if name in self.check_gates]
                 if names:
                     plan.append((level, len(names) - len(gated), gated))
@@ -226,13 +212,11 @@ class Gates:
 
     @staticmethod
     def reads_regions(gate: dict) -> bool:
-        """Whether the gate reads other regions (an entrance using it needs
-        every region as an indirect condition)."""
+        """Whether the gate reads other regions. Such an entrance needs every region as an indirect condition."""
         return any(key in gate for key in READS_REGIONS)
 
     def evaluate(self, state) -> _Eval:
-        """The state's evaluation, reused until the player's items or reachable
-        regions change (a sweep in progress grows the regions)."""
+        """The state's evaluation, reused while items and reachable regions are unchanged."""
         key = (frozenset(state.prog_items[self.player].items()),
                len(state.reachable_regions[self.player]))
         cache = state.__dict__.setdefault("_srt_gates", {})
