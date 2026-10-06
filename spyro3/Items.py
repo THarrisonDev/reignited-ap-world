@@ -4,7 +4,7 @@ Under spyro3_level_locks, the 33 sub-levels whose portals the mod locks each
 get a "<Level> Key" item (the 4 homeworlds are excluded and never locked; the
 spawn is Sunrise Spring — a homeworld — so no key is precollected). Under
 spyro3_egg_shuffle, each of the 146 shuffling egg checks releases a generic
-"Spyro 3: Dragon Egg" item (S3AP-style: one name, N copies — the save names
+"Spyro 3: Dragon Egg" item (one name, N copies — the save names
 the eggs, the item stays generic). The 3 Sparx powers granted by the Sparx
 realms (Crawdad Farm, Starfish Reef, Bugbot Factory) shuffle as useful items.
 The boss events (Buzz/Spike/Scorch/

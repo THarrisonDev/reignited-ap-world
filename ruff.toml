@@ -16,7 +16,7 @@ ignore = [
     "SIM117", # nested with — used for AP's option/rule context managers
     # AP world modules intentionally keep the short names (Items, Options,
     # Game, Names) that the platform's loader expects; PEP8 module naming
-    # does not apply to the subpackage layout mirrored from S2AP/S3AP.
+    # does not apply to this subpackage layout.
     "N999",
     # The codebase targets AP's runtime (which still runs 3.10-style typing
     # imports fine); don't churn List/Optional -> list/| while the platform
