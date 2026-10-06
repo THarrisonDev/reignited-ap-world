@@ -1058,7 +1058,7 @@
       "name": "Glimmer bridge",
       "price": 100,
       "region": "Glimmer",
-      "note": "gates no check (S2AP); counted so later running totals stay safe"
+      "note": "gates no check in-game; counted so later running totals stay safe"
     },
     {
       "name": "Swim",
@@ -1139,7 +1139,11 @@
       ]
     },
     "Crush's Dungeon": {
-      "talismans": 6
+      "abilities": [
+        "Swim"
+      ],
+      "talismans": 6,
+      "note": "the vanilla game requires Swim to reach Crush explicitly, alongside the 6 talismans; ours only held it implicitly (3 of the 6 Summer Forest talismans sit behind Swim-gated regions), so make it explicit against future data drift"
     },
     "Ocean Speedway": {
       "abilities": [
@@ -1391,7 +1395,7 @@
       },
       "75": {
         "orbs": 8,
-        "note": "202 of 400 gems are behind the professor door (S2AP)"
+        "note": "202 of 400 gems are behind the professor door"
       }
     },
     "Crystal Glacier": {
@@ -1399,7 +1403,7 @@
         "payments": [
           "Crystal Glacier bridge"
         ],
-        "note": "155 of 400 gems are past the bridge (S2AP)"
+        "note": "155 of 400 gems are past the bridge"
       }
     },
     "Magma Cone": {
@@ -1407,7 +1411,7 @@
         "payments": [
           "Magma Cone elevator"
         ],
-        "note": "S2AP holds back part of the gems for the elevator; the share is unclear"
+        "note": "part of the gems sit past the elevator; the share is unclear"
       }
     },
     "Shady Oasis": {
