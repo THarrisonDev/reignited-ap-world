@@ -1704,7 +1704,11 @@
         "Molten Crater",
         "Seashell Shore",
         "Sheila's Alp"
-      ]
+      ],
+      "payments": [
+        "Cloud Spires bellows"
+      ],
+      "note": "reaching Cloud Spires isn't finishing it: the bellows toll gates the only non-glitch route to the level's end"
     },
     "Crawdad Farm": {
       "bosses": [
@@ -1737,7 +1741,11 @@
         "Spooky Swamp",
         "Bamboo Terrace",
         "Sgt. Byrd Base"
-      ]
+      ],
+      "payments": [
+        "Spooky Swamp door"
+      ],
+      "note": "reaching Spooky Swamp isn't finishing it: the door toll gates the only non-glitch route to the level's end"
     },
     "Spider Town": {
       "bosses": [
@@ -1773,7 +1781,11 @@
         "Fireworks Factory",
         "Charmed Ridge",
         "Bentley's Outpost"
-      ]
+      ],
+      "payments": [
+        "Charmed Ridge stairs"
+      ],
+      "note": "reaching Charmed Ridge isn't finishing it: the stairs toll gates the only non-glitch route to the level's end (and most of its content)"
     },
     "Starfish Reef": {
       "bosses": [
@@ -2108,78 +2120,79 @@
     }
   },
   "gemGates": {
+    "Sunny Villa": {
+      "100": {
+        "levels": [
+          "Sheila's Alp"
+        ],
+        "note": "89 of 400 gems are in Sheila's sub-area"
+      }
+    },
     "Cloud Spires": {
-      "75": {
+      "50": {
         "payments": [
           "Cloud Spires bellows"
         ],
-        "note": "the share of gems behind it is unknown: 75% and up need it"
+        "note": "229 of 400 gems are behind the bellows"
       }
     },
     "Molten Crater": {
-      "75": {
+      "50": {
         "payments": [
           "Molten Crater thieves door"
         ],
-        "note": "the share of gems behind it is unknown: 75% and up need it"
-      },
+        "levels": [
+          "Sgt. Byrd Base"
+        ],
+        "note": "106 of 400 gems are behind the thieves door, 109 in Sgt. Byrd's sub-area; either alone clears 50% but not the tiers above, so both are required here as the safe combined gate"
+      }
+    },
+    "Seashell Shore": {
+      "75": {
+        "levels": [
+          "Sheila's Alp"
+        ],
+        "note": "105 of 400 gems are in Sheila's sub-area"
+      }
+    },
+    "Enchanted Towers": {
       "100": {
         "levels": [
           "Sgt. Byrd Base"
         ],
-        "note": "Sgt. Byrd's sub-area holds an unknown share of the gems, so All Gems needs Sgt. Byrd Base"
-      }
-    },
-    "Seashell Shore": {
-      "100": {
-        "levels": [
-          "Sheila's Alp"
-        ],
-        "note": "Sheila's sub-area holds an unknown share of the gems, so All Gems needs Sheila's Alp"
-      }
-    },
-    "Icy Peak": {
-      "75": {
-        "payments": [
-          "Icy Peak door"
-        ],
-        "note": "the share of gems behind it is unknown: 75% and up need it"
+        "note": "63 of 500 gems are in Sgt. Byrd's sub-area"
       }
     },
     "Spooky Swamp": {
-      "75": {
+      "50": {
         "payments": [
           "Spooky Swamp door"
         ],
-        "note": "the share of gems behind it is unknown: 75% and up need it"
-      },
-      "100": {
-        "levels": [
-          "Sheila's Alp"
-        ],
-        "note": "Sheila's sub-area holds an unknown share of the gems, so All Gems needs Sheila's Alp"
+        "note": "281 of 500 gems are behind the door"
       }
     },
-    "Frozen Altars": {
+    "Bamboo Terrace": {
       "75": {
-        "payments": [
-          "Frozen Altars cat hockey door"
-        ],
-        "note": "the share of gems behind it is unknown: 75% and up need it"
-      },
-      "100": {
         "levels": [
           "Bentley's Outpost"
         ],
-        "note": "Bentley's sub-area holds an unknown share of the gems, so All Gems needs Bentley's Outpost"
+        "note": "189 of 500 gems are in Bentley's sub-area"
+      }
+    },
+    "Lost Fleet": {
+      "100": {
+        "bosses": [
+          "Scorch Defeated"
+        ],
+        "note": "89 of 600 gems only fall once Scorch is defeated"
       }
     },
     "Fireworks Factory": {
-      "100": {
+      "75": {
         "levels": [
           "Agent 9's Lab"
         ],
-        "note": "Agent 9's sub-area holds an unknown share of the gems, so All Gems needs Agent 9's Lab"
+        "note": "175 of 600 gems are in Agent 9's sub-area"
       }
     },
     "Charmed Ridge": {
@@ -2187,21 +2200,15 @@
         "payments": [
           "Charmed Ridge stairs"
         ],
-        "note": "about 470 of 600 gems are up the stairs"
-      },
-      "100": {
-        "levels": [
-          "Sgt. Byrd Base"
-        ],
-        "note": "Sgt. Byrd's sub-area holds an unknown share of the gems, so All Gems needs Sgt. Byrd Base"
+        "note": "472 of 600 gems are up the stairs"
       }
     },
     "Crystal Islands": {
-      "25": {
+      "50": {
         "payments": [
           "Crystal Islands bridge"
         ],
-        "note": "most of the level is past the bridge"
+        "note": "475 of 700 gems are past the bridge"
       }
     },
     "Desert Ruins": {
@@ -2209,21 +2216,7 @@
         "payments": [
           "Desert Ruins door"
         ],
-        "note": "the share of gems behind it is unknown: 75% and up need it"
-      },
-      "100": {
-        "levels": [
-          "Sheila's Alp"
-        ],
-        "note": "Sheila's sub-area holds an unknown share of the gems, so All Gems needs Sheila's Alp"
-      }
-    },
-    "Haunted Tomb": {
-      "100": {
-        "levels": [
-          "Agent 9's Lab"
-        ],
-        "note": "Agent 9's sub-area holds an unknown share of the gems, so All Gems needs Agent 9's Lab"
+        "note": "252 of 700 gems are behind the door"
       }
     },
     "Dino Mines": {
@@ -2231,7 +2224,7 @@
         "levels": [
           "Agent 9's Lab"
         ],
-        "note": "Agent 9's sub-area holds an unknown share of the gems, so All Gems needs Agent 9's Lab"
+        "note": "108 of 700 gems are in Agent 9's sub-area"
       }
     }
   }
