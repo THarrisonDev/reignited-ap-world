@@ -10,9 +10,9 @@
 ## Installation
 
 1. Install Archipelago.
-2. Double-click `spyro_reignited.apworld` (from this repo's releases) to install it into your
-   Archipelago installation. Remove any older `spyro1.apworld` first: both declare the
-   game "Spyro Reignited Trilogy".
+2. Double-click `reignited.apworld` (from this repo's releases) to install it into your
+   Archipelago installation. Remove any older `spyro_reignited.apworld` or
+   `spyro1.apworld` first: all three declare the game "Spyro Reignited Trilogy".
 3. Generate a game as normal: create a YAML via the Launcher's "Generate Template Options",
    edit your settings, place it in the `players` folder, and run Generate.
 4. Host the output on archipelago.gg or locally.

@@ -53,13 +53,13 @@ def _read_json(path: str) -> dict:
 def _read_json_in_zip(rel: str) -> dict:
     """Read data/<rel> from inside the .apworld zip. data/__init__.py was
     imported through AP's zipimport: __file__ looks like
-    "<...>/spyro_reignited.apworld/spyro_reignited/data/__init__.py" but the
+    "<...>/reignited.apworld/reignited/data/__init__.py" but the
     file system only has the .apworld file itself."""
     import zipfile
     marker = ".apworld" + os.sep
     if marker in __file__:
         zip_path = __file__.split(marker, 1)[0] + ".apworld"
-        member = "spyro_reignited/data/" + rel
+        member = "reignited/data/" + rel
     else:
         # Loaded from disk but the JSON file is missing: maybe an installed
         # apworld unzipped without the data dir — last resort, sibling zip.

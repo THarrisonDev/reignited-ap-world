@@ -6,7 +6,7 @@
 
 ARCHIPELAGO_JSON := archipelago.json
 WORLD_INIT := __init__.py
-WORLD_NAME := spyro_reignited
+WORLD_NAME := reignited
 APWORLD := $(WORLD_NAME).apworld
 
 .DEFAULT_GOAL := check-version

@@ -31,7 +31,7 @@ submodule pointers; the submodules hold the actual code and versions.
    - Bump both submodule pointers to the freshly tagged commits
      (`git submodule update --remote`, then commit the pointer bump).
    - Build the two release artifacts:
-     - **`spyro_reignited_<version>.apworld`** — in the world repo at the
+     - **`reignited_<version>.apworld`** — in the world repo at the
        tagged commit: `make package`, then rename the output to append the
        version. Attach to the GitHub release.
      - **`reignited-ap-client_<version>.zip`** — in the client repo at the
