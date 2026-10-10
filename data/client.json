@@ -169,28 +169,28 @@
     },
     "spyro2": {
       "15": {
-        "level": "Idol Springs",
-        "task": "Land on Idol"
+        "level": "Aquaria Towers",
+        "task": "All Seaweed"
       },
       "16": {
         "level": "Colossus",
         "task": "Perfect in Hockey"
       },
       "17": {
+        "level": "Fracture Hills",
+        "task": "3 Laps of Supercharge"
+      },
+      "18": {
         "level": "Hurricos",
         "task": "All Windmills"
       },
-      "18": {
-        "level": "Aquaria Towers",
-        "task": "All Seaweed"
-      },
       "19": {
-        "level": "Ocean Speedway",
-        "task": "Under 1:10"
+        "level": "Idol Springs",
+        "task": "Land on Idol"
       },
       "20": {
-        "level": "Crush's Dungeon",
-        "task": "Perfect"
+        "level": "Scorch",
+        "task": "All Trees"
       },
       "21": {
         "level": "Skelos Badlands",
@@ -201,36 +201,36 @@
         "task": "All Cacti"
       },
       "23": {
-        "level": "Scorch",
-        "task": "All Trees"
+        "level": "Crush's Dungeon",
+        "task": "Perfect"
       },
       "24": {
-        "level": "Fracture Hills",
-        "task": "3 Laps of Supercharge"
-      },
-      "25": {
         "level": "Icy Speedway",
         "task": "Under 1:15"
+      },
+      "25": {
+        "level": "Ripto's Arena",
+        "task": "Perfect"
       },
       "26": {
         "level": "Metro Speedway",
         "task": "Under 1:15"
       },
       "27": {
-        "level": "Gulp's Overlook",
-        "task": "Perfect"
+        "level": "Ocean Speedway",
+        "task": "Under 1:10"
       },
       "28": {
-        "level": "Gulp's Overlook",
-        "task": "Hit Ripto"
-      },
-      "29": {
         "level": "Canyon Speedway",
         "task": "Under 1:10"
       },
-      "30": {
-        "level": "Ripto's Arena",
+      "29": {
+        "level": "Gulp's Overlook",
         "task": "Perfect"
+      },
+      "30": {
+        "level": "Gulp's Overlook",
+        "task": "Hit Ripto"
       }
     },
     "spyro3": {
