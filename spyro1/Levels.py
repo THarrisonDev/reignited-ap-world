@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 1 level/check views over the JSON data (world/data/spyro1.json).
 
 The JSON is the single source of truth; this module only re-shapes it into the

@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 1 (Spyro the Dragon) inside the Spyro Reignited Trilogy world.
 
 Game data (all verified):

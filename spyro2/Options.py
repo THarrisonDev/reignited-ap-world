@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 2 options. The slot's options dataclass (../Options.py) exposes them as spyro2_*."""
 from Options import Choice, DefaultOnToggle, OptionGroup, Toggle
 

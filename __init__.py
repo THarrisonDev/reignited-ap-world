@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 # Spyro Reignited Trilogy Archipelago World
 #
 # While it would be much more simple to treat the games as individual

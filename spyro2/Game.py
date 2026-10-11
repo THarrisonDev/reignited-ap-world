@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 2 (Ripto's Rage!) inside the Spyro Reignited Trilogy world.
 
 Locations: orbs, talismans, the Money Bags ability purchases, boss-defeat

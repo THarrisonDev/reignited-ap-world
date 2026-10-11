@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Items shared by every game: filler and traps.
 
 They take effect in whichever game is being played, so they carry no game

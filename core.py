@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Types shared by every game in the Spyro Reignited Trilogy world."""
 
 from BaseClasses import Item, Location

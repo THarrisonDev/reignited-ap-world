@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 3 locations: 25/50/75/100% gem checks for the 29 gem-bearing levels,
 the 146 save-named dragon eggs, the 4 boss-defeat events, 20 option-gated
 skill-point checks and the 3 option-gated Sparx power checks — a view over

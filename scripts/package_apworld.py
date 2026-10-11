@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Package the world into an installable .apworld.
 
 A zip with the world package at its root. Respects per-directory .apignore

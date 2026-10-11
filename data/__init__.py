@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Unified location/item engine: every game's data lives in data/<game>.json
 and every game plugs into the same loader. The JSON is the single source of
 truth; Python keeps only per-game LOGIC (rules, goals, region graphs).

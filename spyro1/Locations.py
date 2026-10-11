@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 1 locations: the Archipelago view of the checks in Levels.py. Location
 and item names carry the "Spyro 1: " prefix; IDs come straight from the checks.
 

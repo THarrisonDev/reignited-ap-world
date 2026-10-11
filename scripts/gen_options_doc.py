@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Generate the options reference for the game info page.
 
 Walks option_groups (the same grouping the AP web host renders) and emits a

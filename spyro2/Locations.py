@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 2 locations: 64 orbs, 14 talismans, the 3 Money Bags ability
 purchases, the 3 boss-defeat events, 25/50/75/100% gem checks and 16
 option-gated skill-point checks — a view over data/spyro2.json, the single

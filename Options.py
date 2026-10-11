@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Slot options: which games are in the slot, which complete it, and the
 item-pool/multiplayer settings shared by every game. Per-game options carry the
 game's prefix (spyro1_*)."""

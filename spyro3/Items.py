@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 3 items. Names carry the "Spyro 3: " prefix; IDs are 300000 + code.
 
 Under spyro3_level_locks, the 33 sub-levels whose portals the mod locks each

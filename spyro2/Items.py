@@ -1,3 +1,7 @@
+# Author: Tim Harrison
+# Created: 2026-09-26
+# Updated: 2026-10-11
+
 """Spyro 2 items. Names carry the "Spyro 2: " prefix; IDs are 200000 + code.
 
 The Money Bags abilities (Swim/Climb/Headbash) are shuffled progression items
