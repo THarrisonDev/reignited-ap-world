@@ -3,9 +3,11 @@
 ## Required Software
 
 - [Archipelago](https://github.com/ArchipelagoMW/Archipelago/releases) 0.6.1 or later
-- Spyro Reignited Trilogy (PC, Steam) **or** a PS1 emulator with a legal Spyro the Dragon ROM
-- The in-game client (UE4SS mod `srt_bridge` + Go daemon `srtap_checkd`;
-  see the project README in the client repo)
+- Spyro Reignited Trilogy (PC, Steam)
+- The Reignited AP client bundle from the project's
+  [releases](https://github.com/THarrisonDev/reignited-ap/releases) page: the
+  UE4SS mod `srt_bridge`, the save scanner `srtap_checkd`, and the launcher (see
+  `INSTALL.md`).
 
 ## Installation
 
@@ -41,13 +43,13 @@ options apply to the whole slot.
 
 ## Connecting
 
-Phase 2 work. When ready:
-
-- **Reignited (PC):** drop the UE4SS mod into the game folder, launch, open the mod's
-  connect UI, enter host/slot. The mod reads dragon/egg/gem state from game memory and
-  syncs with the server.
-- **PS1 (DuckStation/BizHawk):** launch the included client, point it at your emulator
-  (same pattern as the Spyro 2 randomizer), connect, and play.
+1. Download and extract the client bundle from the project's releases.
+2. Run `install.bat` (Windows) or `install.sh` (Linux / Proton) to install the
+   mod, the save scanner, and UE4SS.
+3. Open the launcher, enter the server address and your slot name, and click
+   **Save & launch game**. The mod connects once you are actually playing, reads
+   dragon/egg/gem state from the game, and syncs with the server.
+4. Keep the launcher page open to watch checks you send and items you receive.
 
 ## Game changes
 
@@ -61,6 +63,8 @@ Phase 2 work. When ready:
 
 ## Known limitations
 
+- PC (Steam) only: the client runs inside the game via UE4SS. There is no
+  emulator support.
 - Item effects (extra lives, colors, modes, traps) and DeathLink require the
   UE4SS mod client; with it they are live in-game.
 - Gnasty's Loot goal requires collecting every dragon and egg plus 12,000 gems —
