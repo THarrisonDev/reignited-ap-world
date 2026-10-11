@@ -30,29 +30,28 @@ submodule pointers; the submodules hold the actual code and versions.
 3. **reignited-ap (parent)**
    - Bump both submodule pointers to the freshly tagged commits
      (`git submodule update --remote`, then commit the pointer bump).
-   - Build the two release artifacts:
-     - **`reignited_<version>.apworld`** — in the world repo at the
-       tagged commit: `make package`, then rename the output to append the
-       version. Attach to the GitHub release.
-     - **`reignited-ap-client_<version>.zip`** — in the client repo at the
-       tagged commit: `make dist` assembles `dist/client/` and zips it to
-       `dist/reignited-ap-client.zip`: `srtap_launcher.exe`, the native Linux
-       `srtap_launcher`, `srtap_checkd.exe`, `srt_bridge.zip` (the
-       `Mods/srt_bridge/` tree + `lua-apclientpp.dll`), the `install.bat` /
-       `install.sh` wrappers, and `INSTALL.md`. Rename the zip to append the
-       version and attach it — players get a single download that installs
-       itself (`install.bat`/`install.sh`, or the launcher's install button).
-       The mod's `lua-apclientpp.dll` is gitignored; place it in
-       `client/ue4ss_mod/` before `make dist` or the packaging step fails.
+   - Build the single release artifact from the parent repo at the tagged
+     commit: **`make bundle`** packages the world (`world/`), builds the
+     client (`client/`), fetches the pinned UE4SS, and assembles
+     `dist/reignited-ap_<version>_bundle.zip` — `START-HERE.txt`, `client/`
+     (both launchers, `srtap_checkd.exe`, `srt_bridge.zip` with
+     `lua-apclientpp.dll`, `install.bat`/`install.sh`, `INSTALL.md`,
+     `THIRD-PARTY-NOTICES.md`), `world/reignited_<version>.apworld`, and the
+     `UE4SS/` fallback. Attach it to the GitHub release. Override
+     `UE4SS_ZIP=<path>` to use a local UE4SS copy instead of downloading.
+     The mod's `lua-apclientpp.dll` is gitignored; place it in
+     `client/ue4ss_mod/` before building or the client packaging step fails.
    - Write release notes: world version, client version, minimum AP version,
      upgrade notes (players must regenerate patches if `version`/`data_version`
-     changed).
+     changed), and known limitations.
 
 ## Sanity checks before tagging
 
 - [ ] `cd world && make check-version` — no drift.
 - [ ] `cd client/checkd && go test ./...` and
       `cd client/launcher && go test ./...` — green.
+- [ ] `cd client && make lua-tests && make audit` — green.
+- [ ] `make bundle` (parent) builds cleanly and produces the bundle zip.
 - [ ] The packaged `.apworld` installs into a real Archipelago checkout and
       generates a seed.
 - [ ] One live boot with the shipped UE4SS mod + `checkd`: connect, send and
