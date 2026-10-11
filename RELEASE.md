@@ -35,14 +35,15 @@ submodule pointers; the submodules hold the actual code and versions.
        tagged commit: `make package`, then rename the output to append the
        version. Attach to the GitHub release.
      - **`reignited-ap-client_<version>.zip`** — in the client repo at the
-       tagged commit: `make dist` produces `dist/windows/srtap_checkd.exe`,
-       `dist/windows/srtap_launcher.exe`, and `dist/srt_bridge.zip` (the
-       `Mods/srt_bridge/` tree + `lua-apclientpp.dll` + a
-       `srt_bridge-mods.txt.snippet`). Assemble into one zip and attach —
-       players get a single download for the whole client side. The mod's
-       `lua-apclientpp.dll` is gitignored; place it in
-       `client/ue4ss_mod/` before `make dist` or the packaging step warns
-       and ships without it.
+       tagged commit: `make dist` assembles `dist/client/` and zips it to
+       `dist/reignited-ap-client.zip`: `srtap_launcher.exe`, the native Linux
+       `srtap_launcher`, `srtap_checkd.exe`, `srt_bridge.zip` (the
+       `Mods/srt_bridge/` tree + `lua-apclientpp.dll`), the `install.bat` /
+       `install.sh` wrappers, and `INSTALL.md`. Rename the zip to append the
+       version and attach it — players get a single download that installs
+       itself (`install.bat`/`install.sh`, or the launcher's install button).
+       The mod's `lua-apclientpp.dll` is gitignored; place it in
+       `client/ue4ss_mod/` before `make dist` or the packaging step fails.
    - Write release notes: world version, client version, minimum AP version,
      upgrade notes (players must regenerate patches if `version`/`data_version`
      changed).
