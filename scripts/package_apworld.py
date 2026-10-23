@@ -18,7 +18,7 @@ import fnmatch
 
 # Dev-only files maintained in the repo but never shipped in the .apworld.
 NON_SHIP_FILES = {'.gitignore', '.apignore', '.git', '.gitmodules', 'ruff.toml', 'README.md'}
-NON_SHIP_DIRS = {'.github', 'scripts', '__pycache__', '.ruff_cache'}
+NON_SHIP_DIRS = {'.github', 'scripts', 'test', '__pycache__', '.ruff_cache'}
 
 
 def main() -> None:

@@ -26,8 +26,9 @@ The game's collectibles are shuffled into the Archipelago item pool:
 - **80 dragons** — freeing any dragon can give you someone else's Dragon item (or another
   player's item entirely)
 - **12 dragon eggs** — thief chases become checks
-- **Gem milestones** — 25/50/75/100% of the gems in each non-flight level (flight
-  levels' gems are challenge rewards with no save-recorded gem counters)
+- **Gem milestones** — 25/50/75/100% of the gems in each non-flight level; a boss
+  level carries only the All Gems milestone (flight levels' gems are challenge
+  rewards with no save-recorded gem counters)
 - **Flight levels** — clearing all 4 target sets in each of the 5 flight levels is a
   check that holds a randomized item (option `spyro1_enable_flight_checks`, on by
   default)

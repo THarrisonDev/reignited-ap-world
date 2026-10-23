@@ -64,7 +64,9 @@ class _Eval:
 
     def reach(self, level: str) -> bool:
         if level not in self._reach:
-            self._reach[level] = self.state.can_reach_region(self.gates.prefix + level, self.gates.player)
+            self._reach[level] = self.state.can_reach_region(
+                self.gates.prefix + level, self.gates.player
+            )
         return self._reach[level]
 
     def _grow(self):
@@ -79,7 +81,11 @@ class _Eval:
             gems = self.gems()
             for payment in g.payments:
                 name = payment["name"]
-                if name not in self._paid and gems >= g.running_total[name] and self.reach(payment["region"]):
+                if (
+                    name not in self._paid
+                    and gems >= g.running_total[name]
+                    and self.reach(payment["region"])
+                ):
                     self._paid.add(name)
                     grew = True
 
@@ -109,7 +115,9 @@ class _Eval:
                 if not self.simple(gate):
                     continue
                 if any(k in gate for k in COUNT_KINDS):
-                    if with_counts and all(self._base_count(k) >= gate[k] for k in COUNT_KINDS if k in gate):
+                    if with_counts and all(
+                        self._base_count(k) >= gate[k] for k in COUNT_KINDS if k in gate
+                    ):
                         n += 1
                 else:
                     n += 1
@@ -202,21 +210,32 @@ class Gates:
         unknown += [name for g in gates for name in g.get("payments", ()) if name not in payments]
         names = {row["plain"] for rows in data.regions.values() for row in rows}
         unknown += [name for name in self.check_gates if name not in names]
-        unknown += [p["location"] for p in self.payments if "location" in p and p["location"] not in names]
+        unknown += [
+            p["location"]
+            for p in self.payments
+            if "location" in p and p["location"] not in names
+        ]
         unknown += [t for tiers in self.gem_gates.values() for t in tiers
                     if t not in {str(tier.value) for tier in Tier}]
         if unknown:
-            raise ValueError(f"{self.prefix}gate data names unknown levels, payments, checks or tiers: {unknown}")
+            raise ValueError(
+                f"{self.prefix}gate data names unknown levels, payments, "
+                f"checks or tiers: {unknown}"
+            )
 
     def homeworld_of(self, level: str) -> str:
-        return [hub for hub in self.order[:self.order.index(level) + 1] if hub in self.homeworlds][-1]
+        upto = self.order[: self.order.index(level) + 1]
+        return [hub for hub in upto if hub in self.homeworlds][-1]
 
     def is_homeworld(self, level: str) -> bool:
         return level in self.homeworlds
 
     @staticmethod
     def reads_regions(gate: dict) -> bool:
-        """Whether the gate reads other regions. Such an entrance needs every region as an indirect condition."""
+        """Whether the gate reads other regions.
+
+        Such an entrance needs every region as an indirect condition.
+        """
         return any(key in gate for key in READS_REGIONS)
 
     def evaluate(self, state) -> _Eval:

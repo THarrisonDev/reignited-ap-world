@@ -36,7 +36,7 @@ save's globalFloatMap as EIT_SparxPower_<saveKey>. The 4th power's radar
 """
 from typing import Dict, List, NamedTuple, Tuple
 
-from ..data import Spyro3Kind as Kind, load
+from ..data import Spyro3Kind as Kind, load, location_rows
 from .Names import s3
 
 
@@ -53,12 +53,7 @@ _data = load("spyro3")
 
 TABLE_ORDER: List[str] = list(_data.regions)
 
-location_tables = {
-    level: [Spyro3LocationData(row["name"], row["plain"], row["kind"],
-                               row.get("saveKey", ""), row.get("threshold", 0))
-            for row in rows]
-    for level, rows in _data.regions.items()
-}
+location_tables = location_rows(_data, Spyro3LocationData)
 
 
 # Boss-defeat events, keyed by level: (location name, event item name, save
@@ -75,13 +70,6 @@ EGG_CATALOG: Dict[str, List[str]] = {
     level: [d.save_key for d in table if d.kind in (Kind.EGG, Kind.BOSS)]
     for level, table in location_tables.items()
 }
-
-# Sparx realm -> (location name suffix, EInventoryType name).
-SPARX_REALM_POWERS: Dict[str, Tuple[str, str]] = {
-    level: (d.plain, "EIT_SparxPower_" + d.save_key)
-    for level, table in location_tables.items() for d in table if d.kind is Kind.SPARX_POWER
-}
-
 
 def get_name_to_id() -> dict:
     return {row["name"]: row["id"] for rows in _data.regions.values() for row in rows}

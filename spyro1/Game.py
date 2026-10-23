@@ -18,7 +18,6 @@ Region objects carry the "Spyro 1: " prefix; the tables here and the slot data
 use plain level names ("Stone Hill"), since slot data is already per game.
 """
 
-import math
 from typing import Dict, List
 
 from BaseClasses import Entrance, Region
@@ -66,7 +65,7 @@ class Spyro1Game:
         self.player = world.player
         self.multiworld = world.multiworld
         self.generation_options: Dict[str, int] = {}
-        # Balloonist requirement per homeworld (vanilla, or jittered when shuffled).
+        # Balloonist requirement per homeworld (vanilla, or re-rolled when shuffled).
         self.gate_requirements: Dict[str, Requirement] = {
             hub.name: hub.requirement for hub in Spyro1Levels if hub.requirement
         }
@@ -123,19 +122,44 @@ class Spyro1Game:
                 if level not in self.starting_unlocked_levels
             ]
 
-    def _shuffle_gate_requirements(self):
-        """Shuffled mode: raise gem/egg/dragon thresholds to 100-112% of vanilla.
-        The mod raises each balloonist to the shuffled number; it never lowers
-        one, so logic may only ever ask for more, never less."""
-        random = self.multiworld.random
-
-        def jitter(value: int) -> int:
-            return math.floor(value * (1 + 0.12 * random.random()))
-
-        self.gate_requirements = {
-            homeworld: Requirement(req.type, jitter(req.needed))
-            for homeworld, req in self.gate_requirements.items()
+    def _gate_ceilings(self) -> Dict[str, int]:
+        """The most of each gate's resource obtainable before that homeworld is
+        entered: every level of every earlier homeworld. A balloonist is only
+        ever raised to this number, so asking for more would demand what the
+        seed cannot give."""
+        counts = {
+            RequirementType.DRAGONS: 0,
+            RequirementType.GEMS: 0,
+            RequirementType.EGGS: 0,
         }
+        ceilings: Dict[str, int] = {}
+        for hub in Spyro1Levels:
+            if hub.requirement:
+                ceilings[hub.name] = counts[hub.requirement.type]
+            for level in (hub, *hub.levels):
+                counts[RequirementType.DRAGONS] += level.dragons
+                counts[RequirementType.EGGS] += level.dragon_eggs
+                counts[RequirementType.GEMS] += level.gem_total
+        return ceilings
+
+    def _shuffle_gate_requirements(self):
+        """Shuffled mode: re-roll each balloonist to a random requirement between
+        its vanilla number and the most of that resource obtainable before the
+        homeworld is entered. The mod only ever raises a balloonist, so vanilla
+        is the floor; the ceiling keeps the seed beatable."""
+        random = self.multiworld.random
+        ceilings = self._gate_ceilings()
+        shuffled: Dict[str, Requirement] = {}
+        for homeworld, req in self.gate_requirements.items():
+            ceiling = ceilings[homeworld]
+            if ceiling < req.needed:
+                raise ValueError(
+                    f"spyro1: {homeworld} balloonist needs {req.needed} "
+                    f"{req.type.name.lower()}, but only {ceiling} is obtainable "
+                    f"before it — the gate would be unreachable"
+                )
+            shuffled[homeworld] = Requirement(req.type, random.randint(req.needed, ceiling))
+        self.gate_requirements = shuffled
 
     # ------------------------------------------------------------------
     # Regions
@@ -219,9 +243,9 @@ class Spyro1Game:
         opts = self.generation_options
         names: List[str] = []
         if opts["dragon_shuffle"] == DragonShuffleOptions.DRAGONSANITY:
-            names += [DRAGON] * 80
+            names += [DRAGON] * sum(self._dragons_in.values())
         if opts["egg_shuffle"]:
-            names += [DRAGON_EGG] * 12
+            names += [DRAGON_EGG] * sum(self._eggs_in.values())
         names += [level_key_name(level) for level in self.level_key_pool_levels]
         return names
 
@@ -330,7 +354,7 @@ class Spyro1Game:
         if goal == GoalOptions.ALL_DRAGONS:
             return (
                 state.has(s1("Gnasty Gnorc Defeated"), self.player)
-                and self._count_dragons(state) >= 80
+                and self._count_dragons(state) >= sum(self._dragons_in.values())
             )
         if goal == GoalOptions.GNASTYS_LOOT:
             return state.has(s1("Gnasty's Loot Complete"), self.player)

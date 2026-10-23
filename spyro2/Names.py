@@ -3,7 +3,9 @@
 # Updated: 2026-10-11
 
 """Every Spyro 2 location, item, event, region and group name carries this prefix."""
-PREFIX = "Spyro 2: "
+from ..data import load
+
+PREFIX = load("spyro2").prefix
 
 
 def s2(name: str) -> str:

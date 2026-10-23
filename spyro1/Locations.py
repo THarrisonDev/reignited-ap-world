@@ -8,8 +8,6 @@ and item names carry the "Spyro 1: " prefix; IDs come straight from the checks.
 Skill-point checks are option-gated side content: the save's global
 EIT_SkillPoint record holds one nameless float per earned point, each float the
 ESkillPoint enum value (S1 = 1..14)."""
-from ..core import FILLER
-from .Items import DRAGON, DRAGON_EGG
 from .Levels import Check, CheckType, LevelType, iter_checks, iter_levels
 from .Names import s1
 
@@ -22,15 +20,10 @@ FLIGHT_CHECKS = _flight_checks()
 
 
 def vanilla_item(check: Check) -> str:
-    """The item a check holds in vanilla. Level/boss events hold a locked item of
-    their own name; flight Complete checks hold a shuffled item."""
-    if check.type == CheckType.DRAGON:
-        return DRAGON
-    if check.type == CheckType.EGG:
-        return DRAGON_EGG
-    if check.type == CheckType.EVENT and check.name not in FLIGHT_CHECKS:
-        return s1(check.name)
-    return FILLER
+    """The locked item a level/boss completion event holds: an item of the
+    event's own name. Only called for a non-flight event — a flight's Complete
+    check holds a shuffled item instead."""
+    return s1(check.name)
 
 
 def get_name_to_id() -> dict:

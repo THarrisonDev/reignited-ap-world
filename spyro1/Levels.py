@@ -41,8 +41,6 @@ class Spyro1Level:
         self.type = LevelType(raw["type"])
         self.id = raw["id"]
         self.gem_total = raw["gemTotal"]
-        self.hub = raw.get("hub")
-        self.gate = raw.get("gate")
         self.levels: tuple["Spyro1Level", ...] = ()
         # Balloonist requirement, hubs only (set by the loader below).
         self.requirement: Requirement | None = None
@@ -93,14 +91,17 @@ for _raw in _data.raw["levels"]:
         )
         Spyro1Levels.append(hub)
 
-# Gnasty's Loot (the one bonus level): Menu-reachable, belongs to no hub.
+# Gnasty's Loot (the one bonus level) hangs off Gnorc Gnexus in the region graph;
+# its own rule gates it. The parent is named explicitly so reordering the hub
+# list cannot silently re-parent it.
+_LOOT_PARENT = "Gnorc Gnexus"
 _loot = [lvl for lvl in _data.raw["levels"]
          if LevelType(lvl["type"]) is LevelType.BONUS and "hub" not in lvl]
 if _loot:
-    _loot_raw = _loot[0]
-    _previous_hub = Spyro1Levels[-1]
-    _loot_level = Spyro1Level(_loot_raw)
-    _previous_hub.levels = (*_previous_hub.levels, _loot_level)
+    _parent = next((hub for hub in Spyro1Levels if hub.name == _LOOT_PARENT), None)
+    if _parent is None:
+        raise ValueError(f"spyro1: Gnasty's Loot parent hub {_LOOT_PARENT!r} not found")
+    _parent.levels = (*_parent.levels, Spyro1Level(_loot[0]))
 
 
 def iter_levels() -> list[Spyro1Level]:
@@ -117,13 +118,24 @@ def iter_checks() -> list[Check]:
     return [check for lvl in iter_levels() for check in lvl.checks]
 
 
-assert sum(lvl.gem_total for lvl in iter_levels()) == 14000
-assert sum(lvl.dragons for lvl in iter_levels()) == 80
-assert sum(lvl.dragon_eggs for lvl in iter_levels()) == 12
-assert len({lvl.id for lvl in iter_levels()}) == len(iter_levels()), "duplicate level ID"
-assert len({check.id for check in iter_checks()}) == len(iter_checks()), (
-    "duplicate check ID"
-)
-assert len({check.name for check in iter_checks()}) == len(iter_checks()), (
-    "duplicate check name"
-)
+def _validate() -> None:
+    """Raise if the level data drifts from its frozen totals or reuses an id or
+    name — a duplicate would silently collide and unbalance the multiworld."""
+    levels = iter_levels()
+    for what, got, want in (
+        ("gems", sum(lvl.gem_total for lvl in levels), 14000),
+        ("dragons", sum(lvl.dragons for lvl in levels), 80),
+        ("dragon eggs", sum(lvl.dragon_eggs for lvl in levels), 12),
+    ):
+        if got != want:
+            raise ValueError(f"spyro1: {got} {what}, expected {want}")
+    if len({lvl.id for lvl in levels}) != len(levels):
+        raise ValueError("spyro1: duplicate level ID")
+    checks = iter_checks()
+    if len({check.id for check in checks}) != len(checks):
+        raise ValueError("spyro1: duplicate check ID")
+    if len({check.name for check in checks}) != len(checks):
+        raise ValueError("spyro1: duplicate check name")
+
+
+_validate()

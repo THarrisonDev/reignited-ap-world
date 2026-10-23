@@ -14,7 +14,7 @@ The options as grouped on the Archipelago settings page. Per-game options carry 
 | Option | Choices | Default | Description |
 |---|---|---|---|
 | Completion Goal | gnasty, gnastys_loot, all_dragons | 0 | Choose the Spyro 1 completion goal. Gnasty Gnorc - Defeat Gnasty Gnorc. Gnasty's Loot - Enter Gnasty's Loot and collect its 2000 gems (requires near-100%). All Dragons - Rescue all 80 dragons and defeat Gnasty Gnorc. |
-| Balloonist Gates | vanilla, shuffled | 0 | Rules for unlocking each homeworld via the balloonists. Vanilla: Marco needs 10 dragons, Gosnold 1200 gems, Tuco 5 eggs, Cray 50 dragons, Amos 6000 gems. Shuffled: Raises the gem/egg/dragon thresholds by up to 12%; the in-game balloonists ask for the shuffled numbers. |
+| Balloonist Gates | vanilla, shuffled | 0 | Rules for unlocking each homeworld via the balloonists. Vanilla: Marco needs 10 dragons, Gosnold 1200 gems, Tuco 5 eggs, Cray 50 dragons, Amos 6000 gems. Shuffled: each balloonist asks for a random number between its vanilla value and the most of that collectible obtainable before you reach it, so the seed is always beatable. |
 | Dragon Shuffle | vanilla, dragonsanity | 1 | Vanilla: Dragons are not items; all 80 dragons are vanilla checks that don't gate anything. Dragonsanity: Each rescued dragon releases a shuffled 'Spyro 1: Dragon' item into the pool, and homeworld gates require Dragon items. |
 | Shuffle Dragon Eggs | false, true | True | If on, each of the 12 dragon eggs releases a shuffled 'Spyro 1: Dragon Egg' item into the pool. If off, eggs are vanilla collectibles and don't gate progression (except Beast Makers gate). |
 | Level Locks | false, true | False | Every Spyro 1 level portal is locked until its "Spyro 1: <Level> Key" item is found. |
@@ -24,7 +24,7 @@ The options as grouped on the Archipelago settings page. Per-game options carry 
 
 | Option | Choices | Default | Description |
 |---|---|---|---|
-| Enable Gem Checks | false, true | True | Adds percentage-based gem checks (25/50/75/100%) per level to the pool. Recommended: provides enough locations to house the shuffled items. |
+| Enable Gem Checks | false, true | True | Adds percentage-based gem checks (25/50/75/100%) per level to the pool; a boss level carries only the All Gems milestone. Recommended: provides enough locations to house the shuffled items. |
 | Enable Skill Point Checks | false, true | 1 | Adds the 14 Spyro 1 skill points as checks. They release items but gate nothing (skill points serve no purpose outside of being collected). |
 | Enable Flight Set Checks | false, true | 1 | Adds a randomized check for each of the 5 flight levels, cleared when all 4 of the flight's target sets are done. It needs only access to the flight. |
 

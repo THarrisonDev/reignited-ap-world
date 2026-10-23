@@ -36,8 +36,11 @@ class BalloonistGateOptions:
 
 class BalloonistGateOption(Choice):
     """Rules for unlocking each homeworld via the balloonists.
-    Vanilla: Marco needs 10 dragons, Gosnold 1200 gems, Tuco 5 eggs, Cray 50 dragons, Amos 6000 gems.
-    Shuffled: Raises the gem/egg/dragon thresholds by up to 12%; the in-game balloonists ask for the shuffled numbers."""
+    Vanilla: Marco needs 10 dragons, Gosnold 1200 gems, Tuco 5 eggs,
+    Cray 50 dragons, Amos 6000 gems.
+    Shuffled: each balloonist asks for a random number between its vanilla
+    value and the most of that collectible obtainable before you reach it, so
+    the seed is always beatable."""
     display_name = "Balloonist Gates"
     default = BalloonistGateOptions.VANILLA
     option_vanilla = BalloonistGateOptions.VANILLA
@@ -55,7 +58,8 @@ class DragonShuffleOption(Choice):
 
 
 class EggShuffleOption(Toggle):
-    """If on, each of the 12 dragon eggs releases a shuffled 'Spyro 1: Dragon Egg' item into the pool.
+    """If on, each of the 12 dragon eggs releases a shuffled 'Spyro 1: Dragon
+    Egg' item into the pool.
     If off, eggs are vanilla collectibles and don't gate progression (except Beast Makers gate)."""
     display_name = "Shuffle Dragon Eggs"
     default = True
@@ -78,8 +82,9 @@ class StartingUnlockedLevelsOption(Range):
 
 
 class GemsanityLiteOption(Toggle):
-    """Adds percentage-based gem checks (25/50/75/100%) per level to the pool.
-    Recommended: provides enough locations to house the shuffled items."""
+    """Adds percentage-based gem checks (25/50/75/100%) per level to the pool; a
+    boss level carries only the All Gems milestone. Recommended: provides enough
+    locations to house the shuffled items."""
     display_name = "Enable Gem Checks"
     default = True
 

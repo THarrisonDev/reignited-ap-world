@@ -6,8 +6,7 @@
 
 They take effect in whichever game is being played, so they carry no game
 prefix. IDs sit in the shared block below the games (0xxxxx; game N owns
-N00000-N99999). The shared FILLER name itself (core.py) is a location-table
-sentinel only — it is not a registered item and never enters a pool.
+N00000-N99999).
 """
 from typing import List, NamedTuple
 
@@ -44,19 +43,22 @@ def shared_classification(name: str):
 
 
 def filler_choices(options) -> List[str]:
-    """Weighted filler/trap names allowed by the slot's shared item-pool options."""
+    """Weighted filler/trap names allowed by the slot's shared item-pool options.
+    Falls back to Extra Life when every filler and trap is off, so the caller
+    always has something to place."""
     choices: List[str] = []
     for data in _shared_items:
         name = data.name
-        if name == "Extra Life" and options.enable_filler_extra_lives.value:
-            choices += [name] * 8
-        elif name.startswith("Turn Spyro ") and options.enable_filler_color_change.value:
-            choices.append(name)
-        elif name in ("Big Head Mode", "Flat Spyro Mode") and options.enable_filler_color_change.value:
-            choices += [name] * 3
-        elif name == "Damage Trap" and options.enable_trap_damage.value:
-            choices.append(name)
-        elif name == "Extra Life":
-            # Fallback filler when everything else is disabled
-            choices += [name] * 4
-    return choices
+        if name == "Extra Life":
+            enabled, weight = options.enable_filler_extra_lives.value, 8
+        elif name.startswith("Turn Spyro "):
+            enabled, weight = options.enable_filler_color_change.value, 1
+        elif name in ("Big Head Mode", "Flat Spyro Mode"):
+            enabled, weight = options.enable_filler_color_change.value, 3
+        elif name == "Damage Trap":
+            enabled, weight = options.enable_trap_damage.value, 1
+        else:
+            continue
+        if enabled:
+            choices += [name] * weight
+    return choices or ["Extra Life"] * 4

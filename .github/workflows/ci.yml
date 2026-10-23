@@ -33,6 +33,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: ArchipelagoMW/Archipelago
+          ref: 0.6.7
           path: ap-source
           depth: 1
       - uses: actions/setup-python@v5
@@ -42,6 +43,37 @@ jobs:
         run: pip install schema pathspec bsdiff4
       - name: docs/options.md matches Options.py
         run: ARCHIPELAGO_ROOT=$GITHUB_WORKSPACE/ap-source python3 scripts/gen_options_doc.py docs/options.md
+
+  generation:
+    name: generation smoke test (Archipelago 0.6.7)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout world
+        uses: actions/checkout@v4
+        with:
+          path: world-src
+      - name: Checkout Archipelago (pinned to the version players run)
+        uses: actions/checkout@v4
+        with:
+          repository: ArchipelagoMW/Archipelago
+          ref: 0.6.7
+          path: ap-source
+          depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      # Just the subset real generation needs: the GUI extras in AP's
+      # requirements.txt (kivy etc.) are never imported by a headless generate.
+      - name: Install AP generation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install bsdiff4 schema pathspec PyYAML orjson jellyfish jinja2 \
+            colorama platformdirs typing_extensions websockets pytest
+      - name: Place the world at worlds/reignited
+        run: ln -s "$GITHUB_WORKSPACE/world-src" ap-source/worlds/reignited
+      - name: Generate each game alone and all three together, then assert slot data
+        working-directory: ap-source
+        run: python -m pytest worlds/reignited/test -q
 
   apworld:
     name: apworld packaging smoke test

@@ -9,9 +9,11 @@ from typing import Dict, NamedTuple
 
 from BaseClasses import ItemClassification
 
+from ..data import load
+from .Levels import Spyro1Levels
 from .Names import s1
 
-BASE_ID = 100000  # Spyro 1 block: 1xxxxx (game 1), code < 100000
+BASE_ID = load("spyro1").base_id  # Spyro 1 block: 1xxxxx (game 1)
 
 
 class Spyro1ItemCategory(IntEnum):
@@ -30,8 +32,6 @@ class Spyro1ItemData(NamedTuple):
 DRAGON = s1("Dragon")
 DRAGON_EGG = s1("Dragon Egg")
 
-homeworlds = ["Peace Keepers", "Magic Crafters", "Beast Makers", "Dream Weavers", "Gnorc Gnexus"]
-
 level_key_levels = [
     "Stone Hill", "Dark Hollow", "Town Square", "Sunny Flight", "Toasty",
     "Dry Canyon", "Cliff Town", "Ice Cavern", "Night Flight", "Doctor Shemp",
@@ -42,6 +42,23 @@ level_key_levels = [
 ]
 
 starting_unlock_candidates = ["Stone Hill", "Dark Hollow", "Town Square", "Sunny Flight"]
+
+# The key order above is the in-game portal order and is frozen: a key item's
+# code is its position here (4000 + i). It is hand-authored, not derivable from
+# the level ids, so validate the set against the data — a rename or addition
+# must fail loudly rather than drop or invent a key.
+_key_levels_in_data = {level.name for hub in Spyro1Levels for level in hub.levels}
+if set(level_key_levels) != _key_levels_in_data:
+    raise ValueError(
+        "spyro1: level_key_levels disagrees with the level data: "
+        f"missing {sorted(_key_levels_in_data - set(level_key_levels))}, "
+        f"unknown {sorted(set(level_key_levels) - _key_levels_in_data)}"
+    )
+if not set(starting_unlock_candidates) <= _key_levels_in_data:
+    raise ValueError(
+        "spyro1: starting_unlock_candidates names levels the data does not have: "
+        f"{sorted(set(starting_unlock_candidates) - _key_levels_in_data)}"
+    )
 
 
 def level_key_name(level: str) -> str:
@@ -87,7 +104,10 @@ _items = [Spyro1ItemData(s1(name), code, category) for name, code, category in [
     ("Dragon Egg", 1001, Spyro1ItemCategory.EGG),
 
     # Per-level portal keys (Level Locks); codes 4000..4028 in level_key_levels order
-    *[(f"{level} Key", 4000 + i, Spyro1ItemCategory.LEVEL_KEY) for i, level in enumerate(level_key_levels)],
+    *[
+        (f"{level} Key", 4000 + i, Spyro1ItemCategory.LEVEL_KEY)
+        for i, level in enumerate(level_key_levels)
+    ],
 ]]
 
 item_table: Dict[str, Spyro1ItemData] = {data.name: data for data in _items}

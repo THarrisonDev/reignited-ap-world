@@ -28,18 +28,17 @@ level key items. Homeworlds are never locked (the game's boss chain gates
 them), and the spawn level Sunrise Spring is a homeworld, so all 33 keys
 shuffle.
 """
-from typing import Dict, List, Set
+from typing import List, Set
 
-from BaseClasses import Entrance, Region
-from worlds.generic.Rules import add_rule
+from BaseClasses import Region
 
-from ..core import FILLER, SRTLocation
+from ..core import add_gate_rules, add_level_lock_rules, create_level_regions
 from ..data import load
 from ..gates import Gates
 from . import Items as S3Items
 from .Items import (DRAGON_EGG, EXTRA_HIT_POINT, CHEST_BREAKING, GEM_COLLECT_RANGE,
                     level_key_levels, level_key_name)
-from .Locations import (Kind, BOSSES, EGG_CATALOG, SPARX_REALM_POWERS,
+from .Locations import (Kind, BOSSES, EGG_CATALOG,
                         TABLE_ORDER, location_tables)
 from .Names import s3
 from .Options import GoalOptions
@@ -69,7 +68,9 @@ class Spyro3Game:
 
     def generate_early(self):
         self.enable_gem_checks = bool(self.world.options.spyro3_enable_gem_checks.value)
-        self.enable_skillpoint_checks = bool(self.world.options.spyro3_enable_skillpoint_checks.value)
+        self.enable_skillpoint_checks = bool(
+            self.world.options.spyro3_enable_skillpoint_checks.value
+        )
         self.sparx_powers = bool(self.world.options.spyro3_sparx_powers.value)
         self.egg_shuffle = bool(self.world.options.spyro3_egg_shuffle.value)
         self.level_locks = bool(self.world.options.spyro3_level_locks.value)
@@ -81,46 +82,24 @@ class Spyro3Game:
             self.level_key_pool_levels = list(level_key_levels)
 
     def create_regions(self, menu: Region):
-        regions: Dict[str, Region] = {}
-        previous_hub = menu
-        for level in TABLE_ORDER:
-            if not location_tables[level] and level not in self.lockable_levels:
-                # No checks and its portal is never locked; the region lands with its feature task.
-                continue
-            region = Region(s3(level), self.player, self.multiworld)
-            for data in location_tables[level]:
-                if data.kind is Kind.GEM and not self.enable_gem_checks:
-                    continue
-                if data.kind is Kind.SKILLPOINT and not self.enable_skillpoint_checks:
-                    continue
-                if data.kind is Kind.SPARX_POWER and not self.sparx_powers:
-                    continue
-                default_item = FILLER
-                if data.kind is Kind.EGG and self.egg_shuffle:
-                    default_item = DRAGON_EGG
-                elif data.kind is Kind.SPARX_POWER:
-                    default_item = s3(SPARX_REALM_POWERS[level][0].replace(" (Power)", ""))
-                elif data.kind is Kind.BOSS:
-                    default_item = s3(BOSSES[level][1])
-                location = SRTLocation(self.player, data.name, self.world.location_name_to_id[data.name],
-                                       region)
-                if data.kind is Kind.BOSS:
-                    # Locked event: the boss dungeon's egg record is the boss
-                    # kill. Keep the item's real code; a None code crashes the
-                    # server's LocationStore.
-                    location.place_locked_item(self.world.create_item(default_item))
-                region.locations.append(location)
-                self.location_names.add(data.name)
-            self.multiworld.regions.append(region)
-            regions[level] = region
-            self.region_levels.append(level)
-            if self.gates.is_homeworld(level):
-                parent, previous_hub = previous_hub, region
-            else:
-                parent = regions[self.gates.homeworld_of(level)]
-            entrance = Entrance(self.player, s3(level), parent)
-            parent.exits.append(entrance)
-            entrance.connect(region)
+        skipped = set()
+        if not self.enable_gem_checks:
+            skipped.add(Kind.GEM)
+        if not self.enable_skillpoint_checks:
+            skipped.add(Kind.SKILLPOINT)
+        if not self.sparx_powers:
+            skipped.add(Kind.SPARX_POWER)
+        self.region_levels = list(create_level_regions(
+            self, menu, TABLE_ORDER, location_tables,
+            prefix=s3, skipped=skipped, locked=self._locked_item))
+
+    def _locked_item(self, level: str, data) -> str:
+        """The item a location holds as a locked event, or None. The boss
+        dungeon's egg record is the boss kill; keep its real item code, since a
+        None code crashes the server's LocationStore."""
+        if data.kind is Kind.BOSS:
+            return s3(BOSSES[level][1])
+        return None
 
     def create_pool(self) -> List[str]:
         names = [level_key_name(level) for level in self.level_key_pool_levels]
@@ -132,34 +111,12 @@ class Spyro3Game:
         return names
 
     def set_rules(self) -> None:
-        # Every rule comes from the gate data in data/spyro3.json. Gates that
-        # read other regions get all of them as indirect conditions.
-        player = self.player
-        multiworld = self.multiworld
-        gates = self.gates
-        for level, gate in gates.gates.items():
-            if level not in self.region_levels:
-                continue
-            entrance = multiworld.get_entrance(s3(level), player)
-            add_rule(entrance, gates.rule(gate))
-            if gates.reads_regions(gate):
-                for other in self.region_levels:
-                    multiworld.register_indirect_condition(
-                        multiworld.get_region(s3(other), player), entrance)
-        for name, gate in gates.check_gates.items():
-            if s3(name) in self.location_names:
-                add_rule(multiworld.get_location(s3(name), player), gates.rule(gate))
-        for level in self.region_levels:
-            for data in location_tables[level]:
-                if data.kind is Kind.GEM and data.name in self.location_names:
-                    add_rule(multiworld.get_location(data.name, player),
-                             gates.gem_rule(level, data.threshold))
+        # Every rule comes from the gate data in data/spyro3.json.
+        add_gate_rules(self, s3, self.region_levels, location_tables, Kind.GEM)
         # Level Locks: each lockable level's entrance also needs its key, and
         # no key is precollected.
         if self.level_locks:
-            for level in self.lockable_levels:
-                add_rule(multiworld.get_entrance(s3(level), player),
-                         lambda state, key=level_key_name(level): state.has(key, player))
+            add_level_lock_rules(self, s3, self.lockable_levels, level_key_name)
 
     def is_complete(self, state) -> bool:
         if self.s3_goal == GoalOptions.SORCERESS:

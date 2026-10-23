@@ -367,5 +367,36 @@
       "Dino Mines": "Dino Mines",
       "Agent 9's Lab": "Agent 9's Lab"
     }
+  },
+  "gemValues": [
+    {"tag": "EIT_RedGem", "value": 1},
+    {"tag": "EIT_GreenGem", "value": 2},
+    {"tag": "EIT_BlueGem", "value": 5},
+    {"tag": "EIT_YellowGem", "value": 10},
+    {"tag": "EIT_PurpleGem", "value": 25},
+    {"tag": "EIT_S2RedGem", "value": 1},
+    {"tag": "EIT_S2GreenGem", "value": 2},
+    {"tag": "EIT_S2PurpleGem", "value": 5},
+    {"tag": "EIT_S2YellowGem", "value": 10},
+    {"tag": "EIT_S2MagentaGem", "value": 25},
+    {"tag": "EIT_S3RedGem", "value": 1},
+    {"tag": "EIT_S3GreenGem", "value": 2},
+    {"tag": "EIT_S3BlueGem", "value": 5},
+    {"tag": "EIT_S3GoldGem", "value": 10},
+    {"tag": "EIT_S3PurpleGem", "value": 25}
+  ],
+  "eitTypes": {
+    "EIT_Treasure": 1,
+    "EIT_Egg": 15,
+    "EIT_Dragon": 16,
+    "EIT_Life": 18,
+    "EIT_S2GreenOrb": 23,
+    "EIT_S3Egg": 29,
+    "EIT_Climbing": 30,
+    "EIT_HeadBash": 31,
+    "EIT_Swimming": 32,
+    "EIT_SparxPower_GemCollectRange": 45,
+    "EIT_SparxPower_ExtraHP": 47,
+    "EIT_SparxPower_ChestBreaking": 48
   }
 }

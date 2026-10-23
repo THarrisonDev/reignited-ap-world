@@ -23,12 +23,11 @@ Under spyro2_level_locks the mod locks 25 level portals behind shuffled level
 key items. Homeworlds are never locked (the boss chain gates them), and the
 spawn level Glimmer's key is precollected; the other 24 keys shuffle.
 """
-from typing import Dict, List, Set
+from typing import List, Set
 
-from BaseClasses import Entrance, Region
-from worlds.generic.Rules import add_rule
+from BaseClasses import Region
 
-from ..core import SRTLocation
+from ..core import add_gate_rules, add_level_lock_rules, create_level_regions
 from ..data import load
 from ..gates import Gates
 from . import Items as S2Items
@@ -67,7 +66,9 @@ class Spyro2Game:
 
     def generate_early(self):
         self.enable_gem_checks = bool(self.world.options.spyro2_enable_gem_checks.value)
-        self.enable_skillpoint_checks = bool(self.world.options.spyro2_enable_skillpoint_checks.value)
+        self.enable_skillpoint_checks = bool(
+            self.world.options.spyro2_enable_skillpoint_checks.value
+        )
         self.orb_shuffle = bool(self.world.options.spyro2_orb_shuffle.value)
         self.moneybags_abilities = int(self.world.options.spyro2_moneybags_abilities.value)
         self.s2_goal = int(self.world.options.spyro2_goal.value)
@@ -80,34 +81,23 @@ class Spyro2Game:
                 level for level in self.lockable_levels if level != "Glimmer"]
 
     def create_regions(self, menu: Region):
-        regions: Dict[str, Region] = {}
-        previous_hub = menu
-        for level in check_levels:
-            region = Region(s2(level), self.player, self.multiworld)
-            for data in location_tables[level]:
-                if data.kind is Kind.GEM and not self.enable_gem_checks:
-                    continue
-                if data.kind is Kind.SKILLPOINT and not self.enable_skillpoint_checks:
-                    continue
-                location = SRTLocation(self.player, data.name, self.world.location_name_to_id[data.name],
-                                       region)
-                # Keep the item's real code: a None code crashes the server's LocationStore.
-                if data.kind is Kind.BOSS:
-                    location.place_locked_item(self.world.create_item(s2(data.plain.split(": ")[-1])))
-                elif data.kind is Kind.ABILITY and \
-                        self.moneybags_abilities != MoneybagsAbilitiesOptions.SANITY:
-                    location.place_locked_item(self.world.create_item(ability_item_name(data.plain.split(": ")[-1])))
-                region.locations.append(location)
-                self.location_names.add(data.name)
-            self.multiworld.regions.append(region)
-            regions[level] = region
-            if self.gates.is_homeworld(level):
-                parent, previous_hub = previous_hub, region
-            else:
-                parent = regions[self.gates.homeworld_of(level)]
-            entrance = Entrance(self.player, s2(level), parent)
-            parent.exits.append(entrance)
-            entrance.connect(region)
+        skipped = set()
+        if not self.enable_gem_checks:
+            skipped.add(Kind.GEM)
+        if not self.enable_skillpoint_checks:
+            skipped.add(Kind.SKILLPOINT)
+        create_level_regions(self, menu, check_levels, location_tables,
+                             prefix=s2, skipped=skipped, locked=self._locked_item)
+
+    def _locked_item(self, level: str, data) -> str:
+        """The item a location holds as a locked event, or None. Keep the real
+        item code: a None code crashes the server's LocationStore."""
+        if data.kind is Kind.BOSS:
+            return s2(data.plain.split(": ")[-1])
+        if (data.kind is Kind.ABILITY
+                and self.moneybags_abilities != MoneybagsAbilitiesOptions.SANITY):
+            return ability_item_name(data.plain.split(": ")[-1])
+        return None
 
     def create_pool(self) -> List[str]:
         # Precollect the Glimmer key, the spawn level, like Spyro 1 does.
@@ -124,36 +114,10 @@ class Spyro2Game:
         return names
 
     def set_rules(self) -> None:
-        # Every rule comes from the gate data in data/spyro2.json. Gates that
-        # read other regions get all of them as indirect conditions.
-        player = self.player
-        multiworld = self.multiworld
-        gates = self.gates
-        for level, gate in gates.gates.items():
-            entrance = multiworld.get_entrance(s2(level), player)
-            add_rule(entrance, gates.rule(gate))
-            if gates.reads_regions(gate):
-                for other in check_levels:
-                    multiworld.register_indirect_condition(
-                        multiworld.get_region(s2(other), player), entrance)
-        for payment in gates.payments:
-            if "location" in payment:
-                add_rule(multiworld.get_location(s2(payment["location"]), player),
-                         gates.payment_rule(payment["name"]))
-        for name, gate in gates.check_gates.items():
-            if s2(name) in self.location_names:
-                add_rule(multiworld.get_location(s2(name), player), gates.rule(gate))
-        for level in check_levels:
-            for data in location_tables[level]:
-                if data.kind is Kind.GEM and data.name in self.location_names:
-                    add_rule(multiworld.get_location(data.name, player),
-                             gates.gem_rule(level, data.threshold))
-
-        # Level Locks: each lockable level's entrance also needs its key.
+        # Every rule comes from the gate data in data/spyro2.json.
+        add_gate_rules(self, s2, check_levels, location_tables, Kind.GEM)
         if self.level_locks:
-            for level in self.lockable_levels:
-                add_rule(multiworld.get_entrance(s2(level), player),
-                         lambda state, key=level_key_name(level): state.has(key, player))
+            add_level_lock_rules(self, s2, self.lockable_levels, level_key_name)
 
     def _orb_item_counts(self, state) -> int:
         """Under orb shuffle the orb doors count received Orb items, else None

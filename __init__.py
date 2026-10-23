@@ -26,7 +26,7 @@ from .Items import (
     shared_item_name_to_id,
     shared_item_table,
 )
-from .Options import GAME_KEYS, REQUIRABLE_GAMES, SRTOptions, option_groups
+from .Options import GAME_KEYS, SRTOptions, option_groups
 from .spyro1 import Items as S1Items
 from .spyro1 import Locations as S1Locations
 from .spyro1.Game import Spyro1Game
@@ -89,7 +89,7 @@ class SpyroReignitedWorld(World):
     # (0.6.1), which gates the AP server itself.
     required_client_version = (0, 5, 0)
     # Keep in sync with archipelago.json world_version.
-    ap_world_version = "0.27.0"
+    ap_world_version = "0.28.0"
     item_name_to_id = _merge_ids(
         shared_item_name_to_id,
         S1Items.item_name_to_id,
@@ -127,12 +127,6 @@ class SpyroReignitedWorld(World):
                 f"{GAME}: included_games is empty; include at least one game."
             )
         required = set(self.options.required_games.value)
-        not_requirable = sorted(required - REQUIRABLE_GAMES)
-        if not_requirable:
-            raise OptionError(
-                f"{GAME}: required_games {not_requirable} can't be required yet "
-                f"(only {sorted(REQUIRABLE_GAMES)})."
-            )
         missing = sorted(required - included)
         if missing:
             raise OptionError(

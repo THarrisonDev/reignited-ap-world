@@ -2,32 +2,33 @@
 # Targets the Python that ships inside the .apworld. Run via `make lint`
 # (world/Makefile) or CI. ruff only — one tool, fast, no config sprawl.
 target-version = "py313"
-line-length = 90
-extend-exclude = ["__pycache__"]
+line-length = 100
+extend-exclude = ["__pycache__", "scripts/vulture_whitelist.py"]
 
 [lint]
 select = [
     "E9",   # syntax errors / indentation
+    "E501", # line length
     "F",    # pyflakes: undefined names, unused imports, f-string issues
     "B",    # bugbear: common bug patterns
     "SIM",  # flake8-simplify: simplifiable code
+    "C901", # cyclomatic complexity (see [lint.mccabe])
 ]
 ignore = [
     "SIM117", # nested with — used for AP's option/rule context managers
-    # AP world modules intentionally keep the short names (Items, Options,
-    # Game, Names) that the platform's loader expects; PEP8 module naming
-    # does not apply to this subpackage layout.
-    "N999",
-    # The codebase targets AP's runtime (which still runs 3.10-style typing
-    # imports fine); don't churn List/Optional -> list/| while the platform
-    # minimum is 0.6.1.
-    "UP006", "UP035", "UP045",
-    # Dataclass/pydantic-style class attrs trip this; not worth churn.
-    "RUF012",
     # level_key_name(level) as a default arg is a deliberate idiom here.
     "B008",
 ]
+# Not selected: N (AP's loader requires the short module names Items/Options/
+# Game/Names) and UP (the platform minimum is AP 0.6.1, which still takes
+# List/Optional). Those choices are documented in AGENTS.md, not linted here.
+
+[lint.mccabe]
+# Every function at or below 10, matching luacheck's max_cyclomatic_complexity
+# in the client and golangci-lint's cyclop.
+max-complexity = 10
 
 [lint.per-file-ignores]
-# Locations.py files are long declarative tables; unused loop vars are idiomatic.
-"spyro*/Locations.py" = ["B007"]
+# Locations.py files are long declarative tables; unused loop vars are
+# idiomatic and their rows run past the line length by design.
+"spyro*/Locations.py" = ["B007", "E501"]

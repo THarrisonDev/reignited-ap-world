@@ -21,10 +21,11 @@ from typing import Dict, NamedTuple
 
 from BaseClasses import ItemClassification
 
+from ..data import load
 from .Locations import TABLE_ORDER
 from .Names import s3
 
-BASE_ID = 300000  # Spyro 3 block: 3xxxxx (game 3), code < 100000
+BASE_ID = load("spyro3").base_id  # Spyro 3 block: 3xxxxx (game 3)
 
 
 class Spyro3ItemData(NamedTuple):

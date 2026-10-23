@@ -10,7 +10,7 @@ WORLD_NAME := reignited
 APWORLD := $(WORLD_NAME).apworld
 
 .DEFAULT_GOAL := check-version
-.PHONY: check-version bump package compile lint options-doc options-doc-force clean
+.PHONY: check-version bump package compile lint deadcode options-doc options-doc-force clean
 
 check-version:
 	@json_v=$$(sed -n 's/.*"world_version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' $(ARCHIPELAGO_JSON)); \
@@ -34,6 +34,16 @@ compile:
 
 lint:
 	ruff check .
+
+# Dead code: names nothing in the package references, at vulture's default
+# confidence. Archipelago's dynamic surface is whitelisted in
+# scripts/vulture_whitelist.py, so this stays quiet on the World contract.
+# Needs vulture (pip install vulture).
+deadcode:
+	@python3 -c 'import vulture' 2>/dev/null || { \
+		echo "ERROR: vulture not installed (pip install vulture)" >&2; exit 1; }
+	python3 -m vulture . scripts/vulture_whitelist.py \
+		--min-confidence 60 --exclude "__pycache__,.ruff_cache"
 
 # Options reference: regenerate docs/options.md from Options.py.
 # Needs ARCHIPELAGO_ROOT pointing at an AP source checkout (see

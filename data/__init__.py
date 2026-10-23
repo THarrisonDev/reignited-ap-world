@@ -190,6 +190,12 @@ class GameData:
         # Every region consumes an index, even one without locations, so a
         # region's IDs never move when another region gains or loses rows.
         for i, (region, data) in enumerate(raw["regions"].items()):
+            if len(data["locations"]) > raw["tableOffset"]:
+                raise ValueError(
+                    f"{self.key}: region {region!r} has {len(data['locations'])} "
+                    f"locations, more than tableOffset {raw['tableOffset']} — ids "
+                    f"would spill into the next region"
+                )
             rows = []
             for n, loc in enumerate(data["locations"]):
                 row = dict(loc)
@@ -217,3 +223,17 @@ class GameData:
 def load(game_key: str) -> GameData:
     """The cached GameData for a game key. One parse per process."""
     return GameData(game_key)
+
+
+def location_rows(data: GameData, row_type):
+    """Wrap every region's rows in row_type, the per-game LocationData tuple.
+
+    The tabular games read the same five row fields; anything else a kind needs
+    stays on GameData.regions for the module that uses it.
+    """
+    return {
+        level: [row_type(row["name"], row["plain"], row["kind"],
+                         row.get("saveKey", ""), row.get("threshold", 0))
+                for row in rows]
+        for level, rows in data.regions.items()
+    }

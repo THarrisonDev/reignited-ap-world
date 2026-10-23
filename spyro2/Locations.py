@@ -25,7 +25,7 @@ ESkillPoint enum value (S2 = 15..30).
 """
 from typing import List, NamedTuple
 
-from ..data import Spyro2Kind as Kind, load
+from ..data import Spyro2Kind as Kind, load, location_rows
 from .Names import s2
 
 
@@ -35,20 +35,13 @@ class Spyro2LocationData(NamedTuple):
     kind: Kind
     save_key: str = ""  # orbs/talismans: the key the save stores
     threshold: int = 0  # gem checks: percent of the level's gems
-    price: int = 0      # abilities: the Money Bags price in gems
 
 
 _data = load("spyro2")
 
 TABLE_ORDER: List[str] = list(_data.regions)
 
-location_tables = {
-    level: [Spyro2LocationData(row["name"], row["plain"], row["kind"],
-                               row.get("saveKey", ""),
-                               row.get("threshold", 0), row.get("price", 0))
-            for row in rows]
-    for level, rows in _data.regions.items()
-}
+location_tables = location_rows(_data, Spyro2LocationData)
 
 
 def ability_item_name(plain_name: str) -> str:
