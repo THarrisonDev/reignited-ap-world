@@ -10,7 +10,7 @@ WORLD_NAME := reignited
 APWORLD := $(WORLD_NAME).apworld
 
 .DEFAULT_GOAL := check-version
-.PHONY: check-version bump package compile lint deadcode options-doc options-doc-force clean
+.PHONY: check-version bump package compile lint deadcode options-doc-check options-doc-force clean
 
 check-version:
 	@json_v=$$(sed -n 's/.*"world_version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' $(ARCHIPELAGO_JSON)); \
@@ -45,12 +45,19 @@ deadcode:
 	python3 -m vulture . scripts/vulture_whitelist.py \
 		--min-confidence 60 --exclude "__pycache__,.ruff_cache"
 
-# Options reference: regenerate docs/options.md from Options.py.
-# Needs ARCHIPELAGO_ROOT pointing at an AP source checkout (see
-# scripts/gen_options_doc.py header).
-options-doc:
+# Options reference: docs/options.md is generated from Options.py.
+# `options-doc-check` verifies it is current (the CI gate); `-force` rewrites
+# it. Both need ARCHIPELAGO_ROOT pointing at an AP source checkout (see
+# scripts/gen_options_doc.py header for the minimal dependency set).
+options-doc-check:
+	@if [ -z "$(ARCHIPELAGO_ROOT)" ]; then \
+		echo "ERROR: set ARCHIPELAGO_ROOT to an Archipelago source checkout" >&2; exit 1; \
+	fi
 	ARCHIPELAGO_ROOT=$(ARCHIPELAGO_ROOT) python3 scripts/gen_options_doc.py docs/options.md
 options-doc-force:
+	@if [ -z "$(ARCHIPELAGO_ROOT)" ]; then \
+		echo "ERROR: set ARCHIPELAGO_ROOT to an Archipelago source checkout" >&2; exit 1; \
+	fi
 	ARCHIPELAGO_ROOT=$(ARCHIPELAGO_ROOT) python3 scripts/gen_options_doc.py docs/options.md --force
 
 # Package the world into an installable .apworld (zip with the world package
@@ -62,5 +69,5 @@ $(APWORLD):
 	python3 scripts/package_apworld.py "$@" "$(WORLD_NAME)"
 
 clean:
-	rm -f $(APWORLD)
+	rm -f $(APWORLD) $(WORLD_NAME)_*.apworld
 	find . -name __pycache__ -type d -exec rm -rf {} +

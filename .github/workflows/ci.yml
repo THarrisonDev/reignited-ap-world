@@ -40,9 +40,11 @@ jobs:
         with:
           python-version: "3.13"
       - name: Install AP requirements needed by the options layer
-        run: pip install schema pathspec bsdiff4
+        run: pip install schema pathspec PyYAML typing_extensions
       - name: docs/options.md matches Options.py
-        run: ARCHIPELAGO_ROOT=$GITHUB_WORKSPACE/ap-source python3 scripts/gen_options_doc.py docs/options.md
+        run: make options-doc-check
+        env:
+          ARCHIPELAGO_ROOT: ${{ github.workspace }}/ap-source
 
   generation:
     name: generation smoke test (Archipelago 0.6.7)
