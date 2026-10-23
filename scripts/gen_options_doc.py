@@ -14,8 +14,8 @@ Setup:
     ARCHIPELAGO_ROOT must point at an Archipelago source checkout (the
     directory containing Options.py / BaseClasses.py) — e.g.
         git clone --depth 1 https://github.com/ArchipelagoMW/Archipelago
-    plus AP's Python requirements (`pip install -r ci-requirements.txt` or
-    at least: schema pathspec bsdiff4).
+    plus the few packages AP's Options module imports (no full AP install):
+        pip install schema pathspec PyYAML typing_extensions
     Only AP's Options module and this world's Options layer are imported —
     the full World package (BaseClasses/AutoWorld) is not required.
 
@@ -58,21 +58,30 @@ exec(_pkg_code, _pkg.__dict__)
 option_groups = _pkg.option_groups
 
 
-def option_rows(opt: type[Option]) -> list[str]:
-    name = getattr(opt, 'display_name', opt.__name__)
-    doc = inspect.cleandoc(opt.__doc__ or '')
-    choices = getattr(opt, 'options', None)
-    default = getattr(opt, 'default', None)
-    # AP Choice/Toggle options expose options as dict[name] -> int value
-    # (aliases included); the names are what a YAML accepts.
-    choice_str = ', '.join(choices) if choices is not None else ''
+def default_text(default: object, choices: dict[str, int] | None) -> str:
+    """Render a default as the YAML value a player would write for it."""
     # Sets stringify in hash order (PYTHONHASHSEED-dependent): render sorted
     # so the verify step is byte-stable across runs.
     if isinstance(default, (set, frozenset)):
-        default_str = ('frozenset({' + ', '.join(repr(v) for v in sorted(default)) + '})'
-                       if default else 'frozenset()')
-    else:
-        default_str = str(default)
+        return ('frozenset({' + ', '.join(repr(v) for v in sorted(default)) + '})'
+                if default else 'frozenset()')
+    # Choice/Toggle defaults are the int value, so the bare str() would show an
+    # ordinal ("0"). Name them from the same table the Choices column prints.
+    if choices:
+        for choice_name, value in choices.items():
+            if value == default:
+                return choice_name
+    return str(default)
+
+
+def option_rows(opt: type[Option]) -> list[str]:
+    name = getattr(opt, 'display_name', opt.__name__)
+    doc = inspect.cleandoc(opt.__doc__ or '')
+    # AP Choice/Toggle options expose options as dict[name] -> int value
+    # (aliases included); the names are what a YAML accepts.
+    choices = getattr(opt, 'options', None)
+    choice_str = ', '.join(choices) if choices is not None else ''
+    default_str = default_text(getattr(opt, 'default', None), choices)
     return [name, choice_str, default_str, doc.replace('\n', ' ')]
 
 
