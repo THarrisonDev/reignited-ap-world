@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-31
 
 """Generate the options reference for the game info page.
 
@@ -60,11 +60,11 @@ option_groups = _pkg.option_groups
 
 def default_text(default: object, choices: dict[str, int] | None) -> str:
     """Render a default as the YAML value a player would write for it."""
-    # Sets stringify in hash order (PYTHONHASHSEED-dependent): render sorted
-    # so the verify step is byte-stable across runs.
+    # Sets stringify in hash order (PYTHONHASHSEED-dependent): render the YAML
+    # list a player writes instead, sorted so the verify step is byte-stable
+    # across runs.
     if isinstance(default, (set, frozenset)):
-        return ('frozenset({' + ', '.join(repr(v) for v in sorted(default)) + '})'
-                if default else 'frozenset()')
+        return '[' + ', '.join(repr(v) for v in sorted(default)) + ']'
     # Choice/Toggle defaults are the int value, so the bare str() would show an
     # ordinal ("0"). Name them from the same table the Choices column prints.
     if choices:

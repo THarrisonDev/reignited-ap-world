@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-31
 
 """Spyro 2 options. The slot's options dataclass (../Options.py) exposes them as spyro2_*."""
 from Options import Choice, DefaultOnToggle, OptionGroup, Toggle
@@ -53,7 +53,7 @@ class AbilitiesShuffleOption(Choice):
 class GoalOption(Choice):
     """Spyro 2 completion goal.
     None - Spyro 2 cannot be required; its checks are optional side content.
-    Ripto - Defeat Ripto: crush and Gulp fall first, the castle door needs
+    Ripto - Defeat Ripto: Crush and Gulp fall first, the castle door needs
     40 orbs, and (with Moneybags Abilities shuffled) Headbash opens the gate."""
     display_name = "Spyro 2 Goal"
     default = S2GoalOptions.NONE

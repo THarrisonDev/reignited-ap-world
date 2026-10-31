@@ -1,16 +1,14 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-31
 
 # Spyro Reignited Trilogy Archipelago World
 #
-# While it would be much more simple to treat the games as individual
-# my wife provided the insight that certain things might be more fun
-# if the games were unified. Sharing cosmetics, traps, and in the future
-# maybe some collectibles would all just be a neat change from the
-# classics. As such this root init is about unifying all the of the
-# games that you're including. You're free to pick and choose, with the
-# root Reignited AP safely combining the selected games. For specifics
+# Treating the games as separate randomizers would be simpler, but unifying
+# them is more fun: sharing cosmetics, traps, and in the future maybe some
+# collectibles is a neat change from the classics. This root init unifies
+# whichever of the games you include. You are free to pick and choose, with
+# the root Reignited AP safely combining the selected games. For specifics
 # look at the spyro1, spyro2 and spyro3 directories.
 from typing import ClassVar, Dict, List
 

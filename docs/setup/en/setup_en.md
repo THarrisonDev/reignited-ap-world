@@ -12,8 +12,8 @@
 ## Installation
 
 1. Install Archipelago.
-2. Double-click `reignited.apworld` (from this repo's releases) to install it into your
-   Archipelago installation. Remove any older `spyro_reignited.apworld` or
+2. Double-click `reignited_<version>.apworld` (from this repo's releases) to install it
+   into your Archipelago installation. Remove any older `spyro_reignited.apworld` or
    `spyro1.apworld` first: all three declare the game "Spyro Reignited Trilogy".
 3. Generate a game as normal: create a YAML via the Launcher's "Generate Template Options",
    edit your settings, place it in the `players` folder, and run Generate.
@@ -69,3 +69,5 @@ options apply to the whole slot.
   UE4SS mod client; with it they are live in-game.
 - Gnasty's Loot goal requires collecting every dragon and egg plus 12,000 gems —
   expect a long game.
+- The *All Dragons* goal is reported complete when Gnasty Gnorc is defeated; the
+  80-dragon requirement is enforced at generation, not by the in-game client.

@@ -34,13 +34,15 @@ get started quickly.
 
 ## Getting Started
 
-Head over to the [Releases](../../releases) page to grab the latest version,
-then check out the installation instructions in the parent
-[README](../README.md) to get up and running.
+Head over to the [Releases](https://github.com/THarrisonDev/reignited-ap/releases)
+page to grab the latest version, then check out the installation instructions in
+the parent
+[README](https://github.com/THarrisonDev/reignited-ap/blob/main/README.md) to
+get up and running.
 
 Player-facing documentation lives in `docs/`: the game info page
-(`en_Spyro Reignited Trilogy.md`) and the multiworld setup guide
-(`setup_en.md`).
+(`docs/Spyro Reignited Trilogy/en_Spyro Reignited Trilogy.md`) and the
+multiworld setup guide (`docs/setup/en/setup_en.md`).
 
 ## Package Layout
 
@@ -51,7 +53,8 @@ For contributors orienting in the codebase:
   interface (`generate_early`, `create_regions`, `create_pool`, `set_rules`,
   `is_complete`, `slot_data`).
 - `core.py` — types shared by every game (`SRTItem`, `SRTLocation`, the
-  `GAME` constant, filler item name).
+  `GAME` constant) plus the shared region/rule helpers
+  (`create_level_regions`, `add_gate_rules`, `add_level_lock_rules`).
 - `Items.py` / `Options.py` — shared items (filler, traps) and the slot
   options dataclass.
 - `spyro1/`, `spyro2/`, `spyro3/` — one subpackage per game, each with its

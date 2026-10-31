@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-31
 
 """Spyro 3 options. The slot's options dataclass (../Options.py) exposes them as spyro3_*."""
 from Options import Choice, DefaultOnToggle, OptionGroup, Toggle
@@ -45,9 +45,10 @@ class LevelLocksOption(Toggle):
 
 
 class EggShuffleOption(Toggle):
-    """If on, each of the 150 named dragon eggs releases a shuffled 'Spyro 3:
+    """If on, each of the 146 named dragon eggs releases a shuffled 'Spyro 3:
     Dragon Egg' item into the pool. If off, eggs are vanilla collectibles that
-    release nothing (the egg locations stay checks either way)."""
+    release nothing (the egg locations stay checks either way). The 4
+    boss-dungeon eggs are boss-defeat checks that release nothing."""
     display_name = "Shuffle Dragon Eggs"
     default = True
 

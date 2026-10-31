@@ -6,14 +6,14 @@ The options as grouped on the Archipelago settings page. Per-game options carry 
 
 | Option | Choices | Default | Description |
 |---|---|---|---|
-| Included Games |  | frozenset({'Spyro 1'}) | Games whose locations and items are in this slot. |
-| Required Games |  | frozenset() | Games you must complete, each by its own goal option, to finish the slot. Every required game must also be included. Empty means every included game that can be required. Spyro 2 is requirable with spyro2_goal = Ripto; Spyro 3 with spyro3_goal = Sorceress. |
+| Included Games |  | ['Spyro 1'] | Games whose locations and items are in this slot. |
+| Required Games |  | [] | Games you must complete, each by its own goal option, to finish the slot. Every required game must also be included. Empty means every included game that can be required. Spyro 2 is requirable with spyro2_goal = Ripto; Spyro 3 with spyro3_goal = Sorceress. |
 
 ## Spyro 1: Goal & Progression
 
 | Option | Choices | Default | Description |
 |---|---|---|---|
-| Completion Goal | gnasty, gnastys_loot, all_dragons | gnasty | Choose the Spyro 1 completion goal. Gnasty Gnorc - Defeat Gnasty Gnorc. Gnasty's Loot - Enter Gnasty's Loot and collect its 2000 gems (requires near-100%). All Dragons - Rescue all 80 dragons and defeat Gnasty Gnorc. |
+| Completion Goal | gnasty, gnastys_loot, all_dragons | gnasty | Choose the Spyro 1 completion goal. Gnasty Gnorc - Defeat Gnasty Gnorc. Gnasty's Loot - Enter Gnasty's Loot and collect its 2000 gems (requires near-100%). All Dragons - Rescue all 80 dragons and defeat Gnasty Gnorc. The client reports completion when Gnasty Gnorc is defeated: the 80-dragon count is enforced at generation, not by the in-game client. |
 | Balloonist Gates | vanilla, shuffled | vanilla | Rules for unlocking each homeworld via the balloonists. Vanilla: Marco needs 10 dragons, Gosnold 1200 gems, Tuco 5 eggs, Cray 50 dragons, Amos 6000 gems. Shuffled: each balloonist asks for a random number between its vanilla value and the most of that collectible obtainable before you reach it, so the seed is always beatable. |
 | Dragon Shuffle | vanilla, dragonsanity | dragonsanity | Vanilla: Dragons are not items; all 80 dragons are vanilla checks that don't gate anything. Dragonsanity: Each rescued dragon releases a shuffled 'Spyro 1: Dragon' item into the pool, and homeworld gates require Dragon items. |
 | Shuffle Dragon Eggs | false, true | true | If on, each of the 12 dragon eggs releases a shuffled 'Spyro 1: Dragon Egg' item into the pool. If off, eggs are vanilla collectibles and don't gate progression (except Beast Makers gate). |
@@ -41,7 +41,7 @@ The options as grouped on the Archipelago settings page. Per-game options carry 
 |---|---|---|---|
 | Shuffle Orbs | false, true | true | Each of the 64 orb checks releases a shuffled "Spyro 2: Orb" item and the orb doors (Ocean 3, Metro 6, Cloud Temples 15, Metropolis 25, the professor's 8, Ripto's 40) read received Orb items. Off: orbs are vanilla checks that release nothing and the doors read the game's own counter. |
 | Moneybags Abilities | vanilla, sanity | vanilla | The three Money Bags purchases (Swim 500 in Summer Forest, Climb 500 in Autumn Plains, Headbash 1000 in Winter Tundra) are checks either way. Vanilla: the abilities are the game's own progression; paying Money Bags just sends the check. Sanity: Swim, Climb and Headbash are shuffled "Spyro 2: ... Ability" items; paying Money Bags sends the check, but the ability only works once you have received the matching item. |
-| Spyro 2 Goal | none, ripto | none | Spyro 2 completion goal. None - Spyro 2 cannot be required; its checks are optional side content. Ripto - Defeat Ripto: crush and Gulp fall first, the castle door needs 40 orbs, and (with Moneybags Abilities shuffled) Headbash opens the gate. |
+| Spyro 2 Goal | none, ripto | none | Spyro 2 completion goal. None - Spyro 2 cannot be required; its checks are optional side content. Ripto - Defeat Ripto: Crush and Gulp fall first, the castle door needs 40 orbs, and (with Moneybags Abilities shuffled) Headbash opens the gate. |
 | Level Locks | false, true | false | The portals out of the 3 homeworlds are locked until the target level's "Spyro 2: <Level> Key" item is found. The homeworlds themselves stay open (the game's own Crush/Gulp talisman doors gate them) and Dragon Shores (post-game, no checks) is never locked. Glimmer, the spawn level, gets its key immediately; the other 24 keys are shuffled into the item pool. |
 
 ## Spyro 3: Checks
@@ -63,7 +63,7 @@ The options as grouped on the Archipelago settings page. Per-game options carry 
 
 | Option | Choices | Default | Description |
 |---|---|---|---|
-| Shuffle Dragon Eggs | false, true | true | If on, each of the 150 named dragon eggs releases a shuffled 'Spyro 3: Dragon Egg' item into the pool. If off, eggs are vanilla collectibles that release nothing (the egg locations stay checks either way). |
+| Shuffle Dragon Eggs | false, true | true | If on, each of the 146 named dragon eggs releases a shuffled 'Spyro 3: Dragon Egg' item into the pool. If off, eggs are vanilla collectibles that release nothing (the egg locations stay checks either way). The 4 boss-dungeon eggs are boss-defeat checks that release nothing. |
 
 ## Item Pool
 

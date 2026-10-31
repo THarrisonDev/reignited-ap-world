@@ -16,7 +16,7 @@ Every location, item and region of a game carries that game's name, e.g.
 have no prefix.
 
 The full list of slot options (with choices and defaults) is in the
-[options reference](../../docs/options.md) — the same options you'll see on the
+[options reference](../player-options) — the same options you'll see on the
 Archipelago settings page when generating your game.
 
 ## What is randomized? (Spyro 1)
@@ -68,6 +68,10 @@ for a level in a homeworld you can't reach yet won't open that level until you g
   collect all of its gems
 - **All Dragons** — rescue all 80 dragons and defeat Gnasty Gnorc
 
+> **Note:** *All Dragons* is reported complete when Gnasty Gnorc is defeated —
+> the 80-dragon requirement is checked at generation time, not by the in-game
+> client.
+
 ## Spyro 2 (Ripto's Rage!)
 
 ### What is randomized? (Spyro 2)
@@ -117,22 +121,25 @@ for a level in a homeworld you can't reach yet won't open that level until you g
   **Spyro 3: Sunrise Spring: 25% Gems** or **Spyro 3: Super Bonus Round: All Gems**.
 - **Dragon eggs** — all 150 eggs are checks, named after the dragon inside,
   e.g. **Spyro 3: Sunny Villa: Sanders** or **Spyro 3: Midnight Mountain: Al**
-  (Al is the Moneybags chase egg). Eggs cannot be turned off.
+  (Al is the Moneybags chase egg). The egg *checks* cannot be turned off;
+  whether they release items is the **Shuffle Dragon Eggs** option below.
 - **Skill points** — the 20 skill points are checks named after their task,
   e.g. **Spyro 3: Sunny Villa: Flame all trees (Skill Point)**.
 - **Sparx powers** — with **Enable Sparx Power Checks** on, completing each of
   the 3 Sparx realms (Crawdad Farm, Starfish Reef and Bugbot Factory — the last
-  opens after the Sorceress falls) is a check: **Spyro 3: Crawdad Farm: Sparx
-  Gem Collect Range (Power)**, **Spyro 3: Starfish Reef: Sparx Extra Hit Point
-  (Power)** and **Spyro 3: Bugbot Factory: Sparx Chest Breaking (Power)**. Each
-  releases a shuffled useful item of the same name; the powers themselves gate
-  nothing. The 4th Sparx power's gem radar is not randomized because Reignited
-  ships it default-on.
+  opens after the Sorceress falls) is an ordinary check: **Spyro 3: Crawdad
+  Farm: Sparx Gem Collect Range (Power)**, **Spyro 3: Starfish Reef: Sparx
+  Extra Hit Point (Power)** and **Spyro 3: Bugbot Factory: Sparx Chest
+  Breaking (Power)**. The three Sparx power items are shuffled useful items in
+  the pool, not tied to their realm; the powers themselves gate nothing. The
+  4th Sparx power's gem radar is not randomized because Reignited ships it
+  default-on.
 
 ### Shuffle Dragon Eggs (Spyro 3)
 
-- **On** (default) — each of the 150 egg checks releases a shuffled
-  **Spyro 3: Dragon Egg** item into the pool.
+- **On** (default) — each of the 146 egg checks releases a shuffled
+  **Spyro 3: Dragon Egg** item into the pool (the 4 boss-dungeon eggs are
+  boss-defeat checks and release nothing).
 - **Off** — the eggs are vanilla collectibles: the egg locations stay checks
   but release nothing.
 
@@ -145,6 +152,7 @@ sub-levels, no spawn key — the spawn level is a homeworld). The homeworlds
 themselves stay open: reaching the next homeworld is the game's own progression
 (defeat Buzz, Spike and Scorch), exactly like the game's vanilla flow.
 
-Eggs and skill points never gate anything — no egg or skill-point item opens a
-door, and no check requires them. The speedway flight checks land in a later
-release.
+Skill points never gate anything — no skill-point item opens a door, and no
+check requires one. Eggs do gate: the 14 egg portals (which need 10/20/30/…/140
+eggs) count received **Spyro 3: Dragon Egg** items when **Shuffle Dragon Eggs**
+is on.
