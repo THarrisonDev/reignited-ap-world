@@ -48,6 +48,22 @@ class TestSpyro1Only(SRTTestBase):
         self.assertIn("gate_requirements", sd["games"]["spyro1"])
 
 
+class TestSpyro1AllDragonsGoal(TestSpyro1Only):
+    """All Dragons must report a goal location so the slot can finish at all
+    (the 80-dragon count is enforced at generation, not by the client)."""
+
+    options = {"included_games": ["Spyro 1"], "spyro1_goal": "all_dragons"}
+
+    def test_goal_location_is_reportable(self) -> None:
+        sd = self.world.fill_slot_data()
+        goal_location = sd["games"]["spyro1"]["goal_location"]
+        self.assertTrue(goal_location, "all_dragons slot emits no goal location")
+        self.assertEqual(
+            goal_location,
+            self.world.location_name_to_id["Spyro 1: Gnasty Gnorc Defeated"],
+        )
+
+
 class TestSpyro2Only(SRTTestBase):
     options = {"included_games": ["Spyro 2"], "spyro2_goal": "Ripto"}
 

@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-31
 
 """Spyro 1 (Spyro the Dragon) inside the Spyro Reignited Trilogy world.
 
@@ -365,12 +365,12 @@ class Spyro1Game:
     # ------------------------------------------------------------------
     def slot_data(self) -> dict:
         # goal_location: the client reports GOAL when this location's event item
-        # is received. ALL_DRAGONS emits 0: the 80-dragon part is a counter the
-        # client cannot verify reliably, so v1 keeps S1's goal reporting to the
-        # location-event goals.
+        # is received. GNASTY and ALL_DRAGONS both report at Gnasty Gnorc
+        # Defeated: the 80-dragon requirement is enforced by is_complete at
+        # generation time, while v1's client cannot verify the dragon counter.
         goal_location = 0
         goal = self.generation_options["goal"]
-        if goal == GoalOptions.GNASTY:
+        if goal in (GoalOptions.GNASTY, GoalOptions.ALL_DRAGONS):
             goal_location = self.world.location_name_to_id[s1("Gnasty Gnorc Defeated")]
         elif goal == GoalOptions.GNASTYS_LOOT:
             goal_location = self.world.location_name_to_id[s1("Gnasty's Loot Complete")]

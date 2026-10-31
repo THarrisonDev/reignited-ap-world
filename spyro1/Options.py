@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-31
 
 """Spyro 1 options. The slot's options dataclass (../Options.py) exposes them as spyro1_*."""
 from Options import Choice, DefaultOnToggle, OptionGroup, Range, Toggle
@@ -21,7 +21,9 @@ class GoalOption(Choice):
     """Choose the Spyro 1 completion goal.
     Gnasty Gnorc - Defeat Gnasty Gnorc.
     Gnasty's Loot - Enter Gnasty's Loot and collect its 2000 gems (requires near-100%).
-    All Dragons - Rescue all 80 dragons and defeat Gnasty Gnorc."""
+    All Dragons - Rescue all 80 dragons and defeat Gnasty Gnorc. The client
+    reports completion when Gnasty Gnorc is defeated: the 80-dragon count is
+    enforced at generation, not by the in-game client."""
     display_name = "Completion Goal"
     default = GoalOptions.GNASTY
     option_gnasty = GoalOptions.GNASTY
