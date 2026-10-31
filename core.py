@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-21
+# Updated: 2026-10-23
 
 """Shared world plumbing: the item/location types and the region and rule
 wiring every tabular game (Spyro 2/3) uses, so each game module keeps only

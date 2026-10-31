@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-23
 
 """Spyro 1 level/check views over the JSON data (world/data/spyro1.json).
 

@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-31
 
 """Spyro 2 items. Names carry the "Spyro 2: " prefix; IDs are 200000 + code.
 

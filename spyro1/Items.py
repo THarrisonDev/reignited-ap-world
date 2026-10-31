@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-23
 
 """Spyro 1 items. Names carry the "Spyro 1: " prefix; IDs are 100000 + code.
 Filler and traps are shared by every game and live in ../Items.py."""

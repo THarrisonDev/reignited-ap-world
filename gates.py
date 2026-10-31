@@ -1,6 +1,6 @@
 # Author: Tim Harrison
 # Created: 2026-09-26
-# Updated: 2026-10-11
+# Updated: 2026-10-23
 
 """Game gates for the tabular games (Spyro 2/3), read from data/<game>.json.
 
