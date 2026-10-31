@@ -15,9 +15,9 @@ jobs:
         with:
           python-version: "3.13"
       - name: Install ruff
-        run: pipx install ruff
+        run: pip install ruff
       - name: Lint (ruff, config in ruff.toml)
-        run: ~/.local/bin/ruff check .
+        run: python -m ruff check .
       - name: Byte-compile all Python sources
         run: python -m compileall -q .
       - name: Version lockstep (archipelago.json <-> __init__.py)
@@ -88,5 +88,7 @@ jobs:
       # make package = compileall + ruff lint + zip via scripts/package_apworld.py
       # (respects .apignore, hard-excludes dev-only files) + self-verification
       # (integrity, no .pyc, sources present).
+      - name: Install ruff
+        run: pip install ruff
       - name: Package .apworld
         run: make package
