@@ -10,7 +10,7 @@ WORLD_NAME := reignited
 APWORLD := $(WORLD_NAME).apworld
 
 .DEFAULT_GOAL := check-version
-.PHONY: check-version bump package compile lint deadcode options-doc-check options-doc-force clean
+.PHONY: check-version bump package compile lint deadcode options-doc-check options-doc-force clean $(APWORLD)
 
 check-version:
 	@json_v=$$(sed -n 's/.*"world_version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' $(ARCHIPELAGO_JSON)); \
