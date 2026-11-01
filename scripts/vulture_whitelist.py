@@ -24,6 +24,12 @@ topology_present
 tutorials
 web
 
+# Universal Tracker's regeneration surface: the flag it checks, the hook it
+# calls, and the MultiWorld attribute it sets before generating.
+ut_can_gen_without_yaml
+interpret_slot_data
+generation_is_fake
+
 # Option metaclass fields and members: `options_dataclass` turns each option
 # class into an `options_<snake_case_name>` attribute at world-build time.
 accessibility
