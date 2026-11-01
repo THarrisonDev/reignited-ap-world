@@ -12,9 +12,18 @@
 ## Installation
 
 1. Install Archipelago.
-2. Double-click `reignited_<version>.apworld` (from this repo's releases) to install it
-   into your Archipelago installation. Remove any older `spyro_reignited.apworld` or
-   `spyro1.apworld` first: all three declare the game "Spyro Reignited Trilogy".
+2. Add the world to your Archipelago installation:
+   - **In the launcher:** click **Install APWorld** and select
+     `reignited.apworld`; dragging the file onto the launcher also works.
+     If the launcher reports the world is already loaded, restart it.
+   - **By hand:** copy it into your installation's `custom_worlds` folder —
+     for the Linux AppImage that is `~/.local/share/Archipelago/worlds`.
+   Double-clicking the file only works where `.apworld` files are associated
+   with the launcher. Keep the file name as `reignited.apworld`: Archipelago
+   imports a world under its file name, so a renamed copy does not load.
+   Remove any older build of this project (`spyro_reignited.apworld`, or a
+   dated `reignited_<version>.apworld`) first: it declares the same game
+   "Spyro Reignited Trilogy", and Archipelago only loads one of them.
 3. Generate a game as normal: create a YAML via the Launcher's "Generate Template Options",
    edit your settings, place it in the `players` folder, and run Generate.
 4. Host the output on archipelago.gg or locally.

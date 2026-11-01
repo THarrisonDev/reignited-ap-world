@@ -3,7 +3,6 @@
   "world_version": "0.28.0",
   "minimum_ap_version": "0.6.1",
   "authors": ["Tim Harrison"],
-  "result_file_ending": ".apsrt",
   "version": 7,
   "compatible_version": 7
 }

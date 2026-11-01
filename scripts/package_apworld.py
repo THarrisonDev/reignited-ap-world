@@ -21,8 +21,25 @@ NON_SHIP_FILES = {'.gitignore', '.apignore', '.git', '.gitmodules', 'ruff.toml',
 NON_SHIP_DIRS = {'.github', 'scripts', 'test', '__pycache__', '.ruff_cache'}
 
 
+def check_name(out: str, world_name: str) -> None:
+    """Fail on an artifact name Archipelago cannot import.
+
+    A world is imported as ``worlds.<file stem>``, and zipimport resolves that
+    to ``<file stem>/__init__.py`` inside the archive. A versioned stem such as
+    ``reignited_0.28.0`` contains dots, so the world silently fails to load
+    alongside every other installed world.
+    """
+    stem = os.path.splitext(os.path.basename(out))[0]
+    assert stem.isidentifier(), (
+        f'{out}: the file stem must be a plain identifier (no dots or dashes), '
+        'because Archipelago imports the world as worlds.<file stem>')
+    assert stem == world_name, (
+        f'{out}: the file stem must match the package directory ({world_name})')
+
+
 def main() -> None:
     out, world_name = sys.argv[1], sys.argv[2]
+    check_name(out, world_name)
 
     ignore_patterns = []
     for root, _dirs, _files in os.walk('.'):

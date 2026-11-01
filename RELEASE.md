@@ -36,7 +36,7 @@ submodule pointers; the submodules hold the actual code and versions.
      `dist/reignited-ap_<version>_bundle.zip` — `START-HERE.txt`, `client/`
      (both launchers, `srtap_checkd.exe`, `srt_bridge.zip` with
      `lua-apclientpp.dll`, `install.bat`/`install.sh`, `INSTALL.md`,
-     `THIRD-PARTY-NOTICES.md`), `world/reignited_<version>.apworld`, and the
+     `THIRD-PARTY-NOTICES.md`), `world/reignited.apworld`, and the
      `UE4SS/` fallback. Attach it to the GitHub release. Override
      `UE4SS_ZIP=<path>` to use a local UE4SS copy instead of downloading.
      The mod's `lua-apclientpp.dll` is gitignored; place it in
@@ -52,6 +52,12 @@ submodule pointers; the submodules hold the actual code and versions.
       `cd client/launcher && go test ./...` — green.
 - [ ] `cd client && make lua-tests && make audit` — green.
 - [ ] `make bundle` (parent) builds cleanly and produces the bundle zip.
+- [ ] The bundle's `.apworld` is unversioned (`world/reignited.apworld`): AP
+      imports a world as `worlds.<file stem>`, so a dated name such as
+      `reignited_0.28.0.apworld` does not load. `make package` asserts this.
+- [ ] Player docs only ask players to remove this project's own older files
+      (`spyro_reignited.apworld`, dated `reignited_<version>.apworld`) — never
+      another author's apworld, which is a different game and coexists.
 - [ ] The packaged `.apworld` installs into a real Archipelago checkout and
       generates a seed.
 - [ ] One live boot with the shipped UE4SS mod + `checkd`: connect, send and
