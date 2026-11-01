@@ -51,6 +51,12 @@ options apply to the whole slot.
    dragon/egg/gem state from the game, and syncs with the server.
 4. Keep the launcher page open to watch checks you send and items you receive.
 
+## Optional — Universal Tracker
+
+Universal Tracker v0.3.3 or later tracks this slot without a YAML. When you
+connect to a seed, the tracker regenerates it from the seed's slot data, so the
+locations, options and balloonist gate numbers it shows match the seed itself.
+
 ## Game changes
 
 - Items you find in-game are sent to the multiworld: freeing a dragon, catching an egg
