@@ -7,9 +7,38 @@ world placed at worlds/reignited:
 
     python -m pytest worlds/reignited/test
 """
+import inspect
+import unittest
+from argparse import Namespace
 from typing import Set
 
+from BaseClasses import CollectionState, MultiWorld
 from test.bases import WorldTestBase
+from test.general import gen_steps
+from worlds import AutoWorld
+from worlds.AutoWorld import call_all
+from worlds.reignited import SpyroReignitedWorld
+
+
+def ut_regen_world(game: str, slot_data: dict):
+    """Build a world the way Universal Tracker does on connect: default options
+    plus the seed's slot data, with no YAML."""
+    multiworld = MultiWorld(1)
+    multiworld.game[1] = game
+    multiworld.player_name = {1: "Tester"}
+    multiworld.set_seed()
+    multiworld.generation_is_fake = True
+    multiworld.re_gen_passthrough = {game: slot_data}
+    args = Namespace()
+    world_type = AutoWorld.AutoWorldRegister.world_types[game]
+    for name, option in world_type.options_dataclass.type_hints.items():
+        setattr(args, name, {1: option.from_any(option.default)})
+    multiworld.set_options(args)
+    multiworld.state = CollectionState(multiworld)
+    world = multiworld.worlds[1]
+    for step in gen_steps:
+        call_all(multiworld, step)
+    return world
 
 
 class SRTTestBase(WorldTestBase):
@@ -184,3 +213,55 @@ class TestAllFillersDisabled(SRTTestBase):
         pool = [item.name for item in self.multiworld.itempool]
         self.assertIn("Extra Life", pool)
         self.assertNotIn("Damage Trap", pool)
+
+
+class TestUTRegen(SRTTestBase):
+    """Universal Tracker regenerates this slot from its slot data alone, so the
+    regenerated options, locations and balloonist gates must match the seed."""
+
+    options = {
+        "included_games": ["Spyro 1", "Spyro 2"],
+        "spyro2_goal": "Ripto",
+        "spyro1_balloonist_gates": "shuffled",
+        "spyro1_level_locks": True,
+    }
+
+    def test_regen_from_slot_data(self) -> None:
+        seed_slot_data = self.world.fill_slot_data()
+        regen_slot_data = ut_regen_world(self.game, seed_slot_data).fill_slot_data()
+
+        self.assertEqual(
+            regen_slot_data["included_games"], seed_slot_data["included_games"]
+        )
+        self.assertEqual(
+            regen_slot_data["required_games"], seed_slot_data["required_games"]
+        )
+        self.assertEqual(set(regen_slot_data["games"]), set(seed_slot_data["games"]))
+        self.assertEqual(
+            set(regen_slot_data["locationNameToId"].items()),
+            set(seed_slot_data["locationNameToId"].items()),
+        )
+        self.assertEqual(
+            regen_slot_data["games"]["spyro1"]["gate_requirements"],
+            seed_slot_data["games"]["spyro1"]["gate_requirements"],
+        )
+        for key in seed_slot_data["games"]:
+            with self.subTest(game=key):
+                self.assertEqual(
+                    regen_slot_data["games"][key]["options"],
+                    seed_slot_data["games"][key]["options"],
+                )
+        seed_slot_data.pop("seed")
+        regen_slot_data.pop("seed")
+        self.assertEqual(regen_slot_data, seed_slot_data)
+
+
+class TestUTContract(unittest.TestCase):
+    """The contract Universal Tracker checks before taking the regeneration path."""
+
+    def test_regeneration_hooks(self) -> None:
+        self.assertIs(SpyroReignitedWorld.ut_can_gen_without_yaml, True)
+        self.assertIsInstance(
+            inspect.getattr_static(SpyroReignitedWorld, "interpret_slot_data"),
+            staticmethod,
+        )
