@@ -10,7 +10,7 @@
 # whichever of the games you include. You are free to pick and choose, with
 # the root Reignited AP safely combining the selected games. For specifics
 # look at the spyro1, spyro2 and spyro3 directories.
-from typing import ClassVar, Dict, List
+from typing import ClassVar, Dict, List, Optional
 
 from BaseClasses import Item, Region, Tutorial
 from Options import Accessibility, OptionError
@@ -88,6 +88,8 @@ class SpyroReignitedWorld(World):
     required_client_version = (0, 5, 0)
     # Keep in sync with archipelago.json world_version.
     ap_world_version = "0.28.0"
+    # Universal Tracker regenerates this slot from slot data; see docs/setup/en/setup_en.md.
+    ut_can_gen_without_yaml = True
     item_name_to_id = _merge_ids(
         shared_item_name_to_id,
         S1Items.item_name_to_id,
@@ -114,11 +116,44 @@ class SpyroReignitedWorld(World):
         super().__init__(multiworld, player)
         self.games: List = []
         self.required_games: List = []
+        self.seed_slot_data: Optional[dict] = None
+
+    @staticmethod
+    def interpret_slot_data(slot_data: dict) -> dict:
+        """Ask Universal Tracker to regenerate the slot from the seed's slot data."""
+        return slot_data
 
     # ------------------------------------------------------------------
     # Option handling
     # ------------------------------------------------------------------
+    def _set_option(self, name: str, value) -> None:
+        """Apply one option from slot data, ignoring names this world lacks."""
+        option = getattr(self.options, name, None)
+        if option is not None:
+            setattr(self.options, name, type(option).from_any(value))
+
+    def _apply_seed_slot_data(self, slot_data: dict) -> None:
+        """Re-apply the seed's options so a regenerated slot matches it."""
+        names = {key: name for name, key in GAME_KEYS.items()}
+        for name in ("included_games", "required_games"):
+            if name in slot_data:
+                self._set_option(
+                    name, [names[key] for key in slot_data[name] if key in names]
+                )
+        for name, value in slot_data.get("options", {}).items():
+            self._set_option(name, value)
+        for key, game in slot_data.get("games", {}).items():
+            for name, value in game.get("options", {}).items():
+                self._set_option(f"{key}_{name}", value)
+
+    def seed_game_slot_data(self, game_key: str) -> Optional[dict]:
+        """Return the seed's slot data for one sub-game, when regenerating."""
+        return (self.seed_slot_data or {}).get("games", {}).get(game_key)
+
     def generate_early(self):
+        self.seed_slot_data = getattr(self.multiworld, "re_gen_passthrough", {}).get(GAME)
+        if self.seed_slot_data:
+            self._apply_seed_slot_data(self.seed_slot_data)
         included = set(self.options.included_games.value)
         if not included:
             raise OptionError(

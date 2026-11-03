@@ -98,10 +98,15 @@ class Spyro1Game:
             options.spyro1_starting_unlocked_levels.value
         )
 
-        is_ut = getattr(self.multiworld, "generation_is_fake", False)
+        seed = self.world.seed_game_slot_data("spyro1")
 
-        if opts["balloonist_gates"] == BalloonistGateOptions.SHUFFLED and not is_ut:
+        if opts["balloonist_gates"] == BalloonistGateOptions.SHUFFLED and not seed:
             self._shuffle_gate_requirements()
+        if seed and seed.get("gate_requirements"):
+            self.gate_requirements = {
+                homeworld: Requirement(RequirementType[req["type"].upper()], req["needed"])
+                for homeworld, req in seed["gate_requirements"].items()
+            }
 
         # Gnasty's Loot goal needs Loot region and gem checks always on
         if opts["goal"] == GoalOptions.GNASTYS_LOOT and not opts["enable_gem_checks"]:
