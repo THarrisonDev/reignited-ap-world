@@ -87,7 +87,7 @@ class SpyroReignitedWorld(World):
     # (0.6.1), which gates the AP server itself.
     required_client_version = (0, 5, 0)
     # Keep in sync with archipelago.json world_version.
-    ap_world_version = "0.28.0"
+    ap_world_version = "0.29.0"
     # Universal Tracker regenerates this slot from slot data; see docs/setup/en/setup_en.md.
     ut_can_gen_without_yaml = True
     item_name_to_id = _merge_ids(
