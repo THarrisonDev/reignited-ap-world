@@ -1250,6 +1250,7 @@
     },
     "Summer Forest: Atop a ladder": {
       "abilities": [
+        "Swim",
         "Climb"
       ]
     },
@@ -1261,6 +1262,18 @@
     "Idol Springs: Foreman Bud's puzzles": {
       "abilities": [
         "Swim"
+      ]
+    },
+    "Sunny Beach: Turtle soup I": {
+      "abilities": [
+        "Swim",
+        "Climb"
+      ]
+    },
+    "Sunny Beach: Turtle soup II": {
+      "abilities": [
+        "Swim",
+        "Climb"
       ]
     },
     "Aquaria Towers: Seahorse rescue": {
@@ -1289,9 +1302,7 @@
       ]
     },
     "Autumn Plains: The end of the wall": {
-      "abilities": [
-        "Climb"
-      ]
+      "orbs": 6
     },
     "Autumn Plains: Long glide!": {
       "abilities": [
@@ -1335,9 +1346,15 @@
         "Magma Cone elevator"
       ]
     },
-    "Winter Tundra: Smash the rock": {
+    "Shady Oasis: Free Hippos": {
       "abilities": [
         "Headbash"
+      ]
+    },
+    "Winter Tundra: Top of the waterfall": {
+      "abilities": [
+        "Headbash",
+        "Swim"
       ]
     },
     "Winter Tundra: On the tall wall": {
@@ -1345,23 +1362,39 @@
         "Headbash"
       ]
     },
-    "Mystic Marsh: Fix the fountain": {
+    "Winter Tundra: Smash the rock": {
+      "abilities": [
+        "Headbash"
+      ]
+    },
+    "Mystic Marsh: Very versatile thieves!": {
       "abilities": [
         "Swim"
+      ]
+    },
+    "Metropolis: Ox bombing": {
+      "abilities": [
+        "Headbash",
+        "Climb"
       ]
     }
   },
   "gemGates": {
     "Summer Forest": {
-      "25": {
+      "50": {
         "abilities": [
           "Swim"
-        ]
+        ],
+        "note": "155 gems without Swim"
       },
       "100": {
         "abilities": [
           "Climb"
-        ]
+        ],
+        "payments": [
+          "Aquaria Towers wall"
+        ],
+        "note": "390 without Climb, 386 without the wall by Aquaria Towers"
       }
     },
     "Glimmer": {
@@ -1373,29 +1406,46 @@
       }
     },
     "Idol Springs": {
-      "25": {
+      "75": {
         "abilities": [
           "Swim"
-        ]
+        ],
+        "note": "298 without Swim"
+      }
+    },
+    "Sunny Beach": {
+      "100": {
+        "abilities": [
+          "Climb"
+        ],
+        "note": "380 without Climb"
       }
     },
     "Aquaria Towers": {
-      "25": {
+      "50": {
         "payments": [
           "Aquaria Towers submarine"
         ],
-        "note": "the submarine opens nearly the whole level"
+        "note": "127 without the submarine"
       }
     },
     "Autumn Plains": {
-      "25": {
+      "50": {
         "abilities": [
           "Climb"
-        ]
-      },
-      "75": {
+        ],
         "orbs": 8,
-        "note": "202 of 400 gems are behind the professor door"
+        "note": "140 without Climb, 191 without the professor door"
+      },
+      "100": {
+        "abilities": [
+          "Swim"
+        ],
+        "payments": [
+          "Shady Oasis portal"
+        ],
+        "orbs": 6,
+        "note": "387 without Swim, 378 without the 6-orb wall, 393 without the Shady Oasis section"
       }
     },
     "Crystal Glacier": {
@@ -1403,48 +1453,75 @@
         "payments": [
           "Crystal Glacier bridge"
         ],
-        "note": "155 of 400 gems are past the bridge"
+        "note": "245 without the bridge"
+      }
+    },
+    "Breeze Harbor": {
+      "100": {
+        "abilities": [
+          "Swim"
+        ],
+        "note": "391 without Swim"
+      }
+    },
+    "Zephyr": {
+      "75": {
+        "abilities": [
+          "Climb"
+        ],
+        "note": "284 without Climb"
       }
     },
     "Magma Cone": {
-      "100": {
+      "75": {
         "payments": [
           "Magma Cone elevator"
         ],
-        "note": "part of the gems sit past the elevator; the share is unclear"
+        "note": "295 without the elevator"
       }
     },
     "Shady Oasis": {
       "100": {
         "abilities": [
           "Headbash"
-        ]
+        ],
+        "note": "380 without Headbash"
       }
     },
     "Winter Tundra": {
-      "25": {
-        "abilities": [
-          "Swim"
-        ]
-      },
-      "100": {
+      "50": {
         "abilities": [
           "Headbash"
-        ]
+        ],
+        "note": "139 without Headbash"
+      },
+      "100": {
+        "orbs": 40,
+        "note": "393 without the 40-orb door"
       }
     },
     "Mystic Marsh": {
-      "25": {
+      "100": {
         "abilities": [
           "Swim"
-        ]
+        ],
+        "note": "312 without Swim"
       }
     },
     "Cloud Temples": {
       "100": {
         "abilities": [
           "Headbash"
-        ]
+        ],
+        "note": "375 without Headbash"
+      }
+    },
+    "Metropolis": {
+      "100": {
+        "abilities": [
+          "Climb"
+        ],
+        "note": "385 without Climb"
       }
     }
   }
