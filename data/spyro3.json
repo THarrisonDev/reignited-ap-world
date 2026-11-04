@@ -1834,10 +1834,25 @@
         "Honey Speedway",
         "Harbor Speedway"
       ],
-      "note": "the game's all-15,000-gems door: every save-recorded gem outside the Super Bonus Round, plus the speedways, whose gems are post-run rewards the save does not record per level"
+      "note": "all 13,402 save-recorded gems outside the Super Bonus Round (the door's 15,000 also counts the four speedways' 1,600, which the save does not record)"
     }
   },
   "checkGates": {
+    "Sunny Villa: Emily": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Sunny Villa: Daisy": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Sunny Villa: Lucy": {
+      "levels": [
+        "Sheila's Alp"
+      ]
+    },
     "Sunny Villa: Skateboard course record I (Skill Point)": {
       "bosses": [
         "Scorch Defeated"
@@ -1908,9 +1923,29 @@
         "Sheila's Alp"
       ]
     },
+    "Mushroom Speedway: Tater": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
     "Icy Peak: Cerny": {
       "payments": [
         "Icy Peak door"
+      ]
+    },
+    "Enchanted Towers: Ralph": {
+      "levels": [
+        "Sgt. Byrd Base"
+      ]
+    },
+    "Enchanted Towers: Caroline": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Enchanted Towers: Alex": {
+      "bosses": [
+        "Scorch Defeated"
       ]
     },
     "Enchanted Towers: Skateboard course record II (Skill Point)": {
@@ -1952,6 +1987,26 @@
     "Spooky Swamp: Destroy all piranha signs (Skill Point)": {
       "payments": [
         "Spooky Swamp door"
+      ]
+    },
+    "Bamboo Terrace: Brubeck": {
+      "levels": [
+        "Bentley's Outpost"
+      ]
+    },
+    "Country Speedway: Roberto": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Lost Fleet: Oliver": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Lost Fleet: Aiden": {
+      "bosses": [
+        "Scorch Defeated"
       ]
     },
     "Lost Fleet: Skateboard record time (Skill Point)": {
@@ -2038,6 +2093,16 @@
       ],
       "payments": [
         "Charmed Ridge stairs"
+      ]
+    },
+    "Honey Speedway: Nori": {
+      "bosses": [
+        "Scorch Defeated"
+      ]
+    },
+    "Midnight Mountain: Al": {
+      "bosses": [
+        "Sorceress Defeated"
       ]
     },
     "Crystal Islands: Manie": {
