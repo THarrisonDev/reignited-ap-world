@@ -45,6 +45,7 @@ from .Options import BalloonistGateOptions, DragonShuffleOptions, GoalOptions
 
 SLOT_OPTIONS = (
     "goal",
+    "open_world",
     "balloonist_gates",
     "dragon_shuffle",
     "egg_shuffle",
@@ -69,6 +70,7 @@ class Spyro1Game:
         self.gate_requirements: Dict[str, Requirement] = {
             hub.name: hub.requirement for hub in Spyro1Levels if hub.requirement
         }
+        self.open_world = False
         self.lockable_levels: List[str] = []
         self.starting_unlocked_levels: List[str] = []
         self.level_key_pool_levels: List[str] = []
@@ -85,6 +87,8 @@ class Spyro1Game:
         options = self.world.options
         opts = self.generation_options
         opts["goal"] = options.spyro1_goal.value
+        self.open_world = bool(options.open_world.value)
+        opts["open_world"] = int(self.open_world)
         opts["balloonist_gates"] = options.spyro1_balloonist_gates.value
         opts["dragon_shuffle"] = options.spyro1_dragon_shuffle.value
         opts["egg_shuffle"] = options.spyro1_egg_shuffle.value
@@ -100,7 +104,8 @@ class Spyro1Game:
 
         seed = self.world.seed_game_slot_data("spyro1")
 
-        if opts["balloonist_gates"] == BalloonistGateOptions.SHUFFLED and not seed:
+        if (opts["balloonist_gates"] == BalloonistGateOptions.SHUFFLED
+                and not seed and not self.open_world):
             self._shuffle_gate_requirements()
         if seed and seed.get("gate_requirements"):
             self.gate_requirements = {
@@ -288,8 +293,9 @@ class Spyro1Game:
             return self._count_dragons(state) >= req.needed
 
         # A gate depends on every level's reachability, so each level is an
-        # indirect condition of each homeworld entrance.
-        for homeworld in self.gate_requirements:
+        # indirect condition of each homeworld entrance. Open World waives the
+        # balloonists entirely: every homeworld is reachable from the start.
+        for homeworld in ({} if self.open_world else self.gate_requirements):
             entrance = multiworld.get_entrance(s1(homeworld), player)
             set_rule(entrance, lambda state, hw=homeworld: meets_gate(state, hw))
             for level in self.levels:
@@ -389,4 +395,5 @@ class Spyro1Game:
                 for homeworld, req in self.gate_requirements.items()
             },
             "goal_location": goal_location,
+            "open_world": int(self.open_world),
         }

@@ -266,6 +266,7 @@ class SpyroReignitedWorld(World):
             "required_games": [game.key for game in self.required_games],
             "options": {
                 "death_link": options.death_link.value,
+                "open_world": options.open_world.value,
                 "enable_filler_extra_lives": options.enable_filler_extra_lives.value,
                 "enable_filler_color_change": options.enable_filler_color_change.value,
                 "enable_trap_damage": options.enable_trap_damage.value,

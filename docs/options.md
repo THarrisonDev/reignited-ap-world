@@ -9,6 +9,12 @@ The options as grouped on the Archipelago settings page. Per-game options carry 
 | Included Games |  | ['Spyro 1'] | Games whose locations and items are in this slot. |
 | Required Games |  | [] | Games you must complete, each by its own goal option, to finish the slot. Every required game must also be included. Empty means every included game that can be required. Spyro 2 is requirable with spyro2_goal = Ripto; Spyro 3 with spyro3_goal = Sorceress. |
 
+## Progression
+
+| Option | Choices | Default | Description |
+|---|---|---|---|
+| Open World | false, true | false | Free travel between the homeworlds through the in-game Guide Book: the client marks every homeworld visited, so the book lists each world and its own travel moves you there. The homeworld chain no longer needs its boss or balloonist; Spyro 1's balloonists ask for nothing. Every level keeps its own access condition: level portals stay vanilla (or key-locked with Level Locks), egg gates and boss-arena requirements stay, abilities still matter, and Gnasty's Loot / Sorceress Lair / Super Bonus Round keep their requirements. |
+
 ## Spyro 1: Goal & Progression
 
 | Option | Choices | Default | Description |

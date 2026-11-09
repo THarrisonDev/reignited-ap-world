@@ -227,6 +227,41 @@ class Gates:
         upto = self.order[: self.order.index(level) + 1]
         return [hub for hub in upto if hub in self.homeworlds][-1]
 
+    def waive(self, kinds, exempt=(), keep_payments=(), only=None) -> List[str]:
+        """Drop collectible requirements from chosen level entrances.
+
+        `kinds` names gate keys to remove (e.g. "talismans", "orbs"); "payments"
+        removes Money Bags tolls except the `keep_payments` names (purchases that
+        carry an ability location, which must stay payable). `exempt` lists
+        levels that keep every requirement; `only` limits the waiver to those
+        levels (Open World waives the hub-transit arenas, not every level).
+        Only `gates` changes: check gates and gem tiers gate content inside a
+        level, not the level's entrance. Returns the levels whose entrance
+        changed, in data order, for the client's open-world portal list.
+        """
+        kept: Dict[str, dict] = {}
+        changed: List[str] = []
+        for level, gate in self.gates.items():
+            if level in exempt or (only is not None and level not in only):
+                kept[level] = gate
+                continue
+            trimmed = dict(gate)
+            for kind in kinds:
+                if kind != "payments":
+                    trimmed.pop(kind, None)
+                    continue
+                still_paid = [name for name in trimmed.get("payments", ())
+                              if name in keep_payments]
+                if still_paid:
+                    trimmed["payments"] = still_paid
+                else:
+                    trimmed.pop("payments", None)
+            if trimmed != gate:
+                changed.append(level)
+            kept[level] = trimmed
+        self.gates = kept
+        return changed
+
     def is_homeworld(self, level: str) -> bool:
         return level in self.homeworlds
 
