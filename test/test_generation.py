@@ -256,6 +256,124 @@ class TestUTRegen(SRTTestBase):
         self.assertEqual(regen_slot_data, seed_slot_data)
 
 
+class TestOpenWorldSlotData(SRTTestBase):
+    """Open World frees hub travel; the client marks homeworlds visited."""
+
+    options = {
+        "included_games": ["Spyro 1", "Spyro 2", "Spyro 3"],
+        "spyro2_goal": "Ripto",
+        "spyro3_goal": "Sorceress",
+        "open_world": True,
+    }
+
+    def test_slot_data_marks_open_world(self) -> None:
+        sd = self.world.fill_slot_data()
+        self.assertEqual(sd["options"]["open_world"], 1)
+        for game in ("spyro1", "spyro2", "spyro3"):
+            with self.subTest(game=game):
+                self.assertEqual(sd["games"][game]["options"]["open_world"], 1)
+                self.assertNotIn("open_world_regions", sd["games"][game])
+
+    def test_only_the_homeworld_chain_is_waived(self) -> None:
+        spyro2 = next(game for game in self.world.games if game.key == "spyro2")
+        self.assertNotIn("bosses", spyro2.gates.gates["Autumn Plains"])
+        self.assertNotIn("bosses", spyro2.gates.gates["Winter Tundra"])
+        # Boss arenas and levels keep everything they had.
+        self.assertIn("talismans", spyro2.gates.gates["Crush's Dungeon"])
+        self.assertIn("orbs", spyro2.gates.gates["Gulp's Overlook"])
+        self.assertIn("orbs", spyro2.gates.gates["Ocean Speedway"])
+        self.assertIn("payments", spyro2.gates.gates["Zephyr"])
+        spyro3 = next(game for game in self.world.games if game.key == "spyro3")
+        for hub in ("Midday Gardens", "Evening Lake", "Midnight Mountain"):
+            with self.subTest(hub=hub):
+                self.assertNotIn("bosses", spyro3.gates.gates[hub])
+        for level, keys in (
+            ("Molten Crater", ("eggs",)),
+            ("Buzz's Dungeon", ("levels", "payments")),
+            ("Sorceress Lair", ("eggs",)),
+            ("Super Bonus Round", ("eggs", "gems", "levels")),
+        ):
+            with self.subTest(level=level):
+                for key in keys:
+                    self.assertIn(key, spyro3.gates.gates[level])
+
+    def test_regenerated_slot_matches(self) -> None:
+        """Universal Tracker regenerates an Open World slot from slot data alone."""
+        seed = self.world.fill_slot_data()
+        regen = ut_regen_world(self.game, seed).fill_slot_data()
+        seed.pop("seed")
+        regen.pop("seed")
+        self.assertEqual(regen, seed)
+
+    def test_egg_gates_survive_the_waiver(self) -> None:
+        """The mod needs the vanilla egg numbers for the egg-gate lever."""
+        sd = self.world.fill_slot_data()["games"]["spyro3"]
+        self.assertEqual(sd["egg_gates"]["Molten Crater"], 10)
+        self.assertEqual(sd["egg_gates"]["Sorceress Lair"], 100)
+
+
+class TestOpenWorldSpyro1(SRTTestBase):
+    options = {"included_games": ["Spyro 1"], "open_world": True}
+
+    def test_every_homeworld_reachable_at_start(self) -> None:
+        for homeworld in ("Peace Keepers", "Magic Crafters", "Beast Makers",
+                          "Dream Weavers", "Gnorc Gnexus"):
+            with self.subTest(homeworld=homeworld):
+                self.assertTrue(
+                    self.can_reach_region(f"Spyro 1: {homeworld}"),
+                    f"{homeworld} still needs a balloonist requirement",
+                )
+
+
+class TestClosedWorldSpyro1(SRTTestBase):
+    """Control: without the option the balloonists still gate the homeworlds."""
+
+    options = {"included_games": ["Spyro 1"]}
+
+    def test_balloonist_still_gates_peace_keepers(self) -> None:
+        self.assertFalse(self.can_reach_region("Spyro 1: Peace Keepers"))
+
+
+class TestOpenWorldSpyro2(SRTTestBase):
+    options = {"included_games": ["Spyro 2"], "spyro2_goal": "Ripto",
+               "open_world": True}
+
+    def test_homeworlds_reachable_but_arenas_keep_their_counts(self) -> None:
+        self.assertTrue(self.can_reach_region("Spyro 2: Autumn Plains"))
+        self.assertTrue(self.can_reach_region("Spyro 2: Winter Tundra"))
+        # Crush's Dungeon keeps Swim + its talisman count; with Swim held the
+        # Summer Forest talismans become obtainable, which is the vanilla rule.
+        self.assertFalse(self.can_reach_region("Spyro 2: Crush's Dungeon"))
+        self.collect(self.world.create_item("Spyro 2: Swim Ability"))
+        self.assertTrue(self.can_reach_region("Spyro 2: Crush's Dungeon"))
+
+
+class TestOpenWorldSpyro3(SRTTestBase):
+    options = {"included_games": ["Spyro 3"], "spyro3_goal": "Sorceress",
+               "open_world": True}
+
+    def test_homeworlds_reachable_but_levels_keep_their_gates(self) -> None:
+        for hub in ("Midday Gardens", "Evening Lake", "Midnight Mountain"):
+            with self.subTest(hub=hub):
+                self.assertTrue(self.can_reach_region(f"Spyro 3: {hub}"))
+        self.assertFalse(self.can_reach_region("Spyro 3: Molten Crater"))
+        self.assertFalse(self.can_reach_region("Spyro 3: Buzz's Dungeon"))
+        self.assertFalse(self.can_reach_region("Spyro 3: Super Bonus Round"))
+
+
+class TestOpenWorldWithLevelLocks(SRTTestBase):
+    """Open World frees hubs; Level Locks gate the level portals. They combine."""
+
+    options = {"included_games": ["Spyro 1"], "open_world": True,
+               "spyro1_level_locks": True}
+
+    def test_both_options_generate_and_fill(self) -> None:
+        sd = self.world.fill_slot_data()
+        self.assertEqual(sd["options"]["open_world"], 1)
+        self.assertEqual(sd["games"]["spyro1"]["options"]["level_locks"], 1)
+        self.assertGreater(len(sd["games"]["spyro1"]["level_keys"]), 0)
+
+
 class TestUTContract(unittest.TestCase):
     """The contract Universal Tracker checks before taking the regeneration path."""
 

@@ -36,6 +36,18 @@ class RequiredGames(OptionSet):
     default = frozenset()
 
 
+class OpenWorld(Toggle):
+    """Free travel between the homeworlds through the in-game Guide Book: the
+    client marks every homeworld visited, so the book lists each world and its
+    own travel moves you there. The homeworld chain no longer needs its boss or
+    balloonist; Spyro 1's balloonists ask for nothing.
+    Every level keeps its own access condition: level portals stay vanilla (or
+    key-locked with Level Locks), egg gates and boss-arena requirements stay,
+    abilities still matter, and Gnasty's Loot / Sorceress Lair / Super Bonus
+    Round keep their requirements."""
+    display_name = "Open World"
+
+
 class EnableFillerExtraLives(DefaultOnToggle):
     """Adds extra lives to the item pool."""
     display_name = "Enable Extra Lives Filler"
@@ -62,6 +74,7 @@ class EnableDeathLink(DeathLink):
 class SRTOptions(PerGameCommonOptions):
     included_games: IncludedGames
     required_games: RequiredGames
+    open_world: OpenWorld
     spyro1_goal: S1.GoalOption
     spyro1_balloonist_gates: S1.BalloonistGateOption
     spyro1_dragon_shuffle: S1.DragonShuffleOption
@@ -93,6 +106,9 @@ option_groups = [
     OptionGroup("Games", [
         IncludedGames,
         RequiredGames,
+    ], False),
+    OptionGroup("Progression", [
+        OpenWorld,
     ], False),
     *S1.option_groups,
     *S2.option_groups,

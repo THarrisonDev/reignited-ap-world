@@ -28,7 +28,7 @@ level key items. Homeworlds are never locked (the game's boss chain gates
 them), and the spawn level Sunrise Spring is a homeworld, so all 33 keys
 shuffle.
 """
-from typing import List, Set
+from typing import Dict, List, Set
 
 from BaseClasses import Region
 
@@ -58,11 +58,17 @@ class Spyro3Game:
         self.sparx_powers = True
         self.egg_shuffle = True
         self.level_locks = False
+        self.open_world = False
         self.s3_goal = 0
         self.lockable_levels: List[str] = []
         self.region_levels: List[str] = []
         self.gates = Gates(load("spyro3"), self.player)
         self.gates.item_counts = {"eggs": self._egg_item_counts}
+        # Vanilla egg requirements: the mod re-tunes egg portals under
+        # egg_shuffle, so they must be captured before Open World waives them.
+        self.egg_gates: Dict[str, int] = {
+            level: int(gate["eggs"]) for level, gate in self.gates.gates.items()
+            if "eggs" in gate}
         self.location_names: Set[str] = set()
         self.level_key_pool_levels: List[str] = []
 
@@ -75,6 +81,13 @@ class Spyro3Game:
         self.egg_shuffle = bool(self.world.options.spyro3_egg_shuffle.value)
         self.level_locks = bool(self.world.options.spyro3_level_locks.value)
         self.s3_goal = int(self.world.options.spyro3_goal.value)
+        self.open_world = bool(self.world.options.open_world.value)
+        if self.open_world:
+            # The Guide Book's own travel is the hub-transit mechanism (the mod
+            # marks the homeworlds visited), so the homeworld chain no longer
+            # needs its boss. Every level (egg gates, Sorceress Lair, Super
+            # Bonus Round) and boss-arena condition stays.
+            self.gates.waive(("bosses",), only=set(self.gates.homeworlds))
         self.requirable = self.s3_goal == GoalOptions.SORCERESS
         # The spawn level is a homeworld, so no key is precollected and all 33 keys shuffle.
         if self.level_locks:
@@ -147,8 +160,8 @@ class Spyro3Game:
                             "sparx_powers": int(self.sparx_powers),
                             "goal": int(self.s3_goal),
                             "level_locks": int(self.level_locks),
-                            "egg_shuffle": int(self.egg_shuffle)},
+                            "egg_shuffle": int(self.egg_shuffle),
+                            "open_world": int(self.open_world)},
                 "level_keys": {level: level_key_name(level) for level in self.lockable_levels},
-                "egg_gates": {level: int(gate["eggs"]) for level, gate in self.gates.gates.items()
-                              if "eggs" in gate},
+                "egg_gates": dict(self.egg_gates),
                 "goal_location": goal_location}

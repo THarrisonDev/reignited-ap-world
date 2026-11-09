@@ -38,6 +38,7 @@ Spyro Reignited Trilogy:
   accessibility: full
   included_games: ['Spyro 1']
   required_games: ['Spyro 1']
+  open_world: 'false'
   spyro1_goal: gnasty
   spyro1_balloonist_gates: vanilla
   spyro1_dragon_shuffle: dragonsanity
@@ -75,6 +76,11 @@ locations, options and balloonist gate numbers it shows match the seed itself.
   some may have in-game effects (extra lives, colors, modes).
 - Homeworld gates behave per your `spyro1_balloonist_gates` option (vanilla or
   shuffled thresholds; see the options reference in the game info page).
+- `open_world: 'true'` frees travel between the homeworlds through the in-game
+  Guide Book: the client marks every homeworld visited, so the book lists each
+  world and its own travel moves you there. Level portals keep their own
+  conditions (vanilla, or Level Locks keys, which combine with this option),
+  abilities still matter, and the bonus levels keep their requirements.
 
 ## Known limitations
 

@@ -58,6 +58,7 @@ class Spyro2Game:
         self.moneybags_abilities = 0
         self.s2_goal = 0
         self.level_locks = False
+        self.open_world = False
         self.lockable_levels: List[str] = []
         self.level_key_pool_levels: List[str] = []
         self.gates = Gates(load("spyro2"), self.player)
@@ -73,6 +74,12 @@ class Spyro2Game:
         self.moneybags_abilities = int(self.world.options.spyro2_moneybags_abilities.value)
         self.s2_goal = int(self.world.options.spyro2_goal.value)
         self.level_locks = bool(self.world.options.spyro2_level_locks.value)
+        self.open_world = bool(self.world.options.open_world.value)
+        if self.open_world:
+            # The Guide Book's own travel is the hub-transit mechanism (the mod
+            # marks the homeworlds visited), so the homeworld chain no longer
+            # needs its boss. Every level and boss-arena condition stays.
+            self.gates.waive(("bosses",), only=set(self.gates.homeworlds))
         self.requirable = self.s2_goal == S2GoalOptions.RIPTO
         # Glimmer is the spawn level, so its key is precollected and the other 24 keys shuffle.
         if self.level_locks:
@@ -143,6 +150,7 @@ class Spyro2Game:
                             "orb_shuffle": int(self.orb_shuffle),
                             "moneybags_abilities": int(self.moneybags_abilities),
                             "goal": int(self.s2_goal),
-                            "level_locks": int(self.level_locks)},
+                            "level_locks": int(self.level_locks),
+                            "open_world": int(self.open_world)},
                 "level_keys": {level: level_key_name(level) for level in self.lockable_levels},
                 "goal_location": goal_location}
