@@ -55,7 +55,9 @@ options apply to the whole slot.
 
 1. Download and extract the client bundle from the project's releases.
 2. Run `install.bat` (Windows) or `install.sh` (Linux / Proton) to install the
-   mod, the save scanner, and UE4SS.
+   mod, the save scanner, and UE4SS. On Linux, launch the game once from Steam
+   first if it has never been run, so Steam creates the Proton prefix; the
+   installer tells you if that step is still missing.
 3. Open the launcher, enter the server address and your slot name, and click
    **Save & launch game**. The mod connects once you are actually playing, reads
    dragon/egg/gem state from the game, and syncs with the server.
