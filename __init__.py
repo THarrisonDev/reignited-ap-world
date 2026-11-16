@@ -83,9 +83,10 @@ class SpyroReignitedWorld(World):
     web = SRTWeb()
     data_version = 0
     # Minimum version the game client must report at ConnectSlot (the srt_bridge
-    # mod reports {0, 6, 7}). Distinct from archipelago.json's minimum_ap_version
+    # mod reports its own version). Only raise this when a seed depends on a
+    # client capability; distinct from archipelago.json's minimum_ap_version
     # (0.6.1), which gates the AP server itself.
-    required_client_version = (0, 5, 0)
+    required_client_version = (0, 7, 0)
     # Keep in sync with archipelago.json world_version.
     ap_world_version = "0.30.0"
     # Universal Tracker regenerates this slot from slot data; see docs/setup/en/setup_en.md.
