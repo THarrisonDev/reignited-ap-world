@@ -32,7 +32,13 @@ from typing import Dict, List, Set
 
 from BaseClasses import Region
 
-from ..core import add_gate_rules, add_level_lock_rules, create_level_regions
+from ..core import (
+    add_gate_rules,
+    add_guide_book_entrances,
+    add_guide_book_rules,
+    add_level_lock_rules,
+    create_level_regions,
+)
 from ..data import load
 from ..gates import Gates
 from . import Items as S3Items
@@ -71,6 +77,7 @@ class Spyro3Game:
             if "eggs" in gate}
         self.location_names: Set[str] = set()
         self.level_key_pool_levels: List[str] = []
+        self.guide_book_hubs: Dict[str, List[str]] = {}
 
     def generate_early(self):
         self.enable_gem_checks = bool(self.world.options.spyro3_enable_gem_checks.value)
@@ -105,6 +112,9 @@ class Spyro3Game:
         self.region_levels = list(create_level_regions(
             self, menu, TABLE_ORDER, location_tables,
             prefix=s3, skipped=skipped, locked=self._locked_item))
+        if self.level_locks:
+            self.guide_book_hubs = add_guide_book_entrances(
+                self, menu, s3, self.gates.homeworld_of)
 
     def _locked_item(self, level: str, data) -> str:
         """The item a location holds as a locked event, or None. The boss
@@ -130,6 +140,7 @@ class Spyro3Game:
         # no key is precollected.
         if self.level_locks:
             add_level_lock_rules(self, s3, self.lockable_levels, level_key_name)
+            add_guide_book_rules(self, s3, self.guide_book_hubs, level_key_name)
 
     def is_complete(self, state) -> bool:
         if self.s3_goal == GoalOptions.SORCERESS:
@@ -152,9 +163,10 @@ class Spyro3Game:
             goal_location = self.world.location_name_to_id[
                 s3("Sorceress Lair: Sorceress Defeated")]
         # level_keys maps each lockable region to its key item name; the mod
-        # locks regions whose key has not arrived yet. egg_gates carries the
-        # vanilla egg requirements so the mod can re-tune the egg portals
-        # under egg_shuffle.
+        # locks regions whose key has not arrived yet. level_homeworlds names
+        # each region's homeworld, so the mod can mark it visited when a key
+        # arrives (the Guide Book jump). egg_gates carries the vanilla egg
+        # requirements so the mod can re-tune the egg portals under egg_shuffle.
         return {"options": {"enable_gem_checks": int(self.enable_gem_checks),
                             "enable_skillpoint_checks": int(self.enable_skillpoint_checks),
                             "sparx_powers": int(self.sparx_powers),
@@ -163,5 +175,7 @@ class Spyro3Game:
                             "egg_shuffle": int(self.egg_shuffle),
                             "open_world": int(self.open_world)},
                 "level_keys": {level: level_key_name(level) for level in self.lockable_levels},
+                "level_homeworlds": {level: self.gates.homeworld_of(level)
+                                     for level in self.lockable_levels},
                 "egg_gates": dict(self.egg_gates),
                 "goal_location": goal_location}

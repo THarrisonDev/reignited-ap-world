@@ -39,7 +39,8 @@ class LevelLocksOption(Toggle):
     (the game's own boss-chain + egg-gate progression gates them — the
     balloonist analogy) and no key is precollected: the spawn level, Sunrise
     Spring, is a homeworld, so all 33 sub-level keys are shuffled into the item
-    pool."""
+    pool. A key also lists its homeworld in the Guide Book, so a key can take
+    you to a homeworld you have not reached yet."""
     display_name = "Level Locks"
     default = False
 

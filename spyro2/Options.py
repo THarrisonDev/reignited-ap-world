@@ -66,7 +66,9 @@ class LevelLocksOption(Toggle):
     "Spyro 2: <Level> Key" item is found. The homeworlds themselves stay open
     (the game's own Crush/Gulp talisman doors gate them) and Dragon Shores
     (post-game, no checks) is never locked. Glimmer, the spawn level, gets its
-    key immediately; the other 24 keys are shuffled into the item pool."""
+    key immediately; the other 24 keys are shuffled into the item pool. A key
+    also lists its homeworld in the Guide Book, so a key can take you to a
+    homeworld you have not reached yet."""
     display_name = "Level Locks"
     default = False
 

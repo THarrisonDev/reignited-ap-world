@@ -23,7 +23,7 @@ from typing import Dict, List
 from BaseClasses import Entrance, Region
 from worlds.generic.Rules import add_rule, set_rule
 
-from ..core import SRTLocation
+from ..core import SRTLocation, add_guide_book_entrances, add_guide_book_rules
 from .Items import (
     DRAGON,
     DRAGON_EGG,
@@ -71,9 +71,15 @@ class Spyro1Game:
             hub.name: hub.requirement for hub in Spyro1Levels if hub.requirement
         }
         self.open_world = False
+        self.level_locks = False
         self.lockable_levels: List[str] = []
         self.starting_unlocked_levels: List[str] = []
         self.level_key_pool_levels: List[str] = []
+        # Every level's homeworld, and the hubs a Guide Book entrance covers.
+        self.level_homeworlds: Dict[str, str] = {
+            level.name: hub.name for hub in Spyro1Levels for level in hub.levels
+        }
+        self.guide_book_hubs: Dict[str, List[str]] = {}
         # Levels (hubs included) that get a region this seed, and what each holds.
         self.levels: List[Spyro1Level] = []
         self._gems_in: Dict[str, int] = {}
@@ -98,6 +104,7 @@ class Spyro1Game:
         )
         opts["enable_flight_checks"] = options.spyro1_enable_flight_checks.value
         opts["level_locks"] = int(options.spyro1_level_locks.value)
+        self.level_locks = bool(opts["level_locks"])
         opts["starting_unlocked_levels"] = int(
             options.spyro1_starting_unlocked_levels.value
         )
@@ -117,7 +124,7 @@ class Spyro1Game:
         if opts["goal"] == GoalOptions.GNASTYS_LOOT and not opts["enable_gem_checks"]:
             opts["enable_gem_checks"] = True
 
-        if opts["level_locks"]:
+        if self.level_locks:
             self.lockable_levels = [
                 level
                 for level in level_key_levels
@@ -206,6 +213,12 @@ class Spyro1Game:
                 if level.name in regions:
                     connect(regions[hub.name], regions[level.name])
             previous = regions[hub.name]
+
+        # The Guide Book jump checks only CanLoadLevel, so one of a hub's level
+        # keys is enough to travel there.
+        if self.level_locks:
+            self.guide_book_hubs = add_guide_book_entrances(
+                self, menu, s1, self.level_homeworlds.__getitem__)
 
     def _create_region(self, level: Spyro1Level) -> Region:
         opts = self.generation_options
@@ -358,6 +371,10 @@ class Spyro1Game:
                 lambda state, key=level_key_name(level): state.has(key, player),
             )
 
+        # The Guide Book jump into a hub needs any one of that hub's keys.
+        if self.level_locks:
+            add_guide_book_rules(self, s1, self.guide_book_hubs, level_key_name)
+
     def is_complete(self, state) -> bool:
         goal = self.generation_options["goal"]
         if goal == GoalOptions.GNASTY:
@@ -385,10 +402,16 @@ class Spyro1Game:
             goal_location = self.world.location_name_to_id[s1("Gnasty Gnorc Defeated")]
         elif goal == GoalOptions.GNASTYS_LOOT:
             goal_location = self.world.location_name_to_id[s1("Gnasty's Loot Complete")]
+        # level_keys maps each lockable level to its key item; level_homeworlds
+        # names that level's homeworld, so the client can mark the homeworld
+        # visited when its key arrives (the Guide Book jump).
         return {
             "options": {name: self.generation_options[name] for name in SLOT_OPTIONS},
             "level_keys": {
                 level: level_key_name(level) for level in self.lockable_levels
+            },
+            "level_homeworlds": {
+                level: self.level_homeworlds[level] for level in self.lockable_levels
             },
             "gate_requirements": {
                 homeworld: {"type": req.type.name.lower(), "needed": req.needed}

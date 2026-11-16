@@ -7,7 +7,7 @@ wiring every tabular game (Spyro 2/3) uses, so each game module keeps only
 its own option- and item-specific logic.
 """
 
-from typing import Callable, Dict, Optional, Sequence
+from typing import Callable, Dict, List, Optional, Sequence
 
 from BaseClasses import Entrance, Item, Location, Region
 from worlds.generic.Rules import add_rule
@@ -114,3 +114,34 @@ def add_level_lock_rules(game, prefix: Callable[[str], str], levels: Sequence[st
     for level in levels:
         add_rule(game.multiworld.get_entrance(prefix(level), player),
                  lambda state, key=key_name(level): state.has(key, player))
+
+
+def add_guide_book_entrances(game, menu: Region, prefix: Callable[[str], str],
+                             hub_of: Callable[[str], str]) -> Dict[str, List[str]]:
+    """Add a Menu entrance into each homeworld that has lockable levels.
+
+    The Guide Book jump only checks CanLoadLevel, so holding any one of a
+    homeworld's level keys delivers the player there. `hub_of` maps a level to
+    its homeworld (the tabular games use `Gates.homeworld_of`, Spyro 1 its own
+    hub table). Returns homeworld -> its lockable levels, for
+    `add_guide_book_rules`.
+    """
+    hubs: Dict[str, List[str]] = {}
+    for level in game.lockable_levels:
+        hubs.setdefault(hub_of(level), []).append(level)
+    for hub in hubs:
+        entrance = Entrance(game.player, prefix(f"{hub} (Guide Book)"), menu)
+        menu.exits.append(entrance)
+        entrance.connect(game.multiworld.get_region(prefix(hub), game.player))
+    return hubs
+
+
+def add_guide_book_rules(game, prefix: Callable[[str], str],
+                         hubs: Dict[str, List[str]],
+                         key_name: Callable[[str], str]) -> None:
+    """Open each Guide Book entrance once one of its homeworld's keys arrives."""
+    player = game.player
+    for hub, levels in hubs.items():
+        keys = [key_name(level) for level in levels]
+        add_rule(game.multiworld.get_entrance(prefix(f"{hub} (Guide Book)"), player),
+                 lambda state, keys=keys: any(state.has(key, player) for key in keys))

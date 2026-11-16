@@ -61,7 +61,7 @@ class SRTTestBase(WorldTestBase):
             self.assertEqual(name_to_id.get(name), address, f"{name} id mismatch")
             self.assertIsInstance(address, int)
         for key in games:
-            for field in ("options", "level_keys", "goal_location"):
+            for field in ("options", "level_keys", "level_homeworlds", "goal_location"):
                 self.assertIn(field, sd["games"][key], f"{key} slot data lacks {field}")
         ids = list(name_to_id.values())
         self.assertEqual(len(ids), len(set(ids)), "duplicate location ids in the slot")
@@ -372,6 +372,110 @@ class TestOpenWorldWithLevelLocks(SRTTestBase):
         self.assertEqual(sd["options"]["open_world"], 1)
         self.assertEqual(sd["games"]["spyro1"]["options"]["level_locks"], 1)
         self.assertGreater(len(sd["games"]["spyro1"]["level_keys"]), 0)
+
+
+class TestGuideBookSpyro1(SRTTestBase):
+    """One Spyro 1 level key opens its homeworld through the Guide Book (the
+    in-game jump checks only CanLoadLevel)."""
+
+    options = {"included_games": ["Spyro 1"], "spyro1_level_locks": True}
+
+    def test_no_key_leaves_gnorc_gnexus_closed(self) -> None:
+        self.assertFalse(self.can_reach_region("Spyro 1: Gnorc Gnexus"))
+
+    def test_key_opens_gnorc_gnexus(self) -> None:
+        self.assertFalse(self.can_reach_region("Spyro 1: Gnorc Gnexus"))
+        self.collect(self.world.create_item("Spyro 1: Twilight Harbor Key"))
+        self.assertTrue(self.can_reach_region("Spyro 1: Gnorc Gnexus"))
+        self.assertTrue(
+            self.can_reach_location("Spyro 1: Gnorc Gnexus: Free Delbin")
+        )
+
+
+class TestGuideBookSpyro2(SRTTestBase):
+    options = {"included_games": ["Spyro 2"], "spyro2_goal": "Ripto",
+               "spyro2_level_locks": True}
+
+    def test_no_key_leaves_winter_tundra_closed(self) -> None:
+        self.assertFalse(self.can_reach_region("Spyro 2: Winter Tundra"))
+
+    def test_key_opens_winter_tundra_but_not_its_levels(self) -> None:
+        self.assertFalse(self.can_reach_region("Spyro 2: Winter Tundra"))
+        self.collect(self.world.create_item("Spyro 2: Cloud Temples Key"))
+        self.assertTrue(self.can_reach_region("Spyro 2: Winter Tundra"))
+        self.assertTrue(
+            self.can_reach_location("Spyro 2: Winter Tundra: 25% Gems")
+        )
+        # Cloud Temples keeps its 15-orb door.
+        self.assertFalse(self.can_reach_region("Spyro 2: Cloud Temples"))
+
+
+class TestGuideBookSpyro3(SRTTestBase):
+    options = {"included_games": ["Spyro 3"], "spyro3_goal": "Sorceress",
+               "spyro3_level_locks": True}
+
+    def test_no_key_leaves_midnight_mountain_closed(self) -> None:
+        self.assertFalse(self.can_reach_region("Spyro 3: Midnight Mountain"))
+
+    def test_key_opens_midnight_mountain(self) -> None:
+        self.assertFalse(self.can_reach_region("Spyro 3: Midnight Mountain"))
+        self.collect(self.world.create_item("Spyro 3: Desert Ruins Key"))
+        self.assertTrue(self.can_reach_region("Spyro 3: Midnight Mountain"))
+        self.assertTrue(
+            self.can_reach_location("Spyro 3: Midnight Mountain: 25% Gems")
+        )
+        # Dino Mines keeps its 80-egg door.
+        self.assertFalse(self.can_reach_region("Spyro 3: Dino Mines"))
+
+
+class TestLevelHomeworldsSlotData(SRTTestBase):
+    """level_homeworlds pairs every level key with its homeworld for the mod."""
+
+    options = {
+        "included_games": ["Spyro 1", "Spyro 2", "Spyro 3"],
+        "spyro2_goal": "Ripto",
+        "spyro3_goal": "Sorceress",
+        "spyro1_level_locks": True,
+        "spyro2_level_locks": True,
+        "spyro3_level_locks": True,
+    }
+
+    def test_homeworlds_match_the_level_keys(self) -> None:
+        games = self.world.fill_slot_data()["games"]
+        for key in ("spyro1", "spyro2", "spyro3"):
+            with self.subTest(game=key):
+                self.assertTrue(games[key]["level_keys"])
+                self.assertEqual(
+                    set(games[key]["level_homeworlds"]),
+                    set(games[key]["level_keys"]),
+                )
+
+    def test_homeworld_names(self) -> None:
+        games = self.world.fill_slot_data()["games"]
+        self.assertEqual(
+            games["spyro1"]["level_homeworlds"]["Twilight Harbor"], "Gnorc Gnexus"
+        )
+        self.assertEqual(
+            games["spyro2"]["level_homeworlds"]["Cloud Temples"], "Winter Tundra"
+        )
+        self.assertEqual(
+            games["spyro3"]["level_homeworlds"]["Desert Ruins"], "Midnight Mountain"
+        )
+
+
+class TestLevelHomeworldsWithoutLocks(SRTTestBase):
+    options = {
+        "included_games": ["Spyro 1", "Spyro 2", "Spyro 3"],
+        "spyro2_goal": "Ripto",
+        "spyro3_goal": "Sorceress",
+    }
+
+    def test_both_maps_empty(self) -> None:
+        games = self.world.fill_slot_data()["games"]
+        for key in ("spyro1", "spyro2", "spyro3"):
+            with self.subTest(game=key):
+                self.assertEqual(games[key]["level_keys"], {})
+                self.assertEqual(games[key]["level_homeworlds"], {})
 
 
 class TestUTContract(unittest.TestCase):

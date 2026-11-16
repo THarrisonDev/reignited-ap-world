@@ -68,7 +68,9 @@ class EggShuffleOption(Toggle):
 
 
 class LevelLocksOption(Toggle):
-    """Every Spyro 1 level portal is locked until its "Spyro 1: <Level> Key" item is found."""
+    """Every Spyro 1 level portal is locked until its "Spyro 1: <Level> Key" item is found.
+    A key also lists its homeworld in the Guide Book, so a key can take you to a
+    hub you have not reached yet."""
     display_name = "Level Locks"
     default = False
 

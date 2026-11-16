@@ -23,11 +23,17 @@ Under spyro2_level_locks the mod locks 25 level portals behind shuffled level
 key items. Homeworlds are never locked (the boss chain gates them), and the
 spawn level Glimmer's key is precollected; the other 24 keys shuffle.
 """
-from typing import List, Set
+from typing import Dict, List, Set
 
 from BaseClasses import Region
 
-from ..core import add_gate_rules, add_level_lock_rules, create_level_regions
+from ..core import (
+    add_gate_rules,
+    add_guide_book_entrances,
+    add_guide_book_rules,
+    add_level_lock_rules,
+    create_level_regions,
+)
 from ..data import load
 from ..gates import Gates
 from . import Items as S2Items
@@ -61,6 +67,7 @@ class Spyro2Game:
         self.open_world = False
         self.lockable_levels: List[str] = []
         self.level_key_pool_levels: List[str] = []
+        self.guide_book_hubs: Dict[str, List[str]] = {}
         self.gates = Gates(load("spyro2"), self.player)
         self.gates.item_counts = {"orbs": self._orb_item_counts}
         self.location_names: Set[str] = set()
@@ -95,6 +102,9 @@ class Spyro2Game:
             skipped.add(Kind.SKILLPOINT)
         create_level_regions(self, menu, check_levels, location_tables,
                              prefix=s2, skipped=skipped, locked=self._locked_item)
+        if self.level_locks:
+            self.guide_book_hubs = add_guide_book_entrances(
+                self, menu, s2, self.gates.homeworld_of)
 
     def _locked_item(self, level: str, data) -> str:
         """The item a location holds as a locked event, or None. Keep the real
@@ -125,6 +135,7 @@ class Spyro2Game:
         add_gate_rules(self, s2, check_levels, location_tables, Kind.GEM)
         if self.level_locks:
             add_level_lock_rules(self, s2, self.lockable_levels, level_key_name)
+            add_guide_book_rules(self, s2, self.guide_book_hubs, level_key_name)
 
     def _orb_item_counts(self, state) -> int:
         """Under orb shuffle the orb doors count received Orb items, else None
@@ -144,7 +155,9 @@ class Spyro2Game:
             goal_location = self.world.location_name_to_id[s2("Ripto's Arena: Ripto Defeated")]
         # level_keys maps each lockable region to its key item name; the mod
         # locks regions whose key has not arrived yet. Precollected items
-        # arrive in the backlog, so Glimmer is included.
+        # arrive in the backlog, so Glimmer is included. level_homeworlds names
+        # each region's homeworld, so the mod can mark it visited when a key
+        # arrives (the Guide Book jump).
         return {"options": {"enable_gem_checks": int(self.enable_gem_checks),
                             "enable_skillpoint_checks": int(self.enable_skillpoint_checks),
                             "orb_shuffle": int(self.orb_shuffle),
@@ -153,4 +166,6 @@ class Spyro2Game:
                             "level_locks": int(self.level_locks),
                             "open_world": int(self.open_world)},
                 "level_keys": {level: level_key_name(level) for level in self.lockable_levels},
+                "level_homeworlds": {level: self.gates.homeworld_of(level)
+                                     for level in self.lockable_levels},
                 "goal_location": goal_location}

@@ -58,8 +58,9 @@ So you are never stuck at the start, **Starting Unlocked Levels** (1–4, defaul
 that many random Artisans levels (Stone Hill, Dark Hollow, Town Square, Sunny Flight) and
 gives you their keys right away. Toasty is never picked because it is a boss.
 
-Level Locks is off by default. Balloonist requirements still apply on top of it, so a key
-for a level in a homeworld you can't reach yet won't open that level until you get there.
+Level Locks is off by default. Balloonist requirements still apply on top of it. A key
+also lists its homeworld in the Guide Book, so the book can take you to a world you have
+not reached yet: a key is never dead weight, even for a far-off level.
 
 ## Spyro 1 goals
 
@@ -156,3 +157,6 @@ Skill points never gate anything — no skill-point item opens a door, and no
 check requires one. Eggs do gate: the 14 egg portals (which need 10/20/30/…/140
 eggs) count received **Spyro 3: Dragon Egg** items when **Shuffle Dragon Eggs**
 is on.
+
+A key also lists its homeworld in the Guide Book, so the book can take you to a
+homeworld whose boss has not fallen yet.
