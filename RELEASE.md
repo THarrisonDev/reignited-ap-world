@@ -1,7 +1,8 @@
 # Release Checklist
 
-Three repos move in lockstep for every release. Parent repo holds the
-submodule pointers; the submodules hold the actual code and versions.
+The world and parent move together for every release; the client has its own
+series and is tagged only when it changes. Parent repo holds the submodule
+pointers; the submodules hold the actual code and versions.
 
 ## Version touchpoints
 
@@ -10,9 +11,30 @@ submodule pointers; the submodules hold the actual code and versions.
 | World version | `reignited-ap-world` → `archipelago.json` (`world_version`) + `world/__init__.py` (`ap_world_version`) | Any change to world logic, items, locations, or options |
 | `version` / `compatible_version` | `reignited-ap-world` → `archipelago.json` | Only when save/patch format changes (data schema version, currently `7`) |
 | `data_version` | `reignited-ap-world` → `world/__init__.py` | Only when slot data semantics change for already-generated seeds |
-| Client protocol version | `reignited-ap-client` → `ue4ss_mod/srt_bridge/Scripts/ap_client.lua` (`client_version`) and `launcher/feed.go` (`"version"`); `make audit` (scripts/audit_client_version.py) fails on drift | Any change to the mod ↔ server handshake surface |
+| Client version | `reignited-ap-client` → `ue4ss_mod/srt_bridge/Scripts/ap_client.lua` (`client_version`) and `launcher/feed.go` (`"version"`); `make audit` (scripts/audit_client_version.py) fails on drift | Minor when the client gains a capability the world may rely on; patch for fixes. The tag must equal this number |
 | `minimum_ap_version` | `reignited-ap-world` → `archipelago.json` | Only when a new AP server feature becomes required |
-| `required_client_version` | `reignited-ap-world` → `world/__init__.py` | When the world requires newer client behavior than `(0, 5, 0)` |
+| `required_client_version` | `reignited-ap-world` → `world/__init__.py` | When a seed starts depending on a client capability newer than the floor (now `(0, 7, 0)`) |
+
+## Numbering
+
+Three series, deliberately independent:
+
+| Series | Lives in | Format | Moves on |
+|---|---|---|---|
+| Release | `world_version` + parent tag | `0.MINOR.PATCH` | minor: world logic, items, options or slot data; patch: republishing the same content |
+| Client | `client_version` (lua + `feed.go`) + client tag | `0.MINOR.PATCH` | minor: a capability the world may rely on; patch: fixes only |
+| Pack | `poptracker-pack` `package_version` | `0.MINOR.PATCH` | any pack change |
+
+Rules:
+
+- The parent tag equals the world version; the bundle is named from it.
+- The client tag equals the version the mod reports at ConnectSlot, so one
+  number identifies a build in a support log.
+- `required_client_version` is a floor, not a mirror: it moves only when a
+  release depends on the newer client capability. A world release that needs
+  nothing new leaves it alone, and older clients keep working.
+- A client patch never raises the floor.
+- Release notes name both numbers: `Reignited AP 0.30.0 (client 0.7.0)`.
 
 ## Release order
 
@@ -22,8 +44,8 @@ submodule pointers; the submodules hold the actual code and versions.
      target fails if they drift — see `Makefile`).
    - Tag `vX.Y.Z` and push.
 2. **reignited-ap-client**
-   - Land all client changes on `main`; ensure `client_version` in
-     `ap_client.lua` matches `feed.go` if the handshake changed.
+   - Land all client changes on `main`; bump `client_version` (minor for a new
+     capability, patch for fixes) and keep `ap_client.lua` and `feed.go` equal.
    - Build the binaries (`checkd`, `launcher`) and package the UE4SS mod
      (`srt_bridge/Scripts` only — `ue4ss_mod/api/` never ships).
    - Tag `vX.Y.Z` and push.
