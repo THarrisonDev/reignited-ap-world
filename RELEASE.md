@@ -17,13 +17,12 @@ pointers; the submodules hold the actual code and versions.
 
 ## Numbering
 
-Three series, deliberately independent:
+Two series, deliberately independent:
 
 | Series | Lives in | Format | Moves on |
 |---|---|---|---|
 | Release | `world_version` + parent tag | `0.MINOR.PATCH` | minor: world logic, items, options or slot data; patch: republishing the same content |
 | Client | `client_version` (lua + `feed.go`) + client tag | `0.MINOR.PATCH` | minor: a capability the world may rely on; patch: fixes only |
-| Pack | `poptracker-pack` `package_version` | `0.MINOR.PATCH` | any pack change |
 
 Rules:
 
