@@ -100,6 +100,11 @@ class Spyro3Game:
         if self.level_locks:
             self.lockable_levels = list(level_key_levels)
             self.level_key_pool_levels = list(level_key_levels)
+            # A held key force-enables the level's portal, and the Guide Book
+            # jump bypasses the entrance gate too, so the egg door on a
+            # lockable level stops gating it (and the eggs stop being
+            # progression for it).
+            self.gates.waive(("eggs",), only=set(self.lockable_levels))
 
     def create_regions(self, menu: Region):
         skipped = set()

@@ -233,7 +233,8 @@ class SpyroReignitedWorld(World):
         elif name in S2Items.item_table:
             classification = S2Items.classification(name)
         elif name in S3Items.item_table:
-            classification = S3Items.classification(name)
+            classification = S3Items.classification(
+                name, level_locks=bool(self.options.spyro3_level_locks.value))
         else:
             classification = S1Items.classification(name)
         return SRTItem(name, classification, self.item_name_to_id[name], self.player)

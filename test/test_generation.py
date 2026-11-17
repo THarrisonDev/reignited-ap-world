@@ -12,7 +12,7 @@ import unittest
 from argparse import Namespace
 from typing import Set
 
-from BaseClasses import CollectionState, MultiWorld
+from BaseClasses import CollectionState, ItemClassification, MultiWorld
 from test.bases import WorldTestBase
 from test.general import gen_steps
 from worlds import AutoWorld
@@ -424,8 +424,39 @@ class TestGuideBookSpyro3(SRTTestBase):
         self.assertTrue(
             self.can_reach_location("Spyro 3: Midnight Mountain: 25% Gems")
         )
-        # Dino Mines keeps its 80-egg door.
+        # Dino Mines still needs its own key.
         self.assertFalse(self.can_reach_region("Spyro 3: Dino Mines"))
+
+    def test_key_opens_an_egg_gated_level(self) -> None:
+        """A key force-enables the portal, so its egg door stops gating it."""
+        self.assertFalse(self.can_reach_region("Spyro 3: Dino Mines"))
+        self.collect(self.world.create_item("Spyro 3: Dino Mines Key"))
+        self.assertTrue(self.can_reach_region("Spyro 3: Dino Mines"))
+        # Sorceress Lair's 100-egg door is the same lever.
+        self.collect(self.world.create_item("Spyro 3: Sorceress Lair Key"))
+        self.assertTrue(self.can_reach_region("Spyro 3: Sorceress Lair"))
+
+
+class TestEggClassificationWithKeys(SRTTestBase):
+    """With keys gating the levels, eggs gate nothing and stop being progression."""
+
+    options = {"included_games": ["Spyro 3"], "spyro3_goal": "Sorceress",
+               "spyro3_level_locks": True}
+
+    def test_eggs_are_useful(self) -> None:
+        egg = self.world.create_item("Spyro 3: Dragon Egg")
+        self.assertFalse(egg.classification & ItemClassification.progression)
+        self.assertTrue(egg.classification & ItemClassification.useful)
+
+
+class TestEggClassificationWithoutKeys(SRTTestBase):
+    """Control: without Level Locks the egg doors still gate the levels."""
+
+    options = {"included_games": ["Spyro 3"], "spyro3_goal": "Sorceress"}
+
+    def test_eggs_are_progression(self) -> None:
+        egg = self.world.create_item("Spyro 3: Dragon Egg")
+        self.assertTrue(egg.classification & ItemClassification.progression)
 
 
 class TestLevelHomeworldsSlotData(SRTTestBase):

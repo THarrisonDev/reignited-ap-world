@@ -88,8 +88,10 @@ item_table: Dict[str, Spyro3ItemData] = {data.name: data for data in _items}
 item_name_to_id: Dict[str, int] = {data.name: BASE_ID + data.code for data in _items}
 
 
-def classification(name: str):
+def classification(name: str, level_locks: bool = False):
     if name in SPARX_POWERS:
+        return ItemClassification.useful
+    if name == DRAGON_EGG and level_locks:
         return ItemClassification.useful
     return ItemClassification.progression
 
