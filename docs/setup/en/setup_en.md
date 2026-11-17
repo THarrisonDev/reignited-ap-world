@@ -76,8 +76,9 @@ locations, options and balloonist gate numbers it shows match the seed itself.
   Level completions and boss defeats are tracked as progress.
 - Items you receive are shown by the client overlay. Depending on client capability,
   some may have in-game effects (extra lives, colors, modes).
-- Homeworld gates behave per your `spyro1_balloonist_gates` option (vanilla or
-  shuffled thresholds; see the options reference in the game info page).
+- Homeworld gates behave per your `spyro1_balloonist_gates` option: vanilla
+  thresholds, or shuffled (experimental) thresholds; see the options reference
+  in the game info page.
 - `open_world: 'true'` frees travel between the homeworlds through the in-game
   Guide Book: the client marks every homeworld visited, so the book lists each
   world and its own travel moves you there. Level portals keep their own

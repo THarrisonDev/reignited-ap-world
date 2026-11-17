@@ -40,9 +40,9 @@ class BalloonistGateOption(Choice):
     """Rules for unlocking each homeworld via the balloonists.
     Vanilla: Marco needs 10 dragons, Gosnold 1200 gems, Tuco 5 eggs,
     Cray 50 dragons, Amos 6000 gems.
-    Shuffled: each balloonist asks for a random number between its vanilla
-    value and the most of that collectible obtainable before you reach it, so
-    the seed is always beatable."""
+    Shuffled (experimental): each balloonist asks for a random number between
+    its vanilla value and the most of that collectible obtainable before you
+    reach it, so the seed is always beatable. Less tested than vanilla."""
     display_name = "Balloonist Gates"
     default = BalloonistGateOptions.VANILLA
     option_vanilla = BalloonistGateOptions.VANILLA
